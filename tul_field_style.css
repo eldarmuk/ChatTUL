@@ -1,0 +1,46 @@
+.tul_style_preview {
+    color: #0b1a21;
+    display: none;
+}
+.paragraph:hover > .tul_style_preview,
+.tul_style_preview.open {
+    display: block;
+}
+
+.tul_style_preview>.tul_style_preview_inner>.tul_style_preview_content>.tul_style_preview_open_close {
+    border-radius: 30rem;
+    aspect-ratio: 1/1;
+    width: 2.5ch;
+    border-style: solid;
+    background-color: #d0d0d7;
+    border-color: #d0d0d7;
+    color: #0b1a21;
+}
+
+.tul_style_preview.open>.tul_style_preview_inner>.tul_style_preview_content>.tul_style_preview_open_close {
+    background-color: #ff8440;
+    border-color: #ff8440;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.2ch;
+    margin: 0;
+}
+
+.tul_style_preview>.tul_style_preview_inner>.tul_style_preview_content>.tul_style_preview_open_content {
+    display: none;
+    background-color: #d0d0d7;
+    border-radius: 0;
+    border-bottom-left-radius: 0.56rem;
+    border-bottom-right-radius: 0.56rem;
+    border-top-right-radius: 0.56rem;
+    padding: 0.56rem;
+    border-style: solid;
+    border-color: #ff8440;
+    margin: 0;
+    color: #0b1a21;
+    min-width: 30vw;
+}
+
+.tul_style_preview.open>.tul_style_preview_inner>.tul_style_preview_content>.tul_style_preview_open_content {
+    display: block;
+}
