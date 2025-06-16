@@ -49,6 +49,93 @@ nlu:
     - no way
     - not really
 
+- intent: ask_field_info
+  examples: |
+    - Tell me about [Computer Science](field_of_study) at TUL.
+    - I want to know about [Computer Science](field_of_study).
+    - What is the [Computer Science](field_of_study) programme?
+    - Give me details about [Computer Science](field_of_study).
+    - What can I study at TUL?
+    - What fields of study are available?
+    - Information about [Computer Science](field_of_study).
+    - Opowiedz mi o [Computer Science](field_of_study).
+
+- intent: ask_duration
+  examples: |
+    - How long is the [Computer Science](field_of_study) programme?
+    - What is the duration of [Computer Science](field_of_study)?
+    - How many semesters for [Computer Science](field_of_study)?
+    - Duration of [Computer Science](field_of_study)?
+    - Ile trwa [Computer Science](field_of_study)?
+
+- intent: ask_degree_title
+  examples: |
+    - What title do I get after [Computer Science](field_of_study)?
+    - What is the awarded degree for [Computer Science](field_of_study)?
+    - What professional title will I receive?
+    - Jaki tytuł uzyskam po [Computer Science](field_of_study)?
+
+- intent: ask_transfer
+  examples: |
+    - How to transfer to Lodz University of Technology?
+    - What are the transfer requirements?
+    - Can I transfer from another university?
+    - Przeniesienie na TUL
+    - Transfer procedure
+    - I want to transfer to TUL
+
+- intent: ask_eligibility
+  examples: |
+    - What documents do EU students need?
+    - What are the requirements for non-EU applicants?
+    - How does a Nigerian student apply?
+    - What are the eligibility criteria?
+    - Jakie są wymagania dla studentów spoza UE?
+    - Do I need nostrification?
+    - What are the language requirements?
+
+- intent: ask_mobility
+  examples: |
+    - Tell me about Erasmus exchange
+    - What is ECIU?
+    - What mobility options are there?
+    - Can I go on exchange?
+    - Erasmus partners
+    - ECIU opportunities
+
+- intent: ask_credits
+  examples: |
+    - Minimum ECTS per semester?
+    - How many credits do I need?
+    - What are the credit requirements?
+    - Ile punktów ECTS na semestr?
+    - Credit recognition
+
+- intent: ask_partners
+  examples: |
+    - Who are your ECIU partners?
+    - List Erasmus partner universities
+    - International partners
+    - Partner institutions
+    - Z kim współpracuje TUL?
+
+- intent: ask_contact
+  examples: |
+    - Email for foreign students?
+    - How can I contact the admissions office?
+    - Contact for international students
+    - Who do I write to for help?
+    - Admissions contact
+    - Dane kontaktowe
+
+- intent: fallback
+  examples: |
+    - I don't understand
+    - Can you repeat?
+    - Sorry, I didn't get that
+    - ?
+    - powtórz
+
 - intent: mood_great
   examples: |
     - perfect

@@ -1,6 +1,58 @@
 version: "3.1"
 
 stories:
+- story: field info flow
+  steps:
+  - intent: ask_field_info
+  - action: utter_field_info
+  - intent: ask_duration
+  - action: utter_duration
+  - intent: ask_degree_title
+  - action: utter_degree_title
+
+- story: transfer enquiry
+  steps:
+  - intent: ask_transfer
+  - action: utter_transfer
+
+- story: eligibility EU
+  steps:
+  - intent: ask_eligibility
+    entities:
+      - origin_country: "Poland"
+  - action: utter_eligibility
+
+- story: eligibility non-EU
+  steps:
+  - intent: ask_eligibility
+    entities:
+      - origin_country: "Nigeria"
+  - action: utter_eligibility
+
+- story: mobility
+  steps:
+  - intent: ask_mobility
+  - action: utter_mobility
+
+- story: credits
+  steps:
+  - intent: ask_credits
+  - action: utter_credits
+
+- story: partners
+  steps:
+  - intent: ask_partners
+  - action: utter_partners
+
+- story: contact
+  steps:
+  - intent: ask_contact
+  - action: utter_contact
+
+- story: fallback example
+  steps:
+  - intent: fallback
+  - action: utter_fallback
 
 - story: happy path
   steps:

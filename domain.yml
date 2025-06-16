@@ -8,26 +8,157 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - ask_field_info
+  - ask_duration
+  - ask_degree_title
+  - ask_transfer
+  - ask_eligibility
+  - ask_mobility
+  - ask_credits
+  - ask_partners
+  - ask_contact
+  - fallback
+
+entities:
+  - field_of_study
+  - origin_country
+  - study_cycle
+  - mobility_program
+
+slots:
+  field_of_study:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: field_of_study
+
+  origin_country:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: origin_country
+
+  study_cycle:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: study_cycle
+
+  mobility_program:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: mobility_program
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+    - text: "Hello! How can I help you with admissions at Lodz University of Technology?"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Goodbye! If you have more questions, feel free to ask."
+
+  utter_happy_to_help:
+    - text: "I'm happy to help!"
+
+  utter_fallback:
+    - text: "Sorry, I didn't understand. Could you rephrase your question?"
+
+  utter_field_info:
+    - condition:
+        - type: slot
+          name: field_of_study
+          value: "Computer Science"
+      text: |
+        Computer Science (first-cycle, full time, in English) at TUL:
+        - Duration: 7 semesters (3.5 years)
+        - Title: engineer (inżynier)
+        - Highlights: Programming (Java, C/C++, Python), web/mobile apps, databases, networks, AI, modern labs, internships.
+        More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
+    - text: "Please specify the field of study you are interested in (e.g., Computer Science)."
+
+  utter_duration:
+    - condition:
+        - type: slot
+          name: field_of_study
+          value: "Computer Science"
+      text: |
+        The Computer Science programme lasts 7 semesters (3.5 years).
+        More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
+    - text: "Please specify the field of study to get duration information."
+
+  utter_degree_title:
+    - condition:
+        - type: slot
+          name: field_of_study
+          value: "Computer Science"
+      text: |
+        Graduates of Computer Science receive the professional title: engineer (inżynier).
+        More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
+    - text: "Please specify the field of study to get degree title information."
+
+
+  utter_transfer:
+    - text: |
+        Transfer to TUL:
+        - Transfer possible after at least one semester at another university.
+        - Active student status and transcripts required.
+        - Deadlines and requirements change yearly.
+        - Contact: foreignstudents@info.p.lodz.pl
+        More details: https://apply.p.lodz.pl/en/enrollment/enroll/transfer
+
+  utter_eligibility:
+    - text: |
+        For EU/EEA applicants:
+        - Apply under same rules as Polish citizens.
+        - Required: secondary school certificate, transcript, English proof.
+        More details: https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules
+        For non-EU applicants:
+        - Legalized/apostilled certificates, English proof, nostrification may be needed.
+        - Contact International Cooperation Centre for advice.
+        More details: https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules
+        Nostrification: https://p.lodz.pl/en/education/nostrification-diploma
+
+  utter_mobility:
+    - text: |
+        Mobility options at TUL:
+        - Erasmus+: student exchanges with European partners. See: https://www.p.lodz.pl/en/international-cooperation/erasmus
+        - ECIU: challenge-based learning with international partners. See: https://www.p.lodz.pl/en/international-cooperation/eciu
+
+  utter_credits:
+    - text: |
+        Full-time students must complete at least 30 ECTS credits per semester.
+        Credit recognition for previous studies is possible.
+        More details: https://www.p.lodz.pl/en/education/study-regulations
+
+  utter_partners:
+    - text: |
+        TUL is a member of ECIU (https://eciu.org/universities) and has many Erasmus+ partners (https://www.p.lodz.pl/en/international-cooperation/erasmus).
+        See full lists on the official pages.
+
+  utter_contact:
+    - text: |
+        Admissions/International Office:
+        - Email: foreignstudents@info.p.lodz.pl
+        - Address: 36 Zwirki Str, 90-539 Lodz, building A16, room 113
+        - WhatsApp: +48 785 289 588
+        More details: https://apply.p.lodz.pl/en/contact
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_happy:
+    - text: "Great, carry on!"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Rasa."
 
 session_config:
   session_expiration_time: 60

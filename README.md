@@ -1,11 +1,23 @@
-# AI-Chatbot-for-universities-admission
-AI chatbot for admission in fast nuces (university) using RASA and RASA-X. Dataset provided in nlu.md, stories.md, and domain.yml could be changed according to your university.   
+# Lodz University of Technology Admissions Chatbot
 
-Chatbot is one of the kind of bots which looks for certain text patterns in terms of input text or voice messages submitted by participants and respond back with automated action.
+## How to update the knowledge base
+- All official data is stored in `datasources.json` (retrieved: 2025-06-16).
+- To update, visit the official TUL admissions and programme pages, update the JSON, and retrain the model.
+- If new fields of study or rules are added, update both `datasources.json` and the NLU/domain files as needed.
 
-Rasa NLU- Natural language understanding
-Rasa Core- For answering intelligently
-Rasa X- For making chatbot knowledge based. With Rasa X we can train chatbot in runtime.
+## How to retrain
+1. Run `rasa train` in the project directory.
+2. To test, run `rasa test`.
 
-Reference:
-https://chatbotslife.com/making-of-chatbot-using-rasa-nlu-rasa-core-part-1-7138c438581f
+## How to add new programmes
+- Add the new programme to `datasources.json` under `field_of_study`.
+- Add NLU examples for the new field in `nlu.yml`.
+- Add response templates or update the custom action if needed.
+
+## Source URLs
+- All URLs and summaries are from official TUL pages as of 2025-06-16. See `datasources.json` for details.
+
+## Maintenance
+- Schedule periodic review of official TUL pages.
+- Update `datasources.json` and retrain as needed.
+- Version-control all files.

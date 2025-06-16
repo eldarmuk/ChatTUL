@@ -11,3 +11,53 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Answer field info
+  steps:
+  - intent: ask_field_info
+  - action: utter_field_info
+
+- rule: Answer duration
+  steps:
+  - intent: ask_duration
+  - action: utter_duration
+
+- rule: Answer degree title
+  steps:
+  - intent: ask_degree_title
+  - action: utter_degree_title
+
+- rule: Answer transfer
+  steps:
+  - intent: ask_transfer
+  - action: utter_transfer
+
+- rule: Answer eligibility
+  steps:
+  - intent: ask_eligibility
+  - action: utter_eligibility
+
+- rule: Answer mobility
+  steps:
+  - intent: ask_mobility
+  - action: utter_mobility
+
+- rule: Answer credits
+  steps:
+  - intent: ask_credits
+  - action: utter_credits
+
+- rule: Answer partners
+  steps:
+  - intent: ask_partners
+  - action: utter_partners
+
+- rule: Answer contact
+  steps:
+  - intent: ask_contact
+  - action: utter_contact
+
+- rule: Fallback
+  steps:
+  - intent: fallback
+  - action: utter_fallback

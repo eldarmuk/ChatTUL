@@ -1,0 +1,108 @@
+{
+  "field_of_study": {
+    "Computer Science": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Programming in Java, C/C++, Python",
+        "Web and mobile application design",
+        "Database management",
+        "Computer networks administration",
+        "Data analysis, machine learning, artificial intelligence",
+        "Modern educational techniques: Problem Based Learning, Design Thinking, Case Study",
+        "Access to unique research labs (3D cave, multimedia, mixed reality)",
+        "Internships with companies like Accenture, Corning, Ericsson, MakoLab"
+      ],
+      "url": "https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science"
+    }
+  },
+  "transfer": {
+    "summary": [
+      "Transfer procedures are available for students who have completed at least one semester at another university.",
+      "Applicants must have active student status and provide transcripts and course syllabi for recognition.",
+      "Deadlines and detailed requirements are published annually.",
+      "Contact the International Cooperation Centre for guidance."
+    ],
+    "url": "https://apply.p.lodz.pl/en/enrollment/enroll/transfer",
+    "contacts": [
+      "foreignstudents@info.p.lodz.pl"
+    ],
+    "notes": "Deadlines and requirements may change each year; always check the official page."
+  },
+  "eligibility": {
+    "EU": {
+      "summary": [
+        "EU/EEA citizens apply under the same rules as Polish citizens.",
+        "Required documents: secondary school certificate, transcript, proof of English proficiency.",
+        "Some programmes may require additional entrance exams or interviews."
+      ],
+      "url": "https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules"
+    },
+    "non-EU": {
+      "summary": [
+        "Non-EU applicants must provide legalized or apostilled secondary school certificates.",
+        "Proof of English proficiency is required.",
+        "Nostrification of documents may be necessary for some countries.",
+        "Contact the International Cooperation Centre for individual advice."
+      ],
+      "url": "https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules",
+      "notes": "Nostrification: https://p.lodz.pl/en/education/nostrification-diploma"
+    }
+  },
+  "mobility": {
+    "Erasmus": {
+      "summary": [
+        "TUL participates in Erasmus+ for student exchanges.",
+        "Partner universities across Europe.",
+        "Application periods and partner lists are published annually."
+      ],
+      "url": "https://www.p.lodz.pl/en/international-cooperation/erasmus"
+    },
+    "ECIU": {
+      "summary": [
+        "TUL is a member of the ECIU University consortium.",
+        "Students can participate in innovative challenge-based learning with ECIU partners.",
+        "Opportunities for international collaboration and mobility."
+      ],
+      "url": "https://www.p.lodz.pl/en/international-cooperation/eciu"
+    }
+  },
+  "credits": {
+    "summary": [
+      "Full-time students must complete a minimum of 30 ECTS credits per semester.",
+      "Credit recognition for previous studies is possible upon review.",
+      "Part-time study options may be available for some programmes."
+    ],
+    "url": "https://www.p.lodz.pl/en/education/study-regulations"
+  },
+  "partners": {
+    "ECIU": {
+      "url": "https://www.p.lodz.pl/en/international-cooperation/eciu",
+      "list_page": "https://eciu.org/universities"
+    },
+    "Erasmus": {
+      "catalogue_url": "https://www.p.lodz.pl/en/international-cooperation/erasmus"
+    }
+  },
+  "contact": {
+    "admissions": {
+      "email": "foreignstudents@info.p.lodz.pl",
+      "url": "https://apply.p.lodz.pl/en/contact",
+      "address": "International Cooperation Centre, Student Mobility Division, 36 Zwirki Str, 90-539 Lodz, building A16, room 113 (1st floor)"
+    },
+    "international": {
+      "email": "foreignstudents@info.p.lodz.pl",
+      "url": "https://apply.p.lodz.pl/en/contact",
+      "phone": "+48 42 638 38 64, +48 42 638 38 78, +48 42 638 38 63",
+      "whatsapp": "+48 785 289 588",
+      "facebook": "https://www.facebook.com/LodzUniversityofTechnology/?locale=pl_PL",
+      "instagram": "https://www.instagram.com/Politechnika_Lodzka/"
+    }
+  },
+  "retrieval_date": "2025-06-16"
+}
