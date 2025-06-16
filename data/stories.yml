@@ -3,6 +3,8 @@ version: "3.1"
 stories:
 - story: field info flow
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: ask_field_info
   - action: utter_field_info
   - intent: ask_duration
@@ -12,6 +14,8 @@ stories:
 
 - story: transfer enquiry
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: ask_transfer
   - action: utter_transfer
 
@@ -31,16 +35,22 @@ stories:
 
 - story: mobility
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: ask_mobility
   - action: utter_mobility
 
 - story: credits
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: ask_credits
   - action: utter_credits
 
 - story: partners
   steps:
+  - intent: greet
+  - action: utter_greet
   - intent: ask_partners
   - action: utter_partners
 
