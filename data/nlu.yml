@@ -170,6 +170,12 @@ nlu:
     - so saad
     - so sad
 
+- intent: thanks
+  examples: |
+    - thank you
+    - thanks
+    - thx
+
 - intent: bot_challenge
   examples: |
     - are you a bot?
