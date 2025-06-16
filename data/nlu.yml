@@ -175,6 +175,7 @@ nlu:
     - thank you
     - thanks
     - thx
+    - that helped
 
 - intent: bot_challenge
   examples: |

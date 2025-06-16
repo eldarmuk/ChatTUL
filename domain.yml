@@ -5,6 +5,7 @@ intents:
   - goodbye
   - affirm
   - deny
+  - thanks
   - mood_great
   - mood_unhappy
   - bot_challenge
@@ -87,6 +88,7 @@ responses:
 
   utter_happy_to_help:
     - text: "I'm happy to help!"
+    - text: "I am happy to know my insight is usefull, carry on!"
 
   utter_fallback:
     - text: "Sorry, I didn't understand. Could you rephrase your question?"
