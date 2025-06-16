@@ -54,29 +54,34 @@ stories:
   - intent: fallback
   - action: utter_fallback
 
-- story: happy path
+- story: ask about study freeze
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: ask_study_freeze
+  - action: utter_study_freeze
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: thanks
+  - action: utter_happy_to_help
 
-- story: sad path 2
+- story: ask about process deadline
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: ask_deadline
+  - action: action_utter_deadline
+
+  - intent: thanks
+  - action: utter_happy_to_help
+
+- story: ask about unknown deadline
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_deadline
+    entities:
+      - process_type: null
+  - action: utter_unknown_admission_process
+
+  - intent: thanks
+  - action: utter_happy_to_help

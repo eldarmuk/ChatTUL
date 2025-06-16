@@ -18,12 +18,22 @@ intents:
   - ask_partners
   - ask_contact
   - fallback
+  - ask_deadline
+  - ask_study_freeze
+  - ask_location
+  - ask_start_date
+  # - inquire_subject_info
+  - ask_admission_steps
 
 entities:
   - field_of_study
   - origin_country
   - study_cycle
   - mobility_program
+  - process_type
+  # - current_subject
+  - admission_round
+  - admission_semester
 
 slots:
   field_of_study:
@@ -53,6 +63,20 @@ slots:
     mappings:
       - type: from_entity
         entity: mobility_program
+  
+  # current_subject:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_entity
+  #       entity: current_subject
+
+  admission_semester:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: admission_semester
 
 responses:
   utter_greet:
@@ -160,6 +184,19 @@ responses:
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
 
+  utter_study_freeze:
+   - text: |
+      It is not possible to completely freeze the cycle of study. \
+      However it is possible to go on a long-tem leave which may be granted by the Vice-Rector \
+      at the documented written request of a student regardless of study cycle.
+      More details can be found by reading [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations)
+
+  utter_unknown_admission_process:
+    - text: "Sorry I don't know about which admission process you are referring to. Could you clarify?"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
+
+actions:
+  - action_utter_deadline

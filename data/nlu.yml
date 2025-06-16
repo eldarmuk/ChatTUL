@@ -182,3 +182,35 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: ask_study_freeze
+  examples: |
+    - can I freeze my cycle of study?
+    - is it possible to freeze my cycle of study?
+    - is it possible to freeze [Computer Science](field_of_study) studies?
+
+- intent: ask_deadline
+  examples: |
+    - What is the deadline for electronic [registration](process_type)?
+    - When the [admission](process_type) process no longer accepts applications?
+    - What is the deadline?
+    - When will I be notified of [admission results](process_type)?
+    - Till when I can [register](process_type)?
+
+- intent: ask_start_date
+  examples: |
+    - When the [first round](admission_round) of admission starts?
+    - When does [second round](admission_round) of admission come?
+
+# - intent: inquire_subject_info
+#   examples: |
+#     - What is the [candidate portal](current_subject)?
+#     - What are the [reserve lists](current_subject)?
+#     - Can you tell me about [study cycles](current_subject)?
+#     - What is it?
+#     - What is that?
+
+- intent: ask_admission_steps
+  examples: |
+    - How can I apply for [Computer Science](field_of_study)?
+    - What are the steps required to apply for [Computer Science](field_of_study)?
