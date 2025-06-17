@@ -232,3 +232,20 @@ nlu:
     - where alchemium
     - Where is Alchemium?
     - Location of Alchemium?
+
+- intent: clubs_query
+  examples: |
+    - Are there any clubs?
+    - are there any research groups?
+    - Student clubs
+    - Clubs
+    - Any Clubs?
+    - groups?
+
+- intent: grading_query
+  examples: |
+    - Grading system
+    - grading
+    - What's the grading system?
+    - How are grades calculated?
+    - gradin rules
