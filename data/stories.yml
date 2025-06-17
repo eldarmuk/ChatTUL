@@ -115,3 +115,8 @@ stories:
   steps:
   - intent: clubs_query
   - action: utter_clubs
+
+- story: library
+  steps:
+  - intent: library_query
+  - action: utter_library
