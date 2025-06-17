@@ -25,6 +25,11 @@ intents:
   - ask_start_date
   # - inquire_subject_info
   - ask_admission_steps
+  - location_query
+  - specific_query
+  - clubs_query
+  - grading_query
+  - library_query
 
 entities:
   - field_of_study
