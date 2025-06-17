@@ -249,3 +249,12 @@ nlu:
     - What's the grading system?
     - How are grades calculated?
     - gradin rules
+
+- intent: library_query
+  examples: |
+    - library
+    - Is there a Library?
+    - Books
+    - Renting books
+    - Can I rent books?
+    - Does the University have a library?
