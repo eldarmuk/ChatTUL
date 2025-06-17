@@ -225,6 +225,9 @@ responses:
   utter_grading:
     - text: "Here you'll find grading rules in Study Regulations of TUL: [Regulations](https://p.lodz.pl/en/students/documents/study-regulations)"
 
+  utter_library:
+    - text: "Here you'll find information about library services: [Library webpage](https://bg.p.lodz.pl/en)"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
