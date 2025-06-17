@@ -96,7 +96,12 @@ stories:
   - intent: thanks
   - action: utter_happy_to_help
 
-- story: locationsAdd commentMore actions
+- story: locations
   steps:
   - intent: location_query
   - action: utter_location
+
+- story: specific_buildings
+  steps:
+  - intent: specific_query
+  - action: utter_specific
