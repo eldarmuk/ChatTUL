@@ -201,6 +201,13 @@ responses:
   utter_unknown_admission_process:
     - text: "Sorry I don't know about which admission process you are referring to. Could you clarify?"
 
+  utter_location:
+   - text: |
+       Here you will find tools that will help you find the University, its campuses and other relevant information: \
+       - goggle maps: [TUL location on google maps](https://www.google.com/maps/place/Lodz+University+of+Technology/@51.7514616,19.4529234,15.86z/data=!4m6!3m5!1s0x471a34d85d1152f3:0xbe75c3beee4bad56!8m2!3d51.7537146!4d19.4517176!16zL20vMDNqa2I3?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D) \
+       - map of campuses and buildings: [Kampus 2.0](https://nav.p.lodz.pl/) \
+       - naviPŁ app: [naviPŁ](https://mapa.p.lodz.pl/)
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
