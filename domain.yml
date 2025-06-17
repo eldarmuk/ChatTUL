@@ -222,6 +222,9 @@ responses:
   utter_clubs:
     - text: "Here you'll find info about clubs: [club info](https://p.lodz.pl/en/students/students-research-groups)"
 
+  utter_grading:
+    - text: "Here you'll find grading rules in Study Regulations of TUL: [Regulations](https://p.lodz.pl/en/students/documents/study-regulations)"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
