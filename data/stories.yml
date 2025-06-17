@@ -111,4 +111,7 @@ stories:
   - intent: grading_query
   - action: utter_grading
 
-
+- story: clubs
+  steps:
+  - intent: clubs_query
+  - action: utter_clubs
