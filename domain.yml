@@ -219,6 +219,9 @@ responses:
         - [Library](https://mapa.p.lodz.pl/?geo=18)
         - [Chemical library](https://mapa.p.lodz.pl/?geo=51)
 
+  utter_clubs:
+    - text: "Here you'll find info about clubs: [club info](https://p.lodz.pl/en/students/students-research-groups)"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
