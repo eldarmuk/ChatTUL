@@ -105,3 +105,10 @@ stories:
   steps:
   - intent: specific_query
   - action: utter_specific
+
+- story: grading
+  steps:
+  - intent: grading_query
+  - action: utter_grading
+
+
