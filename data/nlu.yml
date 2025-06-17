@@ -215,3 +215,20 @@ nlu:
   examples: |
     - How can I apply for [Computer Science](field_of_study)?
     - What are the steps required to apply for [Computer Science](field_of_study)?
+
+- intent: location_query
+  examples: |
+    - Where?
+    - where
+    - Location?
+    - location
+    - Where is TUL?
+    - Where can I find TUL?
+    - How do I navigate the university?
+
+- intent: specific_query
+  examples: |
+    - Alchemium
+    - where alchemium
+    - Where is Alchemium?
+    - Location of Alchemium?
