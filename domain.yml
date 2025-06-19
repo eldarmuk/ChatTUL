@@ -208,16 +208,16 @@ responses:
         - map of campuses and buildings: [Kampus 2.0](https://nav.p.lodz.pl/)
         - naviPŁ app: [naviPŁ](https://mapa.p.lodz.pl/)
 
-  utter_specific:
-    - text: |
-        Here you can find info about specific or well-known buildings on naviPŁ:
-        - [Rectors' office](https://mapa.p.lodz.pl/?geo=23)
-        - [Alchemium/Faculty of Chemistry](https://mapa.p.lodz.pl/?geo=12)
-        - [IFE (International Faculty of Engineering)](https://mapa.p.lodz.pl/?geo=38)
-        - [International Admissions Office](https://mapa.p.lodz.pl/?geo=10166)
-        - [Language Center (outside entrance)](https://mapa.p.lodz.pl/?geo=88)
-        - [Library](https://mapa.p.lodz.pl/?geo=18)
-        - [Chemical library](https://mapa.p.lodz.pl/?geo=51)
+  #utter_specific:
+  #  - text: |
+  #      Here you can find info about specific or well-known buildings on naviPŁ:
+  #      - [Rectors' office](https://mapa.p.lodz.pl/?geo=23)
+  #      - [Alchemium/Faculty of Chemistry](https://mapa.p.lodz.pl/?geo=12)
+  #      - [IFE (International Faculty of Engineering)](https://mapa.p.lodz.pl/?geo=38)
+  #      - [International Admissions Office](https://mapa.p.lodz.pl/?geo=10166)
+  #      - [Language Center (outside entrance)](https://mapa.p.lodz.pl/?geo=88)
+  #      - [Library](https://mapa.p.lodz.pl/?geo=18)
+  #      - [Chemical library](https://mapa.p.lodz.pl/?geo=51)
 
   utter_clubs:
     - text: "Here you'll find info about clubs: [club info](https://p.lodz.pl/en/students/students-research-groups)"
