@@ -1,337 +1,329 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
 
-- intent: ask_field_info
-  examples: |
-    - Tell me about [Computer Science](field_of_study) at TUL.
-    - I want to know about [Computer Science](field_of_study).
-    - What is the [Computer Science](field_of_study) programme?
-    - Give me details about [Computer Science](field_of_study).
-    - What can I study at TUL?
-    - What fields of study are available?
-    - Information about [Computer Science](field_of_study).
-    - Opowiedz mi o [Computer Science](field_of_study).
+  - intent: ask_field_info
+    examples: |
+      - Tell me about [Computer Science](field_of_study) at TUL.
+      - I want to know about [Computer Science](field_of_study).
+      - What is the [Computer Science](field_of_study) programme?
+      - Give me details about [Computer Science](field_of_study).
+      - What can I study at TUL?
+      - What fields of study are available?
+      - Information about [Computer Science](field_of_study).
 
-- intent: ask_duration
-  examples: |
-    - How long is the [Computer Science](field_of_study) programme?
-    - What is the duration of [Computer Science](field_of_study)?
-    - How many semesters for [Computer Science](field_of_study)?
-    - Duration of [Computer Science](field_of_study)?
-    - Ile trwa [Computer Science](field_of_study)?
+  - intent: ask_duration
+    examples: |
+      - How long is the [Computer Science](field_of_study) programme?
+      - What is the duration of [Computer Science](field_of_study)?
+      - How many semesters for [Computer Science](field_of_study)?
+      - Duration of [Computer Science](field_of_study)?
 
-- intent: ask_degree_title
-  examples: |
-    - What title do I get after [Computer Science](field_of_study)?
-    - What is the awarded degree for [Computer Science](field_of_study)?
-    - What professional title will I receive?
-    - Jaki tytuł uzyskam po [Computer Science](field_of_study)?
+  - intent: ask_degree_title
+    examples: |
+      - What title do I get after [Computer Science](field_of_study)?
+      - What is the awarded degree for [Computer Science](field_of_study)?
+      - What professional title will I receive?
 
-- intent: ask_transfer
-  examples: |
-    - How to transfer to Lodz University of Technology?
-    - What are the transfer requirements?
-    - Can I transfer from another university?
-    - Przeniesienie na TUL
-    - Transfer procedure
-    - I want to transfer to TUL
+  - intent: ask_transfer
+    examples: |
+      - How to transfer to Lodz University of Technology?
+      - What are the transfer requirements?
+      - Can I transfer from another university?
+      - Transfer procedure
+      - I want to transfer to TUL
 
-- intent: ask_eligibility
-  examples: |
-    - What documents do EU students need?
-    - What are the requirements for non-EU applicants?
-    - How does a Nigerian student apply?
-    - What are the eligibility criteria?
-    - Jakie są wymagania dla studentów spoza UE?
-    - Do I need nostrification?
-    - What are the language requirements?
+  - intent: ask_eligibility
+    examples: |
+      - What documents do EU students need?
+      - What are the requirements for non-EU applicants?
+      - How does a Nigerian student apply?
+      - What are the eligibility criteria?
+      - Jakie są wymagania dla studentów spoza UE?
+      - Do I need nostrification?
+      - What are the language requirements?
 
-- intent: ask_mobility
-  examples: |
-    - Tell me about Erasmus exchange
-    - What is ECIU?
-    - What mobility options are there?
-    - Can I go on exchange?
-    - Erasmus partners
-    - ECIU opportunities
+  - intent: ask_mobility
+    examples: |
+      - Tell me about Erasmus exchange
+      - What is ECIU?
+      - What mobility options are there?
+      - Can I go on exchange?
+      - Erasmus partners
+      - ECIU opportunities
 
-- intent: ask_credits
-  examples: |
-    - Minimum ECTS per semester?
-    - How many credits do I need?
-    - What are the credit requirements?
-    - Ile punktów ECTS na semestr?
-    - Credit recognition
+  - intent: ask_credits
+    examples: |
+      - Minimum ECTS per semester?
+      - How many credits do I need?
+      - What are the credit requirements?
+      - Ile punktów ECTS na semestr?
+      - Credit recognition
 
-- intent: ask_partners
-  examples: |
-    - Who are your ECIU partners?
-    - List Erasmus partner universities
-    - International partners
-    - Partner institutions
-    - Z kim współpracuje TUL?
+  - intent: ask_partners
+    examples: |
+      - Who are your ECIU partners?
+      - List Erasmus partner universities
+      - International partners
+      - Partner institutions
 
-- intent: ask_contact
-  examples: |
-    - Email for foreign students?
-    - How can I contact the admissions office?
-    - Contact for international students
-    - Who do I write to for help?
-    - Admissions contact
-    - Dane kontaktowe
+  - intent: ask_contact
+    examples: |
+      - Email for foreign students?
+      - How can I contact the admissions office?
+      - Contact for international students
+      - Who do I write to for help?
+      - Admissions contact
 
-- intent: fallback
-  examples: |
-    - I don't understand
-    - Can you repeat?
-    - Sorry, I didn't get that
-    - ?
-    - powtórz
+  - intent: fallback
+    examples: |
+      - I don't understand
+      - Can you repeat?
+      - Sorry, I didn't get that
+      - ?
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
 
-- intent: thanks
-  examples: |
-    - thank you
-    - thanks
-    - thx
-    - that helped
+  - intent: thanks
+    examples: |
+      - thank you
+      - thanks
+      - thx
+      - that helped
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
 
-- intent: ask_study_freeze
-  examples: |
-    - can I freeze my cycle of study?
-    - is it possible to freeze my cycle of study?
-    - is it possible to freeze [Computer Science](field_of_study) studies?
+  - intent: ask_study_freeze
+    examples: |
+      - can I freeze my cycle of study?
+      - is it possible to freeze my cycle of study?
+      - is it possible to freeze [Computer Science](field_of_study) studies?
 
-- intent: ask_deadline
-  examples: |
-    - What is the deadline for electronic [registration](process_type)?
-    - When the [admission](process_type) process no longer accepts applications?
-    - What is the deadline?
-    - When will I be notified of [admission results](process_type)?
-    - Till when I can [register](process_type)?
+  - intent: ask_deadline
+    examples: |
+      - What is the deadline for electronic [registration](process_type)?
+      - When the [admission](process_type) process no longer accepts applications?
+      - What is the deadline?
+      - When will I be notified of [admission results](process_type)?
+      - Till when I can [register](process_type)?
 
-- intent: ask_start_date
-  examples: |
-    - When the [first round](admission_round) of admission starts?
-    - When does [second round](admission_round) of admission come?
+  - intent: ask_start_date
+    examples: |
+      - When the [first round](admission_round) of admission starts?
+      - When does [second round](admission_round) of admission come?
 
-# - intent: inquire_subject_info
-#   examples: |
-#     - What is the [candidate portal](current_subject)?
-#     - What are the [reserve lists](current_subject)?
-#     - Can you tell me about [study cycles](current_subject)?
-#     - What is it?
-#     - What is that?
+  # - intent: inquire_subject_info
+  #   examples: |
+  #     - What is the [candidate portal](current_subject)?
+  #     - What are the [reserve lists](current_subject)?
+  #     - Can you tell me about [study cycles](current_subject)?
+  #     - What is it?
+  #     - What is that?
 
-- intent: ask_admission_steps
-  examples: |
-    - How can I apply for [Computer Science](field_of_study)?
-    - What are the steps required to apply for [Computer Science](field_of_study)?
+  - intent: ask_admission_steps
+    examples: |
+      - How can I apply for [Computer Science](field_of_study)?
+      - What are the steps required to apply for [Computer Science](field_of_study)?
 
-- intent: location_query
-  examples: |
-    - Where?
-    - where
-    - Location?
-    - location
-    - Where is TUL?
-    - Where can I find TUL?
-    - How do I navigate the university?
+  - intent: location_query
+    examples: |
+      - Where?
+      - where
+      - Location?
+      - location
+      - Where is TUL?
+      - Where can I find TUL?
+      - How do I navigate the university?
 
-#- intent: specific_query
-#  examples: |
-#    - Alchemium
-#    - where alchemium
-#    - Where is Alchemium?
-#    - Location of Alchemium?
+  #- intent: specific_query
+  #  examples: |
+  #    - Alchemium
+  #    - where alchemium
+  #    - Where is Alchemium?
+  #    - Location of Alchemium?
 
-- intent: clubs_query
-  examples: |
-    - Are there any clubs?
-    - are there any research groups?
-    - Student clubs
-    - Clubs
-    - Any Clubs?
-    - groups?
+  - intent: clubs_query
+    examples: |
+      - Are there any clubs?
+      - are there any research groups?
+      - Student clubs
+      - Clubs
+      - Any Clubs?
+      - groups?
 
-- intent: grading_query
-  examples: |
-    - Grading system
-    - grading
-    - What's the grading system?
-    - How are grades calculated?
-    - gradin rules
+  - intent: grading_query
+    examples: |
+      - Grading system
+      - grading
+      - What's the grading system?
+      - How are grades calculated?
+      - gradin rules
 
-- intent: library_query
-  examples: |
-    - library
-    - Is there a Library?
-    - Books
-    - Renting books
-    - Can I rent books?
-    - Does the University have a library?
+  - intent: library_query
+    examples: |
+      - library
+      - Is there a Library?
+      - Books
+      - Renting books
+      - Can I rent books?
+      - Does the University have a library?
 
+  # my questions start (Bartek)
 
-# my questions start (Bartek)
+  - intent: ask_scholarship_types
+    examples: |
+      - What types of scholarships are available?
+      - Tell me about available scholarships
+      - Which scholarships can I apply for?
+      - Scholarships at Lodz University of Technology?
 
-- intent: ask_scholarship_types
-  examples: |
-    - What types of scholarships are available?
-    - Tell me about available scholarships
-    - Which scholarships can I apply for?
-    - Scholarships at Lodz University of Technology?
+  - intent: ask_scholarship_application
+    examples: |
+      - Where can I find scholarship forms?
+      - How to apply for scholarships?
+      - What is the scholarship deadline?
+      - Where do I submit the scholarship documents?
 
-- intent: ask_scholarship_application
-  examples: |
-    - Where can I find scholarship forms?
-    - How to apply for scholarships?
-    - What is the scholarship deadline?
-    - Where do I submit the scholarship documents?
+  - intent: ask_scholarship_multiple
+    examples: |
+      - Can I apply for more than one scholarship?
+      - Is it allowed to apply for multiple scholarships?
 
-- intent: ask_scholarship_multiple
-  examples: |
-    - Can I apply for more than one scholarship?
-    - Is it allowed to apply for multiple scholarships?
+  - intent: ask_rectors_scholarship
+    examples: |
+      - How to get the Rector's scholarship?
+      - What are the requirements for Rector’s scholarship?
 
-- intent: ask_rectors_scholarship
-  examples: |
-    - How to get the Rector's scholarship?
-    - What are the requirements for Rector’s scholarship?
+  - intent: ask_academic_year
+    examples: |
+      - When does the academic year start?
+      - Academic year schedule?
+      - When does the semester begin?
 
-- intent: ask_academic_year
-  examples: |
-    - When does the academic year start?
-    - Academic year schedule?
-    - When does the semester begin?
+  - intent: ask_academic_calendar
+    examples: |
+      - Where can I find the academic calendar?
+      - Academic calendar link?
 
-- intent: ask_academic_calendar
-  examples: |
-    - Where can I find the academic calendar?
-    - Academic calendar link?
+  - intent: ask_exam_sessions
+    examples: |
+      - When are the exam sessions?
+      - When do exams take place?
 
-- intent: ask_exam_sessions
-  examples: |
-    - When are the exam sessions?
-    - When do exams take place?
+  - intent: ask_breaks_holidays
+    examples: |
+      - Are there any semester breaks?
+      - When are holidays during the semester?
 
-- intent: ask_breaks_holidays
-  examples: |
-    - Are there any semester breaks?
-    - When are holidays during the semester?
+  - intent: ask_summer_break
+    examples: |
+      - How long is summer holiday?
+      - When is the summer break?
 
-- intent: ask_summer_break
-  examples: |
-    - How long is summer holiday?
-    - When is the summer break?
+  - intent: ask_social_media
+    examples: |
+      - Where can I find you on social media?
+      - Facebook and Instagram of the university?
+      - Does TUL have a LinkedIn page?
 
-- intent: ask_social_media
-  examples: |
-    - Where can I find you on social media?
-    - Facebook and Instagram of the university?
-    - Does TUL have a LinkedIn page?
+  - intent: ask_sports_activities
+    examples: |
+      - What sports activities are offered?
+      - Can I join any sports at the university?
+      - What can I choose for P.E.?
 
-- intent: ask_sports_activities
-  examples: |
-    - What sports activities are offered?
-    - Can I join any sports at the university?
-    - What can I choose for P.E.?
+  - intent: ask_pe_mandatory
+    examples: |
+      - Is PE mandatory?
+      - Do I have to do physical education?
 
-- intent: ask_pe_mandatory
-  examples: |
-    - Is PE mandatory?
-    - Do I have to do physical education?
-
-- intent: ask_sports_updates
-  examples: |
-    - Where can I find sports updates?
-    - Any sports news page?
+  - intent: ask_sports_updates
+    examples: |
+      - Where can I find sports updates?
+      - Any sports news page?
 
 # my questions ends (Bartek)

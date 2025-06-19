@@ -1,122 +1,122 @@
 version: "3.1"
 
 stories:
-- story: field info flow
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_field_info
-  - action: utter_field_info
-  - intent: ask_duration
-  - action: utter_duration
-  - intent: ask_degree_title
-  - action: utter_degree_title
+  - story: field info flow
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_field_info
+      - action: utter_field_info
+      - intent: ask_duration
+      - action: utter_duration
+      - intent: ask_degree_title
+      - action: utter_degree_title
 
-- story: transfer enquiry
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_transfer
-  - action: utter_transfer
+  - story: transfer enquiry
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_transfer
+      - action: utter_transfer
 
-- story: eligibility EU
-  steps:
-  - intent: ask_eligibility
-    entities:
-      - origin_country: "Poland"
-  - action: utter_eligibility
+  - story: eligibility EU
+    steps:
+      - intent: ask_eligibility
+        entities:
+          - origin_country: "Poland"
+      - action: utter_eligibility
 
-- story: eligibility non-EU
-  steps:
-  - intent: ask_eligibility
-    entities:
-      - origin_country: "Nigeria"
-  - action: utter_eligibility
+  - story: eligibility non-EU
+    steps:
+      - intent: ask_eligibility
+        entities:
+          - origin_country: "Nigeria"
+      - action: utter_eligibility
 
-- story: mobility
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_mobility
-  - action: utter_mobility
+  - story: mobility
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_mobility
+      - action: utter_mobility
 
-- story: credits
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_credits
-  - action: utter_credits
+  - story: credits
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_credits
+      - action: utter_credits
 
-- story: partners
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_partners
-  - action: utter_partners
+  - story: partners
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_partners
+      - action: utter_partners
 
-- story: contact
-  steps:
-  - intent: ask_contact
-  - action: utter_contact
+  - story: contact
+    steps:
+      - intent: ask_contact
+      - action: utter_contact
 
-- story: fallback example
-  steps:
-  - intent: fallback
-  - action: utter_fallback
+  - story: fallback example
+    steps:
+      - intent: fallback
+      - action: utter_fallback
 
-- story: ask about study freeze
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_study_freeze
-  - action: utter_study_freeze
+  - story: ask about study freeze
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_study_freeze
+      - action: utter_study_freeze
 
-  - intent: thanks
-  - action: utter_happy_to_help
+      - intent: thanks
+      - action: utter_happy_to_help
 
-- story: ask about process deadline
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_deadline
-  - action: action_utter_deadline
+  - story: ask about process deadline
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_deadline
+      - action: action_utter_deadline
 
-  - intent: thanks
-  - action: utter_happy_to_help
+      - intent: thanks
+      - action: utter_happy_to_help
 
-- story: ask about unknown deadline
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_deadline
-    entities:
-      - process_type: null
-  - action: utter_unknown_admission_process
+  - story: ask about unknown deadline
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_deadline
+        entities:
+          - process_type: null
+      - action: utter_unknown_admission_process
 
-  - intent: thanks
-  - action: utter_happy_to_help
+      - intent: thanks
+      - action: utter_happy_to_help
 
-- story: locations
-  steps:
-  - intent: location_query
-  - action: utter_location
+  - story: locations
+    steps:
+      - intent: location_query
+      - action: utter_location
 
-#- story: specific_buildings
-#  steps:
-#  - intent: specific_query
-#  - action: utter_specific
+  #- story: specific_buildings
+  #  steps:
+  #  - intent: specific_query
+  #  - action: utter_specific
 
-- story: grading
-  steps:
-  - intent: grading_query
-  - action: utter_grading
+  - story: grading
+    steps:
+      - intent: grading_query
+      - action: utter_grading
 
-- story: clubs
-  steps:
-  - intent: clubs_query
-  - action: utter_clubs
+  - story: clubs
+    steps:
+      - intent: clubs_query
+      - action: utter_clubs
 
-- story: library
-  steps:
-  - intent: library_query
-  - action: utter_library
+  - story: library
+    steps:
+      - intent: library_query
+      - action: utter_library
