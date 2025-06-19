@@ -227,9 +227,9 @@ responses:
 
   utter_library:
     - text: |
-      Here you'll find information about library services:
-      - [Library Webpage](https://bg.p.lodz.pl/en)
-      - [Location of the Library](https://mapa.p.lodz.pl/?geo=18)
+        Here you'll find information about library services:
+        - [Library Webpage](https://bg.p.lodz.pl/en)
+        - [Location of the Library](https://mapa.p.lodz.pl/?geo=18)
 
 session_config:
   session_expiration_time: 60
