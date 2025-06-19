@@ -23,13 +23,25 @@ intents:
   - ask_study_freeze
   - ask_location
   - ask_start_date
-  # - inquire_subject_info
   - ask_admission_steps
   - location_query
   - specific_query
   - clubs_query
   - grading_query
   - library_query
+  - ask_scholarship_types
+  - ask_scholarship_application
+  - ask_scholarship_multiple
+  - ask_rectors_scholarship
+  - ask_academic_year
+  - ask_academic_calendar
+  - ask_exam_sessions
+  - ask_breaks_holidays
+  - ask_summer_break
+  - ask_social_media
+  - ask_sports_activities
+  - ask_pe_mandatory
+  - ask_sports_updates
 
 entities:
   - field_of_study
@@ -37,7 +49,6 @@ entities:
   - study_cycle
   - mobility_program
   - process_type
-  # - current_subject
   - admission_round
   - admission_semester
 
@@ -69,7 +80,7 @@ slots:
     mappings:
       - type: from_entity
         entity: mobility_program
-  
+
   # current_subject:
   #   type: text
   #   influence_conversation: true
@@ -131,7 +142,6 @@ responses:
         More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
     - text: "Please specify the field of study to get degree title information."
 
-
   utter_transfer:
     - text: |
         Transfer to TUL:
@@ -191,23 +201,6 @@ responses:
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
 
-  utter_study_freeze:
-   - text: |
-      It is not possible to completely freeze the cycle of study. \
-      However it is possible to go on a long-tem leave which may be granted by the Vice-Rector \
-      at the documented written request of a student regardless of study cycle.
-      More details can be found by reading [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations)
-
-  utter_unknown_admission_process:
-    - text: "Sorry I don't know about which admission process you are referring to. Could you clarify?"
-
-  utter_location:
-    - text: |
-        Here you will find tools that will help you find the University, its campuses and other relevant information:
-        - goggle maps: [TUL location on google maps](https://www.google.com/maps/place/Lodz+University+of+Technology/@51.7514616,19.4529234,15.86z/data=!4m6!3m5!1s0x471a34d85d1152f3:0xbe75c3beee4bad56!8m2!3d51.7537146!4d19.4517176!16zL20vMDNqa2I3?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D)
-        - map of campuses and buildings: [Kampus 2.0](https://nav.p.lodz.pl/)
-        - naviPŁ app: [naviPŁ](https://mapa.p.lodz.pl/)
-
   #utter_specific:
   #  - text: |
   #      Here you can find info about specific or well-known buildings on naviPŁ:
@@ -219,21 +212,117 @@ responses:
   #      - [Library](https://mapa.p.lodz.pl/?geo=18)
   #      - [Chemical library](https://mapa.p.lodz.pl/?geo=51)
 
+
+  utter_study_freeze:
+    - text: |
+        It is not possible to completely freeze the cycle of study. \
+        However it is possible to go on a long-term leave which may be granted by the Vice-Rector \
+        at the documented written request of a student regardless of study cycle.
+        More details: https://p.lodz.pl/en/students/documents/study-regulations
+
+  utter_unknown_admission_process:
+    - text: "Sorry I don't know about which admission process you are referring to. Could you clarify?"
+
+  utter_location:
+    - text: |
+        Tools to help you find the University:
+        - Google Maps: [TUL on Google Maps](https://www.google.com/maps/place/Lodz+University+of+Technology/)
+        - Campus map: [Kampus 2.0](https://nav.p.lodz.pl/)
+        - NaviPŁ app: [naviPŁ](https://mapa.p.lodz.pl/)
+
   utter_clubs:
-    - text: "Here you'll find info about clubs: [club info](https://p.lodz.pl/en/students/students-research-groups)"
+    - text: "Info about student clubs: https://p.lodz.pl/en/students/students-research-groups"
 
   utter_grading:
-    - text: "Here you'll find grading rules in Study Regulations of TUL: [Regulations](https://p.lodz.pl/en/students/documents/study-regulations)"
+    - text: "Grading rules are in the Study Regulations: https://p.lodz.pl/en/students/documents/study-regulations"
 
   utter_library:
     - text: |
-        Here you'll find information about library services:
-        - [Library Webpage](https://bg.p.lodz.pl/en)
-        - [Location of the Library](https://mapa.p.lodz.pl/?geo=18)
+        Library info:
+        - [Library Website](https://bg.p.lodz.pl/en)
+        - [Library Location](https://mapa.p.lodz.pl/?geo=18)
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: false
+  utter_ask_scholarship_types:
+    - text: |
+        We offer several types of scholarships:
+        - Social scholarship
+        - Rector's scholarship for the best students
+        - Scholarship for people with disabilities
+        - Minister’s scholarship
+        - One-time financial support
+        More info: https://p.lodz.pl/en/students/support-students/scholarships
+
+  utter_ask_scholarship_application:
+    - text: |
+        Application forms and deadlines are available at:
+        https://p.lodz.pl/en/students/support-students/scholarships
+        Submit forms at A33 building, 4th floor.
+
+  utter_ask_scholarship_multiple:
+    - text: |
+        Yes, you can apply for multiple scholarships if you meet all criteria.
+        Details: https://p.lodz.pl/en/students/support-students/scholarships
+
+  utter_ask_rectors_scholarship:
+    - text: |
+        Rector's scholarship:
+        - Min. GPA: 4.0
+        - National/international achievements
+        - Top 10% in your field
+        More info: https://p.lodz.pl/en/students/support-students/scholarships
+
+  utter_ask_academic_year:
+    - text: |
+        Academic year:
+        - Starts: October
+        - Ends: September next year
+        More details: https://woiz.p.lodz.pl/en/students/academic-calendar
+
+  utter_ask_academic_calendar:
+    - text: "Academic calendar: https://woiz.p.lodz.pl/en/students/academic-calendar"
+
+  utter_ask_exam_sessions:
+    - text: |
+        Exam sessions:
+        - Winter: Jan–Feb
+        - Summer: June–early July and September
+        Details: https://woiz.p.lodz.pl/en/students/academic-calendar
+
+  utter_ask_breaks_holidays:
+    - text: |
+        Breaks include:
+        - Winter (Christmas–New Year)
+        - Semester (Feb)
+        - Easter
+        - Summer (July–Sept)
+        Calendar: https://woiz.p.lodz.pl/en/students/academic-calendar
+
+  utter_ask_summer_break:
+    - text: |
+        Summer break is from July to September.
+        Full calendar: https://woiz.p.lodz.pl/en/students/academic-calendar
+
+  utter_ask_social_media:
+    - text: |
+        Follow us:
+        - Facebook: https://www.facebook.com/PolitechnikaLodzka
+        - Instagram: https://www.instagram.com/politechnika_lodzka
+        - LinkedIn: https://www.linkedin.com/school/politechnika-lodzka/
+
+  utter_ask_sports_activities:
+    - text: |
+        Sports activities: climbing, swimming, basketball, volleyball, self-defense, etc.
+        Full offer: https://www.centrumsportu.p.lodz.pl/dla-studenta/oferta-zajecspecjalizacji
+
+  utter_ask_pe_mandatory:
+    - text: |
+        Yes, PE is required for most first-cycle students.
+        You must pass 3 semesters of PE.
+
+  utter_ask_sports_updates:
+    - text: |
+        Sports center updates:
+        https://www.facebook.com/CentrumSportuPŁ
 
 actions:
   - action_utter_deadline
