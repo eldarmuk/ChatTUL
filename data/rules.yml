@@ -68,63 +68,63 @@ version: "3.1"
 #   - action: utter_fallback
 
 
-rules:
-  - rule: Say goodbye anytime the user says goodbye
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
+# rules:
+#   - rule: Say goodbye anytime the user says goodbye
+#     steps:
+#       - intent: goodbye
+#       - action: utter_goodbye
 
-  - rule: Say 'I am a bot' anytime the user challenges
-    steps:
-      - intent: bot_challenge
-      - action: utter_iamabot
+#   - rule: Say 'I am a bot' anytime the user challenges
+#     steps:
+#       - intent: bot_challenge
+#       - action: utter_iamabot
 
-  - rule: Handle low confidence intent
-    steps:
-      - intent: nlu_fallback
-      - action: utter_fallback
+#   - rule: Handle low confidence intent
+#     steps:
+#       - intent: nlu_fallback
+#       - action: utter_fallback
 
-  - rule: Respond to scholarship types
-    steps:
-      - intent: ask_scholarship_types
-      - action: utter_ask_scholarship_types
+#   - rule: Respond to scholarship types
+#     steps:
+#       - intent: ask_scholarship_types
+#       - action: utter_ask_scholarship_types
 
-  - rule: Respond to scholarship application
-    steps:
-      - intent: ask_scholarship_application
-      - action: utter_ask_scholarship_application
+#   - rule: Respond to scholarship application
+#     steps:
+#       - intent: ask_scholarship_application
+#       - action: utter_ask_scholarship_application
 
-  - rule: Respond to multiple scholarships query
-    steps:
-      - intent: ask_scholarship_multiple
-      - action: utter_ask_scholarship_multiple
+#   - rule: Respond to multiple scholarships query
+#     steps:
+#       - intent: ask_scholarship_multiple
+#       - action: utter_ask_scholarship_multiple
 
-  - rule: Respond to rector's scholarship query
-    steps:
-      - intent: ask_rectors_scholarship
-      - action: utter_ask_rectors_scholarship
+#   - rule: Respond to rector's scholarship query
+#     steps:
+#       - intent: ask_rectors_scholarship
+#       - action: utter_ask_rectors_scholarship
 
-  - rule: Respond to academic calendar
-    steps:
-      - intent: ask_academic_calendar
-      - action: utter_ask_academic_calendar
+#   - rule: Respond to academic calendar
+#     steps:
+#       - intent: ask_academic_calendar
+#       - action: utter_ask_academic_calendar
 
-  - rule: Respond to breaks and holidays
-    steps:
-      - intent: ask_breaks_holidays
-      - action: utter_ask_breaks_holidays
+#   - rule: Respond to breaks and holidays
+#     steps:
+#       - intent: ask_breaks_holidays
+#       - action: utter_ask_breaks_holidays
 
-  - rule: Respond to social media
-    steps:
-      - intent: ask_social_media
-      - action: utter_ask_social_media
+#   - rule: Respond to social media
+#     steps:
+#       - intent: ask_social_media
+#       - action: utter_ask_social_media
 
-  - rule: Respond to PE mandatory
-    steps:
-      - intent: ask_pe_mandatory
-      - action: utter_ask_pe_mandatory
+#   - rule: Respond to PE mandatory
+#     steps:
+#       - intent: ask_pe_mandatory
+#       - action: utter_ask_pe_mandatory
 
-  - rule: Respond to sports updates
-    steps:
-      - intent: ask_sports_updates
-      - action: utter_ask_sports_updates
+#   - rule: Respond to sports updates
+#     steps:
+#       - intent: ask_sports_updates
+#       - action: utter_ask_sports_updates
