@@ -101,10 +101,10 @@ stories:
   - intent: location_query
   - action: utter_location
 
-- story: specific_buildings
-  steps:
-  - intent: specific_query
-  - action: utter_specific
+#- story: specific_buildings
+#  steps:
+#  - intent: specific_query
+#  - action: utter_specific
 
 - story: grading
   steps:
