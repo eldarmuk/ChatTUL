@@ -226,12 +226,12 @@ nlu:
     - Where can I find TUL?
     - How do I navigate the university?
 
-- intent: specific_query
-  examples: |
-    - Alchemium
-    - where alchemium
-    - Where is Alchemium?
-    - Location of Alchemium?
+#- intent: specific_query
+#  examples: |
+#    - Alchemium
+#    - where alchemium
+#    - Where is Alchemium?
+#    - Location of Alchemium?
 
 - intent: clubs_query
   examples: |
