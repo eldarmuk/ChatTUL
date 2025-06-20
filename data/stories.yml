@@ -174,3 +174,20 @@ stories:
   #   steps:
   #     - intent: ask_language_courses
   #     - action: utter_language_courses
+
+  - story: Interested in the admission process 1
+    steps:
+      - intent: ask_deadline
+      - action: utter_admission_deadlines
+      - intent: ask_date
+        entities:
+          - date: first round of admission
+      - action: utter_first_round
+      - intent: ask_admission_steps
+      - action: utter_admission_steps
+      - intent: ask_location
+        entities:
+          - location: candidate portal
+      - action: utter_candidate_portal_link
+      - intent: goodbye
+      - action: utter_goodbye

@@ -29,6 +29,7 @@ nlu:
       - see you around
       - bye bye
       - see you later
+      - thank you and goodbye
 
   - intent: affirm
     examples: |
@@ -190,6 +191,7 @@ nlu:
       - What is the deadline?
       - deadline?
       - When will I be notified of [admission results](deadline)?
+      - deadlines?
 
   - intent: ask_date
     examples: |
@@ -205,6 +207,7 @@ nlu:
       - When does the [summer semester](date) start?
       - When does the [exam session](date) start?
       - When do [exams](date) take place?
+      - when does the [first round of admission](date) start
 
   - intent: ask_admission_steps
     examples: |
@@ -212,6 +215,7 @@ nlu:
       - What are the steps required to apply for [Computer Science](field_of_study)?
       - admission steps
       - What are the steps to apply?
+      - how can i apply?
 
   - intent: ask_location
     examples: |
@@ -225,6 +229,7 @@ nlu:
       - Where can I find [WEEIA](location)?
       - How do I navigate [the university](location)?
       - How do I arrive to [student dormitory](location)?
+      - how can i [register](deadline) on the [candidate portal](location)
 
   - intent: ask_existence
     examples: |

@@ -1,71 +1,70 @@
 version: "3.1"
 
 intents:
-  - greet
-  - goodbye
   - affirm
-  - deny
-  - thanks
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - ask_field_info
-  - ask_duration
-  - ask_degree_title
-  - ask_transfer
-  - ask_eligibility
-  - ask_mobility
-  - ask_credits
-  - ask_partners
-  - ask_contact
-  - fallback
-  - ask_deadline
-  - ask_study_freeze
-  - ask_location
-  - ask_start_date
+  - ask_academic_calendar
+  - ask_accommodation
+  - ask_accommodation_fees
   - ask_admission_steps
-  - location_query
-  - specific_query
-  - clubs_query
-  - grading_query
-  - library_query
-  - ask_scholarship_types
+  - ask_all_fees
+  - ask_book_rental
+  - ask_breaks_holidays
+  - ask_clarification
+  - ask_contact
+  - ask_credits
+  - ask_date
+  - ask_deadline
+  - ask_degree_title
+  - ask_doctor_fees
+  - ask_duration
+  - ask_eligibility
+  - ask_existence
+  - ask_failure_fees
+  - ask_field_info
+  - ask_grading_system
+  - ask_language_courses
+  - ask_location
+  - ask_mandatory_classes
+  - ask_mobility
+  - ask_partners
+  - ask_recrutation_fees
+  - ask_rectors_scholarship
   - ask_scholarship_application
   - ask_scholarship_multiple
-  - ask_rectors_scholarship
-  - ask_academic_calendar
-  - ask_breaks_holidays
-  - ask_summer_break_duration
+  - ask_scholarship_types
   - ask_social_media
   - ask_sports_activities
-  - ask_clarification
-  - ask_mandatory_classes
-  - ask_book_rental
   - ask_sports_updates
-  - ask_grading_system
-  - ask_student_clubs
-  - utter_unknown_admission_process
-  - ask_date
-  - ask_existence
-  - provide_cycle_of_study
-  - ask_studying_fees
-  - ask_recrutation_fees
-  - ask_accommodation_fees
+  - ask_start_date
   - ask_student_card_fee
-  - ask_doctor_fees
-  - ask_failure_fees
-  - ask_all_fees
-  - ask_accommodation
-  - ask_language_courses
-
+  - ask_student_clubs
+  - ask_study_freeze
+  - ask_studying_fees
+  - ask_summer_break_duration
+  - ask_transfer
+  - bot_challenge
+  - clubs_query
+  - deny
+  - fallback
+  - goodbye
+  - grading_query
+  - greet
+  - library_query
+  - location_query
+  - mood_great
+  - mood_unhappy
+  - provide_cycle_of_study
+  - specific_query
+  - thanks
+  - utter_unknown_admission_process
 entities:
+  - date
+  - location
+  - deadline
   - field_of_study
   - origin_country
   - study_cycle
   - mobility_program
-  - deadline
-  - date
-  - location
   - class
 
 slots:
@@ -75,74 +74,73 @@ slots:
     mappings:
       - type: from_entity
         entity: field_of_study
-
   origin_country:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
         entity: origin_country
-
   study_cycle:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
         entity: study_cycle
-
   mobility_program:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
         entity: mobility_program
-
 responses:
+  utter_candidate_portal_link:
+    - text: "You can find the candidate portal under the following link: https://apply.p.lodz/en/apply"
+
   utter_greet:
-    - text: "Hello! How can I help you with admissions at Lodz University of Technology?"
+    - text: Hello! How can I help you with admissions at Lodz University of Technology?
 
   utter_goodbye:
-    - text: "Goodbye! If you have more questions, feel free to ask."
+    - text: Goodbye! If you have more questions, feel free to ask.
 
   utter_happy_to_help:
-    - text: "I'm happy to help!"
-    - text: "I am happy to know my insight is usefull, carry on!"
+    - text: I'm happy to help!
+    - text: I am happy to know my insight is usefull, carry on!
 
   utter_fallback:
-    - text: "Sorry, I didn't understand. Could you rephrase your question?"
+    - text: Sorry, I didn't understand. Could you rephrase your question?
 
   utter_field_info:
     - condition:
         - type: slot
           name: field_of_study
-          value: "Computer Science"
+          value: Computer Science
       text: |
         Computer Science (first-cycle, full time, in English) at TUL:
         - Duration: 7 semesters (3.5 years)
         - Title: engineer (inżynier)
         - Highlights: Programming (Java, C/C++, Python), web/mobile apps, databases, networks, AI, modern labs, internships.
         More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
-    - text: "Please specify the field of study you are interested in (e.g., Computer Science)."
+    - text: Please specify the field of study you are interested in (e.g., Computer Science).
 
   utter_duration:
     - condition:
         - type: slot
           name: field_of_study
-          value: "Computer Science"
+          value: Computer Science
       text: |
         The Computer Science programme lasts 7 semesters (3.5 years).
         More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
-    - text: "Please specify the field of study to get duration information."
+    - text: Please specify the field of study to get duration information.
 
   utter_degree_title:
     - condition:
         - type: slot
           name: field_of_study
-          value: "Computer Science"
+          value: Computer Science
       text: |
         Graduates of Computer Science receive the professional title: engineer (inżynier).
         More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
-    - text: "Please specify the field of study to get degree title information."
+    - text: Please specify the field of study to get degree title information.
 
   utter_transfer:
     - text: |
@@ -192,43 +190,38 @@ responses:
 
   utter_cheer_up:
     - text: "Here is something to cheer you up:"
-      image: "https://i.imgur.com/nGF1K8f.jpg"
+      image: https://i.imgur.com/nGF1K8f.jpg
 
   utter_did_that_help:
-    - text: "Did that help you?"
+    - text: Did that help you?
 
   utter_happy:
-    - text: "Great, carry on!"
+    - text: Great, carry on!
 
   utter_iamabot:
     - text: |
         I am a bot, meant to answer any questions regarding admission of Łódź University Of Technology. \
         Don't be afraid, ask away!
-
   utter_study_freeze:
     - text: |
         It is not possible to completely freeze the cycle of study. \
         However it is possible to go on a long-term leave which may be granted by the Vice-Rector \
         at the documented written request of a student regardless of study cycle.
         More details: https://p.lodz.pl/en/students/documents/study-regulations
-
   utter_clubs:
     - text: |
         You can find information about our most prominent student groups here: https://p.lodz.pl/en/students/students-research-groups
         Unfortunately the full list is in [polish language only](https://p.lodz.pl/studenci/kola-naukowe-i-organizacje-studenckie), sorry about that.
-
   utter_grading:
     - text: |
         Our grading scale is from 2.0 (lowest) to 5.0 (highest) and includes "zal" (meaning completed).
         The semester final grade is simply a weighted average of all course grades during that semester. 
         The specifics can be found int Study Regulations: https://p.lodz.pl/en/students/documents/study-regulations
-
   utter_library:
     - text: |
         TUL has a library where you can rent books, \
         participate in training classes or find a quiet place to study
         You can find information about it here: https://bg.p.lodz.pl/en
-
   utter_ask_scholarship_types:
     - text: |
         We offer several types of scholarships:
@@ -443,3 +436,7 @@ responses:
 actions:
   - action_utter_deadline
   - action_field_info
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
