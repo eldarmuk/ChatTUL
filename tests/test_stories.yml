@@ -2,103 +2,103 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: test field info
-  steps:
-  - user: |
-      Tell me about Computer Science at TUL.
-    intent: ask_field_info
-    entities:
-      - field_of_study: "Computer Science"
-  - action: utter_field_info
+  - story: test field info
+    steps:
+      - user: |
+          Tell me about Computer Science at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Computer Science"
+      - action: utter_field_info
 
-- story: test duration
-  steps:
-  - user: |
-      How long is the Computer Science programme?
-    intent: ask_duration
-    entities:
-      - field_of_study: "Computer Science"
-  - action: utter_duration
+  - story: test duration
+    steps:
+      - user: |
+          How long is the Computer Science programme?
+        intent: ask_duration
+        entities:
+          - field_of_study: "Computer Science"
+      - action: utter_duration
 
-- story: test degree title
-  steps:
-  - user: |
-      What title do I get after Computer Science?
-    intent: ask_degree_title
-    entities:
-      - field_of_study: "Computer Science"
-  - action: utter_degree_title
+  - story: test degree title
+    steps:
+      - user: |
+          What title do I get after Computer Science?
+        intent: ask_degree_title
+        entities:
+          - field_of_study: "Computer Science"
+      - action: utter_degree_title
 
-- story: test transfer
-  steps:
-  - user: |
-      How to transfer to Lodz University of Technology?
-    intent: ask_transfer
-  - action: utter_transfer
+  - story: test transfer
+    steps:
+      - user: |
+          How to transfer to Lodz University of Technology?
+        intent: ask_transfer
+      - action: utter_transfer
 
-- story: test eligibility EU
-  steps:
-  - user: |
-      What documents do EU students need?
-    intent: ask_eligibility
-    entities:
-      - origin_country: "Poland"
-  - action: utter_eligibility
+  - story: test eligibility EU
+    steps:
+      - user: |
+          What documents do EU students need?
+        intent: ask_eligibility
+        entities:
+          - origin_country: "Poland"
+      - action: utter_eligibility
 
-- story: test eligibility non-EU
-  steps:
-  - user: |
-      How does a Nigerian student apply?
-    intent: ask_eligibility
-    entities:
-      - origin_country: "Nigeria"
-  - action: utter_eligibility
+  - story: test eligibility non-EU
+    steps:
+      - user: |
+          How does a Nigerian student apply?
+        intent: ask_eligibility
+        entities:
+          - origin_country: "Nigeria"
+      - action: utter_eligibility
 
-- story: test mobility
-  steps:
-  - user: |
-      Tell me about Erasmus exchange
-    intent: ask_mobility
-  - action: utter_mobility
+  - story: test mobility
+    steps:
+      - user: |
+          Tell me about Erasmus exchange
+        intent: ask_mobility
+      - action: utter_mobility
 
-- story: test credits
-  steps:
-  - user: |
-      Minimum ECTS per semester?
-    intent: ask_credits
-  - action: utter_credits
+  - story: test credits
+    steps:
+      - user: |
+          Minimum ECTS per semester?
+        intent: ask_credits
+      - action: utter_credits
 
-- story: test partners
-  steps:
-  - user: |
-      Who are your ECIU partners?
-    intent: ask_partners
-  - action: utter_partners
+  - story: test partners
+    steps:
+      - user: |
+          Who are your ECIU partners?
+        intent: ask_partners
+      - action: utter_partners
 
-- story: test contact
-  steps:
-  - user: |
-      Email for foreign students?
-    intent: ask_contact
-  - action: utter_contact
+  - story: test contact
+    steps:
+      - user: |
+          Email for foreign students?
+        intent: ask_contact
+      - action: utter_contact
 
-- story: test fallback
-  steps:
-  - user: |
-      I don't understand
-    intent: fallback
-  - action: utter_fallback
+  - story: test fallback
+    steps:
+      - user: |
+          I don't understand
+        intent: fallback
+      - action: utter_fallback
 
-- story: say goodbye
-  steps:
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+  - story: say goodbye
+    steps:
+      - user: |
+          bye-bye!
+        intent: goodbye
+      - action: utter_goodbye
 
-- story: bot challenge
-  steps:
-  - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+  - story: bot challenge
+    steps:
+      - user: |
+          are you a bot?
+        intent: bot_challenge
+      - action: utter_iamabot

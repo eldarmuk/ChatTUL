@@ -317,8 +317,8 @@ nlu:
       - Where can I find sports updates?
       - Any sports news page?
 
-# my questions ends (Bartek)
-# Piotr
+  # my questions ends (Bartek)
+  # Piotr
   - intent: ask_studying_fees
     examples: |
       - How much does studying cost
@@ -338,7 +338,7 @@ nlu:
       - How much for recrutation?
 
   - intent: ask_accommodation_fees
-    examples: | 
+    examples: |
       - How much does dormitory cost?
       - Find accommodation fee
       - What is the fee for university dorm?
