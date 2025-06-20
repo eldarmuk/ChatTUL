@@ -288,10 +288,10 @@ nlu:
       - Academic year schedule?
       - Academic calendar link?
 
-  - intent: ask_summer_break
+  - intent: ask_summer_break_duration
     examples: |
       - How long is summer holiday?
-      - When is the summer break?
+      - length of summer break?
 
   - intent: ask_social_media
     examples: |
