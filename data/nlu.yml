@@ -194,7 +194,7 @@ nlu:
   - intent: ask_date
     examples: |
       - When the [first round of admission](date) [starts](date_type)?
-      - When the [first round of admission](date) for [Masters](stydu_cycle) [starts](date_type)?
+      - When the [first round of admission](date) for [Masters](study_cycle) [starts](date_type)?
       - When does [second round of admission](date) [starts](date_type)?
       - When does [second round of admission](date) [ends](date_type)?
       - When does [the academic year](date) start?
