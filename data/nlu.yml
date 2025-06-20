@@ -122,12 +122,13 @@ nlu:
       - Who do I write to for help?
       - Admissions contact
 
-  - intent: fallback
+  - intent: ask_clarification
     examples: |
       - I don't understand
       - Can you repeat?
       - Sorry, I didn't get that
       - ?
+      - why tho?
 
   - intent: mood_great
     examples: |
