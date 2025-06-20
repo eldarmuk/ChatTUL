@@ -74,15 +74,19 @@ stories:
       - intent: thanks
       - action: utter_happy_to_help
 
-  - story: ask about process deadline
+  - story: ask about deadlines and dates
     steps:
       - intent: greet
       - action: utter_greet
       - intent: ask_deadline
-      - action: action_utter_deadline
+        entities:
+          - deadline: null
+      - action: utter_admission_deadlines
 
-      - intent: thanks
-      - action: utter_happy_to_help
+      - intent: ask_date
+        entities:
+          - date: first round of admission
+      - action: utter_first_round
 
   - story: ask about unknown deadline
     steps:
