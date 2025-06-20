@@ -88,14 +88,15 @@ stories:
           - date: first round of admission
       - action: utter_first_round
 
-  - story: ask about unknown deadline
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_deadline
+      - intent: ask_date
         entities:
-          - process_type: null
-      - action: utter_unknown_admission_process
+          - date: summer break
+      - action: utter_ask_summer_break
+
+      - intent: ask_date
+        entities:
+          - date: second round of admission
+      - action: utter_second_round
 
       - intent: thanks
       - action: utter_happy_to_help
