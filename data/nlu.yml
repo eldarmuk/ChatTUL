@@ -192,27 +192,47 @@ nlu:
       - deadline?
       - When will I be notified of [admission results](deadline)?
 
+  - intent: ask_date
+    examples: |
+      - When the [first round of admission](date) [starts](date_type)?
+      - When the [first round of admission](date) for [Masters](stydu_cycle) [starts](date_type)?
+      - When does [second round of admission](date) [starts](date_type)?
+      - When does [second round of admission](date) [ends](date_type)?
+      - When does [the academic year](date) start?
+      - When does the [summer break](date) take place?
+      - When does the [winter break](date) take place?
+      - When are [holidays](date) during the semester?
+      - When does the [winter semester](date) start?
+      - When does the [summer semester](date) start?
+      - When does the [exam session](date) start?
+      - When do [exams](date) take place?
+
   - intent: ask_admission_steps
     examples: |
       - How can I apply for [Computer Science](field_of_study)?
       - What are the steps required to apply for [Computer Science](field_of_study)?
 
-  - intent: location_query
+  - intent: ask_location
     examples: |
       - Where?
       - where
       - Location?
       - location
-      - Where is TUL?
-      - Where can I find TUL?
-      - How do I navigate the university?
+      - Where is [TUL](location)?
+      - Where can I find [TUL](location)?
+      - Where can I find [Alchemium](location)?
+      - Where can I find [WEEIA](location)?
+      - How do I navigate [the university](location)?
+      - How do I arrive to [student dormitory](location)?
 
-  #- intent: specific_query
-  #  examples: |
-  #    - Alchemium
-  #    - where alchemium
-  #    - Where is Alchemium?
-  #    - Location of Alchemium?
+  - intent: ask_existence
+    examples: |
+      - Is there a [library](location)?
+      - Does the university have a [snack bar](location)?
+      - Are there any [quiet places to study](location)?
+      - Can I find a [sports centre](location) on the university campus?
+      - Are there any [semester breaks](date)?
+      - Are there any [holidays](date) during academic year?
 
   - intent: clubs_query
     examples: |
@@ -231,14 +251,10 @@ nlu:
       - How are grades calculated?
       - gradin rules
 
-  - intent: library_query
+  - intent: ask_book_rental
     examples: |
-      - library
-      - Is there a Library?
-      - Books
       - Renting books
       - Can I rent books?
-      - Does the University have a library?
 
   # my questions start (Bartek)
 
@@ -266,26 +282,11 @@ nlu:
       - How to get the Rector's scholarship?
       - What are the requirements for Rector’s scholarship?
 
-  - intent: ask_academic_year
-    examples: |
-      - When does the academic year start?
-      - Academic year schedule?
-      - When does the semester begin?
-
   - intent: ask_academic_calendar
     examples: |
       - Where can I find the academic calendar?
+      - Academic year schedule?
       - Academic calendar link?
-
-  - intent: ask_exam_sessions
-    examples: |
-      - When are the exam sessions?
-      - When do exams take place?
-
-  - intent: ask_breaks_holidays
-    examples: |
-      - Are there any semester breaks?
-      - When are holidays during the semester?
 
   - intent: ask_summer_break
     examples: |
