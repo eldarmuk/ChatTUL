@@ -33,24 +33,29 @@ intents:
   - ask_scholarship_application
   - ask_scholarship_multiple
   - ask_rectors_scholarship
-  - ask_academic_year
   - ask_academic_calendar
-  - ask_exam_sessions
   - ask_breaks_holidays
-  - ask_summer_break
+  - ask_summer_break_duration
   - ask_social_media
   - ask_sports_activities
   - ask_pe_mandatory
   - ask_sports_updates
+  - ask_grading_system
+  - ask_student_clubs
+  - utter_unknown_admission_process
+  - ask_date
+  - ask_existence
+  - provide_cycle_of_study
 
 entities:
   - field_of_study
   - origin_country
   - study_cycle
   - mobility_program
-  - process_type
-  - admission_round
-  - admission_semester
+  - deadline
+  - date
+  - location
+  - class
 
 slots:
   field_of_study:
@@ -80,13 +85,6 @@ slots:
     mappings:
       - type: from_entity
         entity: mobility_program
-
-  admission_semester:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: admission_semester
 
 responses:
   utter_greet:
@@ -192,19 +190,9 @@ responses:
     - text: "Great, carry on!"
 
   utter_iamabot:
-    - text: "I am a bot, powered by Rasa."
-
-  #utter_specific:
-  #  - text: |
-  #      Here you can find info about specific or well-known buildings on naviPŁ:
-  #      - [Rectors' office](https://mapa.p.lodz.pl/?geo=23)
-  #      - [Alchemium/Faculty of Chemistry](https://mapa.p.lodz.pl/?geo=12)
-  #      - [IFE (International Faculty of Engineering)](https://mapa.p.lodz.pl/?geo=38)
-  #      - [International Admissions Office](https://mapa.p.lodz.pl/?geo=10166)
-  #      - [Language Center (outside entrance)](https://mapa.p.lodz.pl/?geo=88)
-  #      - [Library](https://mapa.p.lodz.pl/?geo=18)
-  #      - [Chemical library](https://mapa.p.lodz.pl/?geo=51)
-
+    - text: |
+        I am a bot, meant to answer any questions regarding admission of Łódź University Of Technology. \
+        Don't be afraid, ask away!
 
   utter_study_freeze:
     - text: |
@@ -213,27 +201,22 @@ responses:
         at the documented written request of a student regardless of study cycle.
         More details: https://p.lodz.pl/en/students/documents/study-regulations
 
-  utter_unknown_admission_process:
-    - text: "Sorry I don't know about which admission process you are referring to. Could you clarify?"
-
-  utter_location:
-    - text: |
-        Tools to help you find the University:
-        - Google Maps: [TUL on Google Maps](https://www.google.com/maps/place/Lodz+University+of+Technology/)
-        - Campus map: [Kampus 2.0](https://nav.p.lodz.pl/)
-        - NaviPŁ app: [naviPŁ](https://mapa.p.lodz.pl/)
-
   utter_clubs:
-    - text: "Info about student clubs: https://p.lodz.pl/en/students/students-research-groups"
+    - text: |
+        You can find information about our most prominent student groups here: https://p.lodz.pl/en/students/students-research-groups
+        Unfortunately the full list is in [polish language only](https://p.lodz.pl/studenci/kola-naukowe-i-organizacje-studenckie), sorry about that.
 
   utter_grading:
-    - text: "Grading rules are in the Study Regulations: https://p.lodz.pl/en/students/documents/study-regulations"
+    - text: |
+        Our grading scale is from 2.0 (lowest) to 5.0 (highest) and includes "zal" (meaning completed).
+        The semester final grade is simply a weighted average of all course grades during that semester. 
+        The specifics can be found int Study Regulations: https://p.lodz.pl/en/students/documents/study-regulations
 
   utter_library:
     - text: |
-        Library info:
-        - [Library Website](https://bg.p.lodz.pl/en)
-        - [Library Location](https://mapa.p.lodz.pl/?geo=18)
+        TUL has a library where you can rent books, \
+        participate in training classes or find a quiet place to study
+        You can find information about it here: https://bg.p.lodz.pl/en
 
   utter_ask_scholarship_types:
     - text: |
@@ -308,13 +291,87 @@ responses:
 
   utter_ask_pe_mandatory:
     - text: |
-        Yes, PE is required for most first-cycle students.
-        You must pass 3 semesters of PE.
+        Yes, PE is required for most first-cycle students. You must pass 3 semesters of PE.
 
   utter_ask_sports_updates:
     - text: |
-        Sports center updates:
+        Sports center updates are on Facebook:
         https://www.facebook.com/CentrumSportuPŁ
+
+  utter_university_location:
+    - text: |
+        The main campuses of Łódź University of Technology are placed \
+        on Stefana Żeromskiego street.
+        You can use [naviPŁ](https://mapa.p.lodz.pl/) to see for urself
+
+  utter_library_location:
+    - text: |
+        [The main library](https://mapa.p.lodz.pl/?geo=18) can be found on campus B, near DMCS building.
+        [Chemical library](https://mapa.p.lodz.pl/?geo=51) can be found on campus A, near Faculty of Chemistry Building.
+
+  utter_location:
+    - text: |
+        Tools to help you find and navigate the University:
+        - Google Maps: [TUL on Google Maps](https://www.google.com/maps/place/Lodz+University+of+Technology/)
+        - Campus map: [Kampus 2.0](https://nav.p.lodz.pl/)
+        - NaviPŁ app: [naviPŁ](https://mapa.p.lodz.pl/)
+
+  utter_ife_location:
+    - text: |
+        [IFE (International Faculty of Engineering)](https://mapa.p.lodz.pl/?geo=38) can be found on campus A, near Faculty of Chemistry
+
+  utter_unknown_location:
+    - text: |
+        Sorry, but I do not know which location you are reffering to.
+        I may lack information about it.
+
+  utter_admission_deadlines:
+    - text: |
+        For first cycle studies (Bachelor) admission opens as early as June and closes late September.
+        For summer semester of second-cycle (Masters) it opens in December and closes in March.
+        Specific dates can be found here: \
+        https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+
+  utter_first_round:
+    - text: |
+        The first round of admission for second cycle study (Masters) typically opens in early December.
+        Make sure to check the deadline for specific dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+
+  utter_second_round:
+    - text: |
+        The first round of admission for second cycle study (Masters) typically opens in early February.
+        Make sure to check the deadline for specific dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+
+  utter_admission_deadline_nocontext:
+    - text: |
+        Sorry, I do not poses the ability to check which deadline is applicable right know.
+
+  utter_where_to_register:
+    - text: |
+        In order to participate in the admission process you have to register \
+        on the online [Candidate Portal](https://apply.p.lodz.pl/en/apply).
+
+  utter_registration_deadline:
+    - text: |
+        You can register on the Candidate Portal at any time
+
+  utter_admission_qualification_rules:
+    - text: |
+        Unfortunately I do not poses the ability to give you the exact qualification rules for a study field.
+        You can find the table of qualification rules here: https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules
+
+  utter_admission_steps:
+    - text: |
+        In order to enroll you need to:
+          1. Register on the Candidate Portal
+          2. Choose the study fields you are interested in. You can choose up to four.
+          3. Fill all relevant information (highschool diploma, language test result etc.)
+          4. Pay recruitation fee for each of the study fields you picked
+          5. Wait for the results
+          6. Print the application from recruitment portal, sign it and upload it again to the portal. \
+          If you picked multiple study fields and got into multiple of them, this is your time to pick single one.
+          7. Deliver the signed application from recruitment portal to the Student Mobility Division.
+        After that, congrats! You are accepted!
 
 actions:
   - action_utter_deadline
