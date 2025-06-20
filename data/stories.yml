@@ -54,16 +54,6 @@ stories:
       - intent: ask_partners
       - action: utter_partners
 
-  - story: contact
-    steps:
-      - intent: ask_contact
-      - action: utter_contact
-
-  - story: fallback example
-    steps:
-      - intent: fallback
-      - action: utter_fallback
-
   - story: ask about study freeze
     steps:
       - intent: greet
@@ -101,27 +91,34 @@ stories:
       - intent: thanks
       - action: utter_happy_to_help
 
-  - story: locations
+  - story: Ask location of buildings around campuses and contact
     steps:
-      - intent: location_query
+      - intent: ask_location
+        entities:
+          - location: null
+      - action: utter_university_location
       - action: utter_location
 
-  #- story: specific_buildings
-  #  steps:
-  #  - intent: specific_query
-  #  - action: utter_specific
+      - intent: ask_location
+        entities:
+          - location: library
+      - action: utter_library
 
-  - story: grading
+      - intent: ask_contact
+      - action: utter_contact
+
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Ask about grading system and study fields
     steps:
-      - intent: grading_query
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_grading_system
       - action: utter_grading
 
-  - story: clubs
-    steps:
-      - intent: clubs_query
-      - action: utter_clubs
+      - intent: ask_field_info
+      - action: action_field_info
 
-  - story: library
-    steps:
-      - intent: library_query
-      - action: utter_library
+      - intent: thanks
+      - action: utter_happy_to_help
