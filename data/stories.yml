@@ -122,3 +122,55 @@ stories:
 
       - intent: thanks
       - action: utter_happy_to_help
+
+
+
+  # - story: studying_fees
+  #   steps:
+  #     - intent: ask_studying_fees
+  #     - action: utter_studying_fees
+
+  # - story: recrutation_fees
+  #   steps:
+  #     - intent: ask_recrutation_fees
+  #     - action: utter_recrutation_fees
+
+  # - story: accommodation
+  #   steps:
+  #     - intent: ask_accommodation
+  #     - action: utter_accommodation
+  
+  # - story: ask_accommodation_fees
+  #   steps:
+  #     - intent: ask_accommodation_fees
+  #     - action: utter_accommodation_fees
+
+  # - story: student_card_fees
+  #   steps:
+  #     - intent: ask_student_card_fee
+  #     - action: utter_student_card_fee
+
+  # - story: doctor_fees
+  #   steps:
+  #     - intent: ask_doctor_fees
+  #     - action: utter_doctor_fees
+
+  # - story: failure_fees
+  #   steps: 
+  #     - intent: ask_failure_fees
+  #     - action: utter_failure_fees
+
+  # - story: all_fees
+  #   steps:
+  #     - intent: ask_all_fees
+  #     - action: utter_studying_fees
+  #     - action: utter_recrutation_fees
+  #     - action: utter_accommodation_fees
+  #     - action: utter_student_card_fee
+  #     - action: utter_doctor_fees
+  #     - action: utter_failure_fees
+
+  # - story: language_courses
+  #   steps:
+  #     - intent: ask_language_courses
+  #     - action: utter_language_courses
