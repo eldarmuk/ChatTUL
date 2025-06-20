@@ -266,20 +266,19 @@ responses:
 
   utter_ask_academic_year:
     - text: |
-        Academic year:
-        - Starts: October
-        - Ends: September next year
-        More details: https://woiz.p.lodz.pl/en/students/academic-calendar
+        The academic year start in October and ends September next year.
+        More details: https://p.lodz.pl/en/students/academic-calendar
 
   utter_ask_academic_calendar:
-    - text: "Academic calendar: https://woiz.p.lodz.pl/en/students/academic-calendar"
+    - text: |
+        You can find academic calendar here: https://p.lodz.pl/en/students/academic-year-calendar
 
   utter_ask_exam_sessions:
     - text: |
         Exam sessions:
         - Winter: Jan–Feb
         - Summer: June–early July and September
-        Details: https://woiz.p.lodz.pl/en/students/academic-calendar
+        Details: https://p.lodz.pl/en/students/academic-calendar
 
   utter_ask_breaks_holidays:
     - text: |
@@ -288,12 +287,12 @@ responses:
         - Semester (Feb)
         - Easter
         - Summer (July–Sept)
-        Calendar: https://woiz.p.lodz.pl/en/students/academic-calendar
+        Calendar: https://p.lodz.pl/en/students/academic-calendar
 
   utter_ask_summer_break:
     - text: |
         Summer break is from July to September.
-        Full calendar: https://woiz.p.lodz.pl/en/students/academic-calendar
+        Full calendar: https://p.lodz.pl/en/students/academic-calendar
 
   utter_ask_social_media:
     - text: |
