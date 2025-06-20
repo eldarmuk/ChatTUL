@@ -46,6 +46,15 @@ intents:
   - ask_date
   - ask_existence
   - provide_cycle_of_study
+  - ask_studying_fees
+  - ask_recrutation_fees
+  - ask_accommodation_fees
+  - ask_student_card_fee
+  - ask_doctor_fees
+  - ask_failure_fees
+  - ask_all_fees
+  - ask_accommodation
+  - ask_language_courses
 
 entities:
   - field_of_study
@@ -372,6 +381,62 @@ responses:
           If you picked multiple study fields and got into multiple of them, this is your time to pick single one.
           7. Deliver the signed application from recruitment portal to the Student Mobility Division.
         After that, congrats! You are accepted!
+
+  utter_studying_fees:
+    - text: | 
+        For students with Polish citizenship, full-time studies at TUL are free of charge. 
+        The fees for part-time studies for Polish students can be found at:
+        https://rekrutacja.p.lodz.pl/studia-i-i-ii-stopnia/rekrutuj/oplaty#studia_i_stopnia%3Eoplata_za_studia
+        For foreign students, the current fees are available at:
+        https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships#first_cycle_studies%3Etuition_fee
+        Additional announcements regarding the tuition fees are available at: 
+        https://p.lodz.pl/en/students/documents/tuition-fees-for-educational-services
+
+  utter_recrutation_fees:
+    - text: |
+        Current recrutation fees are available at:
+        https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships
+
+  utter_accommodation_fees:
+    - text: |
+        The fees for accommodation in the dormitories are available at:
+        https://p.lodz.pl/en/students/tul-residential-area#accommodation-fees-at-tul-residential-area-557
+
+  utter_accommodation:
+    - text: |
+        Lodz University of Technology has 9 student halls of residence, with a total of 2,591 beds, of which: 
+        - 20% in single rooms,
+        - 80% in double rooms, 
+        as well as 100 places in higher-standard guest rooms.
+        More details are available at:
+        https://p.lodz.pl/en/students/tul-residential-area
+
+  utter_language_courses:
+    - text: |
+        Languages are taught in the Language Centre. It provides students with courses in English, German, Spanish, Italian, French and Russian, available at levels from A1 to C2. The courses are divided into modules, each lasting one semester.
+        The Language Centre website is: https://www.cj.p.lodz.pl/in-english/about-us/language-centre
+        There also are basic Polish courses for beginners, details at: https://www.cj.p.lodz.pl/in-english/for-intl-student/polish-courses
+
+  utter_doctor_fees:
+    - text: |
+        The medical examinations are free of charge if performed by one of the entities with a signed agreement. More details at:
+        https://p.lodz.pl/en/students/documents/initial-and-periodic-medical-examinations
+
+  utter_student_card_fee:
+    - text: |
+        The student ID card costs 22 PLN. A duplicate student ID card costs 33 PLN.
+
+  utter_failure_fees:
+    - text: |
+        A student who fails a subject and wants to continue studying at the university, must pay a fee depending on: 
+        - the number of ECTS points the subject is worth,
+        - the Faculty the student is studying at,
+        - the price per ECTS point.
+        The fees regarding subject failures are explained in documents uploaded to: 
+        https://p.lodz.pl/en/students/documents/tuition-fees-for-educational-services
+        In June 2025, the latest version of the relevant document is from June 2024: https://p.lodz.pl/en/students/announcements/announcement-vice-rector-student-affairs-lodz-university-technology-10-june-2024
+        Details regarding subject failure fees for foreign students are also explained in the application portal at:
+        https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships#first_cycle_studies%3Eother_fees
 
 actions:
   - action_utter_deadline
