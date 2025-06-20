@@ -186,24 +186,11 @@ nlu:
 
   - intent: ask_deadline
     examples: |
-      - What is the deadline for electronic [registration](process_type)?
-      - When the [admission](process_type) process no longer accepts applications?
+      - What is the deadline for electronic [registration](deadline)?
+      - When the [admission](deadline) process no longer accepts applications?
       - What is the deadline?
-      - When will I be notified of [admission results](process_type)?
-      - Till when I can [register](process_type)?
-
-  - intent: ask_start_date
-    examples: |
-      - When the [first round](admission_round) of admission starts?
-      - When does [second round](admission_round) of admission come?
-
-  # - intent: inquire_subject_info
-  #   examples: |
-  #     - What is the [candidate portal](current_subject)?
-  #     - What are the [reserve lists](current_subject)?
-  #     - Can you tell me about [study cycles](current_subject)?
-  #     - What is it?
-  #     - What is that?
+      - deadline?
+      - When will I be notified of [admission results](deadline)?
 
   - intent: ask_admission_steps
     examples: |
