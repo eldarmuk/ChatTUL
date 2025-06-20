@@ -38,7 +38,9 @@ intents:
   - ask_summer_break_duration
   - ask_social_media
   - ask_sports_activities
-  - ask_pe_mandatory
+  - ask_clarification
+  - ask_mandatory_classes
+  - ask_book_rental
   - ask_sports_updates
   - ask_grading_system
   - ask_student_clubs
@@ -383,7 +385,7 @@ responses:
         After that, congrats! You are accepted!
 
   utter_studying_fees:
-    - text: | 
+    - text: |
         For students with Polish citizenship, full-time studies at TUL are free of charge. 
         The fees for part-time studies for Polish students can be found at:
         https://rekrutacja.p.lodz.pl/studia-i-i-ii-stopnia/rekrutuj/oplaty#studia_i_stopnia%3Eoplata_za_studia
@@ -440,3 +442,4 @@ responses:
 
 actions:
   - action_utter_deadline
+  - action_field_info
