@@ -303,12 +303,13 @@ nlu:
     examples: |
       - What sports activities are offered?
       - Can I join any sports at the university?
-      - What can I choose for P.E.?
+      - What can I choose for (P.E.)[class]?
 
-  - intent: ask_pe_mandatory
+  - intent: ask_mandatory_classes
     examples: |
-      - Is PE mandatory?
-      - Do I have to do physical education?
+      - Is [PE](class) mandatory?
+      - Is [Health and Safety training](class) mandatory?
+      - Do I have to do [physical education](class)?
 
   - intent: ask_sports_updates
     examples: |
