@@ -318,3 +318,81 @@ nlu:
       - Any sports news page?
 
 # my questions ends (Bartek)
+# Piotr
+  - intent: ask_studying_fees
+    examples: |
+      - How much does studying cost
+      - Find studying fees
+      - What is the fee for university?
+      - Is learning paid?
+      - Do I have to pay for studying?
+      - How much for studying [Computer Science](field_of_study)?
+
+  - intent: ask_recrutation_fees
+    examples: |
+      - How much does recrutation cost?
+      - Find recrutation fee
+      - What is the fee for application?
+      - Is application paid?
+      - Do I have to pay for recrutation?
+      - How much for recrutation?
+
+  - intent: ask_accommodation_fees
+    examples: | 
+      - How much does dormitory cost?
+      - Find accommodation fee
+      - What is the fee for university dorm?
+      - Dormitory cost
+      - Accomodation money
+      - How much to pay for dormitory?
+      - How much for dormitory?
+
+  - intent: ask_student_card_fee
+    examples: |
+      - How much does student card cost?
+      - Student card duplicate cost
+      - Student id fee
+      - Student id price
+
+  - intent: ask_doctor_fees
+    examples: |
+      - Are medical exams free?
+      - How much do medical exams cost?
+      - How much to pay for doctor?
+      - How much for doctor examination?
+
+  - intent: ask_failure_fees
+    examples: |
+      - How much do I have to pay for a failed subject?
+      - How much per ECTS point?
+      - Price for fail
+      - Failed subject price
+
+  - intent: ask_all_fees
+    examples: |
+      - Additional cost
+      - What else will I have to pay?
+      - Is anything else paid?
+      - Show me the cost of everything
+      - What do I have to pay for?
+      - All costs
+
+  - intent: ask_accommodation
+    examples: |
+      - Is there accommodation at TUL?
+      - Does the university have accommodation?
+      - Are there dormitories at TUL?
+      - How many dormitories are there?
+      - How many people per room in dormitory?
+      - Where are the dormitories?
+      - Where can I live?
+
+  - intent: ask_language_courses
+    examples: |
+      - Which languages are taught at TUL?
+      - Which languages can I choose?
+      - What levels of language courses are available?
+      - How many semesters does a language course last?
+      - How long is a language course?
+      - Where are language lessons?
+      - Can I learn Spanish?
