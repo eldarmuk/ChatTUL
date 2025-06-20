@@ -210,6 +210,8 @@ nlu:
     examples: |
       - How can I apply for [Computer Science](field_of_study)?
       - What are the steps required to apply for [Computer Science](field_of_study)?
+      - admission steps
+      - What are the steps to apply?
 
   - intent: ask_location
     examples: |
