@@ -1,0 +1,14 @@
+<main>
+  <div class="conversation-flow">
+    @for(message of messages(); track message.id) {
+    <p class="message" [class.message-bot]="message.botMessage" [class.message-user]="!message.botMessage">
+      {{message.text}}
+    </p>
+    }
+  </div>
+
+  <form (submit)="this.onSubmit($event)">
+    <input type="text" (change)="this.updateUserInput($event)" [value]="userMessageValue">
+    <button type="submit">Send</button>
+  </form>
+</main>
