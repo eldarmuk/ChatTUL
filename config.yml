@@ -32,8 +32,22 @@ pipeline:
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
+#policies:
+#  - name: MemoizationPolicy
+#  - name: RulePolicy
+#  - name: TEDPolicy
+#    epochs: 10
+
 policies:
-  - name: MemoizationPolicy
-  - name: RulePolicy
-  - name: TEDPolicy
-    epochs: 10
+- name: MemoizationPolicy
+  max_history: 5
+  
+- name: RulePolicy
+  #core_fallback_threshold: 0.3
+  #core_fallback_action_name: "action_default_fallback" #so far we have no deafault_action
+  #enable_fallback_prediction: true
+  
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  constrain_similarities: true
