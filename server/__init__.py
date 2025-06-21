@@ -22,16 +22,18 @@ logger = logging.getLogger(__name__)
 
 PRODUCTION = os.getenv('SERVER_MODE', 'dev') == 'prod'
 JWT_SECRET = os.getenv('JWT_SECRET', 'devsecret')
+ENDPOINT_YML = os.getenv('ENDPOINT_YML', 'endpoints.yml')
 
 def run():
-    endpoints = AvailableEndpoints.read_endpoints("endpoints.yml")
+    endpoints = AvailableEndpoints.read_endpoints(ENDPOINT_YML)
 
     app = configure_app(
         cors= "*" if not PRODUCTION else "chattul.xyz",
         jwt_secret=JWT_SECRET,
         input_channels=[SocketIOInput(jwt_key=JWT_SECRET)],
         enable_api=False,
-        endpoints=endpoints
+        endpoints=endpoints,
+        port=5555,
     )
 
     @app.route("/new-session", methods=["POST"])
