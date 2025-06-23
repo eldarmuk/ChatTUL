@@ -110,36 +110,36 @@ responses:
     - text: Sorry, I didn't understand. Could you rephrase your question?
 
   utter_field_info:
-    - condition:
-        - type: slot
-          name: field_of_study
-          value: Computer Science
-      text: |
-        Computer Science (first-cycle, full time, in English) at TUL:
-        - Duration: 7 semesters (3.5 years)
-        - Title: engineer (inżynier)
-        - Highlights: Programming (Java, C/C++, Python), web/mobile apps, databases, networks, AI, modern labs, internships.
-        More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
+    # - condition:
+    #     - type: slot
+    #       name: field_of_study
+    #       value: Computer Science
+    #   text: |
+    #     Computer Science (first-cycle, full time, in English) at TUL:
+    #     - Duration: 7 semesters (3.5 years)
+    #     - Title: engineer (inżynier)
+    #     - Highlights: Programming (Java, C/C++, Python), web/mobile apps, databases, networks, AI, modern labs, internships.
+    #     More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
     - text: Please specify the field of study you are interested in (e.g., Computer Science).
 
   utter_duration:
-    - condition:
-        - type: slot
-          name: field_of_study
-          value: Computer Science
-      text: |
-        The Computer Science programme lasts 7 semesters (3.5 years).
-        More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
+    # - condition:
+    #     - type: slot
+    #       name: field_of_study
+    #       value: Computer Science
+    #   text: |
+    #     The Computer Science programme lasts 7 semesters (3.5 years).
+    #     More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
     - text: Please specify the field of study to get duration information.
 
   utter_degree_title:
-    - condition:
-        - type: slot
-          name: field_of_study
-          value: Computer Science
-      text: |
-        Graduates of Computer Science receive the professional title: engineer (inżynier).
-        More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
+    # - condition:
+    #     - type: slot
+    #       name: field_of_study
+    #       value: Computer Science
+    #   text: |
+    #     Graduates of Computer Science receive the professional title: engineer (inżynier).
+    #     More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
     - text: Please specify the field of study to get degree title information.
 
   utter_transfer:
@@ -436,6 +436,10 @@ responses:
 actions:
   - action_utter_deadline
   - action_field_info
+  - action_transfer_info
+  - action_eligibility_info
+  - action_mobility_info
+  - action_credits_info
 
 session_config:
   session_expiration_time: 60
