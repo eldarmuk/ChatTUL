@@ -35,3 +35,13 @@ nlu:
       - summer recess
       - summer holidays
       - summer leave
+
+  - synonym: physical education
+    examples: |
+      - PE
+      - P.E.
+
+  - synonym: Health and Safety trainig
+    examples: |
+      - BHP
+      - Health and Safety

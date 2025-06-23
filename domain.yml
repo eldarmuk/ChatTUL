@@ -35,7 +35,6 @@ intents:
   - ask_social_media
   - ask_sports_activities
   - ask_sports_updates
-  - ask_start_date
   - ask_student_card_fee
   - ask_student_clubs
   - ask_study_freeze
@@ -43,20 +42,15 @@ intents:
   - ask_summer_break_duration
   - ask_transfer
   - bot_challenge
-  - clubs_query
   - deny
-  - fallback
   - goodbye
-  - grading_query
   - greet
-  - library_query
-  - location_query
   - mood_great
   - mood_unhappy
-  - provide_cycle_of_study
-  - specific_query
   - thanks
-  - utter_unknown_admission_process
+  - ask_fee_existance
+  - ask_existance
+
 entities:
   - date
   - location
@@ -66,6 +60,7 @@ entities:
   - study_cycle
   - mobility_program
   - class
+  - fee
 
 slots:
   field_of_study:
@@ -107,7 +102,15 @@ responses:
     - text: I am happy to know my insight is usefull, carry on!
 
   utter_fallback:
-    - text: Sorry, I didn't understand. Could you rephrase your question?
+    - text: >
+        Sorry, I didn't understand. Could you rephrase your question?
+        Phrasing in terms of a single sentence or a question will help me understand you better
+
+  utter_default:
+    - text: >
+        Sorry, I don't know what you mean by tathhthththt.
+    - text: >
+        Thy words bear no weight with me.
 
   utter_field_info:
     # - condition:
@@ -188,10 +191,6 @@ responses:
         - WhatsApp: +48 785 289 588
         More details: https://apply.p.lodz.pl/en/contact
 
-  utter_cheer_up:
-    - text: "Here is something to cheer you up:"
-      image: https://i.imgur.com/nGF1K8f.jpg
-
   utter_did_that_help:
     - text: Did that help you?
 
@@ -199,29 +198,36 @@ responses:
     - text: Great, carry on!
 
   utter_iamabot:
-    - text: |
-        I am a bot, meant to answer any questions regarding admission of Łódź University Of Technology. \
+    - text: >
+        I am a bot, meant to answer any questions regarding admission of Łódź University Of Technology.
         Don't be afraid, ask away!
   utter_study_freeze:
-    - text: |
-        It is not possible to completely freeze the cycle of study. \
-        However it is possible to go on a long-term leave which may be granted by the Vice-Rector \
+    - text: >
+        It is not possible to completely freeze the cycle of study. 
+        However it is possible to go on a long-term leave which may be granted by the Vice-Rector 
         at the documented written request of a student regardless of study cycle.
-        More details: https://p.lodz.pl/en/students/documents/study-regulations
+        More details can be found in [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations)
   utter_clubs:
-    - text: |
-        You can find information about our most prominent student groups here: https://p.lodz.pl/en/students/students-research-groups
+    - text: >
+        You can find information about our most prominent [student groups under this link](https://p.lodz.pl/en/students/students-research-groups).
         Unfortunately the full list is in [polish language only](https://p.lodz.pl/studenci/kola-naukowe-i-organizacje-studenckie), sorry about that.
   utter_grading:
-    - text: |
+    - text: >
         Our grading scale is from 2.0 (lowest) to 5.0 (highest) and includes "zal" (meaning completed).
         The semester final grade is simply a weighted average of all course grades during that semester. 
-        The specifics can be found int Study Regulations: https://p.lodz.pl/en/students/documents/study-regulations
+        The specifics can be found in [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations)
   utter_library:
-    - text: |
-        TUL has a library where you can rent books, \
+    - text: >
+        TUL has a library where you can rent books,
         participate in training classes or find a quiet place to study
-        You can find information about it here: https://bg.p.lodz.pl/en
+        You can find information about it [here](https://bg.p.lodz.pl/en)
+
+  utter_student_places:
+    - text: >
+        TUL departments have many places where students can work and study freely.
+        These include simple benches with tables, dedicated rooms from our sponsors and 
+        quiet cabinets found at IFE.
+
   utter_ask_scholarship_types:
     - text: |
         We offer several types of scholarships:
@@ -279,7 +285,10 @@ responses:
   utter_ask_summer_break:
     - text: |
         Summer break is from July to September.
-        Full calendar: https://p.lodz.pl/en/students/academic-calendar
+
+  utter_health_and_safety:
+    - text: |
+        Passing Health and Safety training is mandatory for all TUL students
 
   utter_ask_social_media:
     - text: |
@@ -288,10 +297,14 @@ responses:
         - Instagram: https://www.instagram.com/politechnika_lodzka
         - LinkedIn: https://www.linkedin.com/school/politechnika-lodzka/
 
-  utter_ask_sports_activities:
+  utter_checkout_academic_calendar:
     - text: |
+        Checkout the [academic calendar](https://p.lodz.pl/en/students/academic-calendar)
+
+  utter_ask_sports_activities:
+    - text: >
         Sports activities: climbing, swimming, basketball, volleyball, self-defense, etc.
-        Full offer: https://www.centrumsportu.p.lodz.pl/dla-studenta/oferta-zajecspecjalizacji
+        You can see the [full offer online](https://www.centrumsportu.p.lodz.pl/dla-studenta/oferta-zajecspecjalizacji)
 
   utter_ask_pe_mandatory:
     - text: |
@@ -299,12 +312,11 @@ responses:
 
   utter_ask_sports_updates:
     - text: |
-        Sports center updates are on Facebook:
-        https://www.facebook.com/CentrumSportuPŁ
+        Sports center updates are on [Facebook](https://www.facebook.com/CentrumSportuPŁ)
 
   utter_university_location:
-    - text: |
-        The main campuses of Łódź University of Technology are placed \
+    - text: >
+        The main campuses of Łódź University of Technology are placed
         on Stefana Żeromskiego street.
         You can use [naviPŁ](https://mapa.p.lodz.pl/) to see for urself
 
@@ -314,10 +326,13 @@ responses:
         [Chemical library](https://mapa.p.lodz.pl/?geo=51) can be found on campus A, near Faculty of Chemistry Building.
 
   utter_location:
-    - text: |
+    - text: >
         Tools to help you find and navigate the University:
+
         - Google Maps: [TUL on Google Maps](https://www.google.com/maps/place/Lodz+University+of+Technology/)
+
         - Campus map: [Kampus 2.0](https://nav.p.lodz.pl/)
+
         - NaviPŁ app: [naviPŁ](https://mapa.p.lodz.pl/)
 
   utter_ife_location:
@@ -325,34 +340,42 @@ responses:
         [IFE (International Faculty of Engineering)](https://mapa.p.lodz.pl/?geo=38) can be found on campus A, near Faculty of Chemistry
 
   utter_unknown_location:
-    - text: |
+    - text: >
         Sorry, but I do not know which location you are reffering to.
         I may lack information about it.
 
   utter_admission_deadlines:
-    - text: |
+    - text: >
         For first cycle studies (Bachelor) admission opens as early as June and closes late September.
         For summer semester of second-cycle (Masters) it opens in December and closes in March.
-        Specific dates can be found here: \
-        https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+        Precise dates can be found here: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
 
   utter_first_round:
-    - text: |
-        The first round of admission for second cycle study (Masters) typically opens in early December.
-        Make sure to check the deadline for specific dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+    - text: >
+        The first round of admission for first cycle study (Bachelors) typically opens in early June.
+        Make sure to check the deadline for precise dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
 
   utter_second_round:
-    - text: |
-        The first round of admission for second cycle study (Masters) typically opens in early February.
-        Make sure to check the deadline for specific dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+    - text: >
+        The second round of admission for first cycle study (Bachelors) typically opens in early February.
+        Make sure to check the deadline for precise dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
 
-  utter_admission_deadline_nocontext:
+  utter_masters_semesters:
+    - text: Second cycle studies don't have multiple rounds of admission instead you can apply for winter semester or summer semester.
+
+  utter_winter_semester_admission:
+    - text: The winter semester admission typically starts in early September and ends in October
+
+  utter_summer_semester_admission:
+    - text: The summer semester admission typically starts in early July and ends in late March.
+
+  utter_admission_deadline_table:
     - text: |
-        Sorry, I do not poses the ability to check which deadline is applicable right know.
+        Make sure to check online for precise dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
 
   utter_where_to_register:
-    - text: |
-        In order to participate in the admission process you have to register \
+    - text: >
+        In order to participate in the admission process you have to register
         on the online [Candidate Portal](https://apply.p.lodz.pl/en/apply).
 
   utter_registration_deadline:
@@ -360,7 +383,7 @@ responses:
         You can register on the Candidate Portal at any time
 
   utter_admission_qualification_rules:
-    - text: |
+    - text: >
         Unfortunately I do not poses the ability to give you the exact qualification rules for a study field.
         You can find the table of qualification rules here: https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules
 
@@ -412,6 +435,11 @@ responses:
         The Language Centre website is: https://www.cj.p.lodz.pl/in-english/about-us/language-centre
         There also are basic Polish courses for beginners, details at: https://www.cj.p.lodz.pl/in-english/for-intl-student/polish-courses
 
+  utter_language_center_fees:
+    - text: >
+        There are no fees for studying as a student at the language centre in the regular cirrculurum.
+        You can however participate in additional lessons and there are fees for 30,40 and 60 additional hours of lessons.
+
   utter_doctor_fees:
     - text: |
         The medical examinations are free of charge if performed by one of the entities with a signed agreement. More details at:
@@ -432,6 +460,23 @@ responses:
         In June 2025, the latest version of the relevant document is from June 2024: https://p.lodz.pl/en/students/announcements/announcement-vice-rector-student-affairs-lodz-university-technology-10-june-2024
         Details regarding subject failure fees for foreign students are also explained in the application portal at:
         https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships#first_cycle_studies%3Eother_fees
+
+  utter_fee_kinds:
+    - text: >
+        There are a couple fees you might run into while studying at TUL:
+          - doctor/medical examination fees
+          - fee for the student card
+          - accommodation fees
+          - recruitation fees
+
+  utter_summer_break_duration:
+    - text: >
+        The summer break lasts 3 months - July till September
+
+  utter_accommodation_location:
+    - text: >
+        Student dormitories are mainly placed along Politechnika avenue with the exception of campus F
+        which is located near Pomorska street.
 
 actions:
   - action_utter_deadline

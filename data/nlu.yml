@@ -188,6 +188,7 @@ nlu:
       - so so perfect
       - so good
       - so perfect
+      - good to hear
 
   - intent: mood_unhappy
     examples: |
@@ -249,7 +250,8 @@ nlu:
       - When does the [summer semester](date) start?
       - When does the [exam session](date) start?
       - When do [exams](date) take place?
-      - when does the [first round of admission](date) start
+      - [Bachelors](study_cycle) [first round of admission](date)
+      - [second round of admission](date)
 
   - intent: ask_admission_steps
     examples: |
@@ -257,7 +259,10 @@ nlu:
       - What are the steps required to apply for [Computer Science](field_of_study)?
       - admission steps
       - What are the steps to apply?
+      - What are the steps to enroll?
       - how can i apply?
+      - steps to enroll
+      - steps to apply
 
   - intent: ask_location
     examples: |
@@ -265,6 +270,8 @@ nlu:
       - where
       - Location?
       - location
+      - [IFE](location) location?
+      - Where is [IFE](location)?
       - Where is [TUL](location)?
       - Where can I find [TUL](location)?
       - Where can I find [Alchemium](location)?
@@ -272,15 +279,28 @@ nlu:
       - How do I navigate [the university](location)?
       - How do I arrive to [student dormitory](location)?
       - how can i [register](deadline) on the [candidate portal](location)
+      - where is the [library](location)?
+      - Where are the [dormitories](location)?
+      - can you tell me where is the [library](location)?
+      - please, tell me where is [the university](location)?
 
   - intent: ask_existence
     examples: |
       - Is there a [library](location)?
       - Does the university have a [snack bar](location)?
+      - Do TUL have a [library](location)?
       - Are there any [quiet places to study](location)?
       - Can I find a [sports centre](location) on the university campus?
+      - Can I find a [library](location)?
       - Are there any [semester breaks](date)?
       - Are there any [holidays](date) during academic year?
+      - any [semester breaks](date)?
+      - any [holidays](date)?
+
+  - intent: ask_fee_existance
+    examples: |
+      - [accommodation](fee) fees?
+      - Are there any [accommodation](fee) fees?
 
   - intent: ask_student_clubs
     examples: |
@@ -302,7 +322,8 @@ nlu:
   - intent: ask_book_rental
     examples: |
       - Renting books
-      - Can I rent books?
+      - Can I rent books from the TUL library?
+      - Does the library allow book rental?
 
   # my questions start (Bartek)
 
@@ -407,6 +428,7 @@ nlu:
       - How much do medical exams cost?
       - How much to pay for doctor?
       - How much for doctor examination?
+      - medical exam fees
 
   - intent: ask_failure_fees
     examples: |
@@ -431,7 +453,6 @@ nlu:
       - Are there dormitories at TUL?
       - How many dormitories are there?
       - How many people per room in dormitory?
-      - Where are the dormitories?
       - Where can I live?
 
   - intent: ask_language_courses
@@ -443,3 +464,10 @@ nlu:
       - How long is a language course?
       - Where are language lessons?
       - Can I learn Spanish?
+
+  - intent: out_of_scope
+    examples: |
+      - is it right for me?
+      - would [Business Studies](field_of_study) fit me?
+      - is [Computer Science](field_of_study) interesting?
+      - is it interesting?
