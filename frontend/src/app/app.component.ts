@@ -63,7 +63,7 @@ export class AppComponent implements AfterViewChecked {
         this.messages.update((prev) => {
           const last_id = (prev.length == 0) ? 0 : prev[prev.length - 1].id;
           return [...prev, { id: last_id + 1, text: message, botMessage: true }];
-        })
+        });
       }
     })
     console.log("Marked test:", marked.parse("**bold** and _italic_"));
@@ -191,5 +191,17 @@ export class AppComponent implements AfterViewChecked {
 
   renderMarkdown(text: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(<string>marked.parse(text));
+  }
+
+  getSources(message: string): { url: string, text: string }[] {
+    const regex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+    const found: { url: string, text: string }[] = [];
+    let match;
+    while ((match = regex.exec(message)) !== null) {
+      found.push({ text: match[1], url: match[2] });
+    }
+    return found.filter((src, idx, arr) =>
+      arr.findIndex(s => s.url === src.url) === idx
+    );
   }
 }

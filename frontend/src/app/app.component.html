@@ -47,6 +47,11 @@
         <div class="message" [class.message-bot]="message.botMessage" [class.message-user]="!message.botMessage">
           <span *ngIf="message.botMessage; else userText" [innerHTML]="renderMarkdown(message.text)"></span>
           <ng-template #userText>{{message.text}}</ng-template>
+          <div *ngIf="message.botMessage && getSources(message.text).length > 0" class="sources-inline">
+            <ng-container *ngFor="let src of getSources(message.text)">
+              <a class="source-pill" [href]="src.url" target="_blank" rel="noopener noreferrer">{{src.text}}</a>
+            </ng-container>
+          </div>
         </div>
       }
     </div>
