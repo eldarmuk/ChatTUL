@@ -53,6 +53,22 @@ nlu:
   - intent: ask_field_info
     examples: |
       - Tell me about [Computer Science](field_of_study) at TUL.
+      - I want to know about [Business Studies](field_of_study).
+      - What is the [Architecture](field_of_study) programme?
+      - Give me details about [Information Technology](field_of_study).
+      - What can I study at TUL?
+      - What fields of study are available?
+      - Information about [Modelling and Data Science](field_of_study).
+      - Tell me about [Digital Management](field_of_study).
+      - I want to know about [Advanced Biobased and Bioinspired Materials](field_of_study).
+      - What is the [Biomedical Engineering and Technologies](field_of_study) programme?
+      - Give me details about [Business, Society and Technology](field_of_study).
+      - Information about [Electronic and Telecommunication Engineering](field_of_study).
+      - Tell me about [Industrial Biotechnology](field_of_study).
+      - I want to know about [Mathematical Methods in Data Analysis](field_of_study).
+      - What is the [Mechanical Engineering](field_of_study) programme?
+      - Give me details about [Textiles and Fashion Industry](field_of_study).
+      - Tell me about [Computer Science](field_of_study) at TUL.
       - I want to know about [Computer Science](field_of_study).
       - What is the [Computer Science](field_of_study) programme?
       - Give me details about [Computer Science](field_of_study).
@@ -66,12 +82,38 @@ nlu:
       - What is the duration of [Computer Science](field_of_study)?
       - How many semesters for [Computer Science](field_of_study)?
       - Duration of [Computer Science](field_of_study)?
+      - How long is the [Business Studies](field_of_study) programme?
+      - What is the duration of [Architecture](field_of_study)?
+      - How many semesters for [Information Technology](field_of_study)?
+      - Duration of [Modelling and Data Science](field_of_study)?
+      - How long is the [Digital Management](field_of_study) programme?
+      - What is the duration of [Advanced Biobased and Bioinspired Materials](field_of_study)?
+      - How many semesters for [Biomedical Engineering and Technologies](field_of_study)?
+      - Duration of [Business, Society and Technology](field_of_study)?
+      - How long is the [Electronic and Telecommunication Engineering](field_of_study) programme?
+      - What is the duration of [Industrial Biotechnology](field_of_study)?
+      - How many semesters for [Mathematical Methods in Data Analysis](field_of_study)?
+      - Duration of [Mechanical Engineering](field_of_study)?
+      - How long is the [Textiles and Fashion Industry](field_of_study) programme?
 
   - intent: ask_degree_title
     examples: |
       - What title do I get after [Computer Science](field_of_study)?
       - What is the awarded degree for [Computer Science](field_of_study)?
       - What professional title will I receive?
+      - What title do I get after [Business Studies](field_of_study)?
+      - What is the awarded degree for [Architecture](field_of_study)?
+      - What title do I get after [Information Technology](field_of_study)?
+      - What is the awarded degree for [Modelling and Data Science](field_of_study)?
+      - What title do I get after [Digital Management](field_of_study)?
+      - What is the awarded degree for [Advanced Biobased and Bioinspired Materials](field_of_study)?
+      - What title do I get after [Biomedical Engineering and Technologies](field_of_study)?
+      - What is the awarded degree for [Business, Society and Technology](field_of_study)?
+      - What title do I get after [Electronic and Telecommunication Engineering](field_of_study)?
+      - What is the awarded degree for [Industrial Biotechnology](field_of_study)?
+      - What title do I get after [Mathematical Methods in Data Analysis](field_of_study)?
+      - What is the awarded degree for [Mechanical Engineering](field_of_study)?
+      - What title do I get after [Textiles and Fashion Industry](field_of_study)?
 
   - intent: ask_transfer
     examples: |

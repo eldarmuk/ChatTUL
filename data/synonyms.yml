@@ -5,15 +5,33 @@ nlu:
     examples: |
       - TUL
       - the university
+      - PL
+      - Politechnika
+      - Politechnika Łódzka
+      - Politechnika Lodzka
+      - Lodz Tech
+      - Technical University of Lodz
+      - Lodz Polytechnic
 
   - synonym: Chemical Department
     examples: |
       - Alchemium
+      - Alchem
+      - Chemistry Department
+      - Department of Chemistry
 
   - synonym: research groups
     examples: |
       - student clubs
+      - student research groups
+      - scientific circles
+      - research teams
+      - student organizations
 
   - synonym: summer break
     examples: |
       - summer holiday
+      - summer vacation
+      - summer recess
+      - summer holidays
+      - summer leave
