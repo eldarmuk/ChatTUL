@@ -1,14 +1,91 @@
-<main>
-  <div class="conversation-flow">
-    @for(message of messages(); track message.id) {
-    <p class="message" [class.message-bot]="message.botMessage" [class.message-user]="!message.botMessage">
-      {{message.text}}
-    </p>
-    }
+<!-- Main application content -->
+<main class="main-content">
+  <!-- Your existing main content would go here -->
+  <h1>Welcome to our website</h1>
+  <p>This is the main content area. The chatbot will appear when you click the button below.</p>
+</main>
+
+<!-- Chatbot toggle button -->
+<button class="chatbot-toggle-btn" (click)="toggleChatbot()" [class.active]="isChatbotOpen()">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.48 2 2 6.48 2 12C2 13.54 2.36 14.99 3.01 16.28L2 22L7.72 20.99C9.01 21.64 10.46 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C10.74 20 9.54 19.69 8.5 19.14L8.12 18.91L4.91 19.82L5.82 16.61L5.59 16.23C5.05 15.19 4.74 14 4.74 12.74C4.74 7.58 8.84 3.48 14 3.48C19.16 3.48 23.26 7.58 23.26 12.74C23.26 17.9 19.16 22 14 22H12Z" fill="currentColor"/>
+  </svg>
+</button>
+
+<!-- Chatbot overlay -->
+<div class="chatbot-overlay" [class.open]="isChatbotOpen()" (click)="closeChatbot()"></div>
+
+<!-- Chatbot container -->
+<div class="chatbot-container" [class.open]="isChatbotOpen()" [class.minimized]="isChatbotMinimized()">
+  <!-- Chatbot header -->
+  <div class="chatbot-header">
+    <h3 class="chatbot-title">ChatTUL</h3>
+    <div class="chatbot-controls">
+      <button class="control-btn dots-btn" (click)="toggleOptionsMenu()" [class.active]="isOptionsMenuOpen()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="3" cy="8" r="1.5" fill="currentColor"/>
+          <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
+          <circle cx="13" cy="8" r="1.5" fill="currentColor"/>
+        </svg>
+      </button>
+      <button class="control-btn minimize-btn" (click)="minimizeChatbot()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 8H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="control-btn close-btn" (click)="showCloseConfirmation()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <form (submit)="this.onSubmit($event)">
-    <input type="text" (change)="this.updateUserInput($event)" [value]="userMessageValue">
-    <button type="submit">Send</button>
-  </form>
-</main>
+  <!-- Options menu -->
+  <div class="options-menu" [class.open]="isOptionsMenuOpen()">
+    <button class="option-btn" (click)="newChat()">New chat</button>
+    <button class="option-btn" (click)="refreshChat()">Refresh</button>
+    <button class="option-btn" (click)="endChat()">End Chat</button>
+  </div>
+
+  <!-- Chatbot messages area -->
+  <div class="chatbot-messages" #messagesContainer>
+    <div class="conversation-flow">
+      @for(message of messages(); track message.id) {
+        <div class="message" [class.message-bot]="message.botMessage" [class.message-user]="!message.botMessage">
+          {{message.text}}
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Chatbot input area -->
+  <div class="chatbot-input-area">
+    <form (submit)="onSubmit($event)" class="message-form">
+      <input 
+        type="text" 
+        class="message-input"
+        placeholder="Type here..."
+        (input)="updateUserInput($event)" 
+        [value]="userMessageValue"
+        #messageInput>
+      <button type="submit" class="send-btn" [disabled]="!userMessageValue.trim()">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3L10 17M10 3L4 9M10 3L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Close confirmation modal -->
+<div class="modal-overlay" [class.open]="showCloseModal()" (click)="hideCloseConfirmation()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <h4>End Chat Session?</h4>
+    <p>Are you sure you want to end this chat session? All messages will be lost.</p>
+    <div class="modal-actions">
+      <button class="modal-btn cancel-btn" (click)="hideCloseConfirmation()">Cancel</button>
+      <button class="modal-btn confirm-btn" (click)="confirmEndChat()">End Chat</button>
+    </div>
+  </div>
+</div>
