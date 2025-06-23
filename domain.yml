@@ -440,6 +440,8 @@ actions:
   - action_eligibility_info
   - action_mobility_info
   - action_credits_info
+  - action_ask_eligibility
+  - action_ask_fees
 
 session_config:
   session_expiration_time: 60
