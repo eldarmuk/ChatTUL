@@ -51,7 +51,11 @@ class ActionFieldInfo(Action):
             text += f"- Duration: {info['duration_semesters']} semesters ({info['duration_years']} years)\n"
             text += f"- Title: {info['title']}\n"
             text += f"- Highlights: {', '.join(info['curriculum_highlights'])}\n"
-            text += f"More details: {info['url']}"
+            urls = info.get('urls', [])
+            if urls:
+                text += "More details:\n"
+                for url in urls:
+                    text += f"- {url}\n"
             dispatcher.utter_message(text=text)
         else:
             dispatcher.utter_message(text="Please specify a valid field of study (e.g., Computer Science).")

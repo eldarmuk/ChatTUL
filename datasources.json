@@ -16,9 +16,287 @@
         "Data analysis, machine learning, artificial intelligence",
         "Modern educational techniques: Problem Based Learning, Design Thinking, Case Study",
         "Access to unique research labs (3D cave, multimedia, mixed reality)",
-        "Internships with companies like Accenture, Corning, Ericsson, MakoLab"
+        "Internships with companies like Accenture, Corning, Ericsson, MakoLab, IBM"
       ],
-      "url": "https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science"
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=pl&wersja202526=true&s=programKsztalcenia&pk=computer%20science&v=4"
+      ]
+    },
+    "Business Studies": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 6,
+      "duration_years": 3,
+      "title": "bachelor (licencjat)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Fundamentals of economics and management",
+        "Financial accounting and management",
+        "Marketing and sales strategies",
+        "Project management",
+        "Business law and ethics",
+        "International business operations",
+        "Internships with companies like Amcor, B/S/H, Corning, Dell, Rossmann"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-business-studies",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=pl&wersja202526=true&s=programKsztalcenia&pk=business%20studies&v=4"
+      ]
+    },
+    "Architecture": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 8,
+      "duration_years": 4,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English/Polish",
+      "curriculum_highlights": [
+        "Architectural design and theory",
+        "Urban planning and landscape architecture",
+        "Building technology and materials",
+        "Sustainable architecture practices",
+        "Digital design tools and BIM",
+        "Internships with architectural firms and projects"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-architecture-english",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=pl&wersja202526=true&s=programKsztalcenia&pk=architecture&v=4"
+      ]
+    },
+    "Information Technology": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Software engineering and development",
+        "Network and system administration",
+        "Cybersecurity fundamentals",
+        "Computer Graphics and Multimedia",
+        "IT project management",
+        "Internships with IT companies like Accenture, Asseco, Atos, CD Project, CI Games"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-information-technology",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=pl&wersja202526=true&s=programKsztalcenia&pk=information%20technology&v=4"
+      ]
+    },
+    "Modelling and Data Science": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 8,
+      "duration_years": 4,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Data analysis and visualization",
+        "Machine learning and AI applications",
+        "Statistical modeling techniques",
+        "Big data technologies and tools",
+        "Internships with data science companies like Ericsson, tomtom, Corning, and local startups"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-modelling-and-data-science",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=pl&wersja202526=true&s=programKsztalcenia&pk=modeling%20and%20data%20science&v=4"
+      ]
+    },
+    "Digital Management": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Digital technologies and data analysis",
+        "Design and management of digital business solutions",
+        "Visualization and presentation of data",
+        "IT and management in the digital economy",
+        "Modern learning methods: Design Thinking, Problem Based Learning, Challenge Based Learning, Flipped Education",
+        "Internships with digital agencies and tech companies"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-digital-management",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Digital%20Management&v=4"
+      ]
+    },
+    "Advanced Biobased and Bioinspired Materials": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 8,
+      "duration_years": 4,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Interdisciplinary training in chemistry, biology, medicine, physics, and engineering",
+        "Design, synthesis, and analysis of functional biobased and bioinspired materials",
+        "Focus on biomedical applications, sustainability, and renewable raw materials",
+        "Modern educational methods: real-world problem solving and group work",
+        "Major subjects: biochemistry, biophysics, biomaterials, nanomaterials, polymer composites, life cycle and biodegradation",
+        "Mandatory Mobility Semester at a foreign university",
+        "Internships with companies in the biobased sector"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-advanced-biobased-and-bioinspired-materials",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Advanced%20Biobased%20and%20Bioinspired%20Materials&v=4"
+      ]
+    },
+    "Biomedical Engineering and Technologies": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Integration of engineering, medicine, and life sciences",
+        "Computer science, mechanics, and robotics from the first year",
+        "Progressive learning: anatomy, biological processes, sensors, artificial organs",
+        "Design and development of advanced medical equipment and systems",
+        "Applications of biomaterials for direct contact with human tissues",
+        "Collaboration with physicians on diagnostic and therapeutic technologies",
+        "Study in English with focus on specialized medical vocabulary",
+        "Internships with companies in the biomedical sector like Proteo, Znam, Centrum Druku 3D, Ortopro, Medgal"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-biomedical-engineering-and-technologies",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Biomedical%20Engineering%20and%20Technologies&v=4"
+      ]
+    },
+    "Business, Society and Technology": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 8,
+      "duration_years": 4,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English/French",
+      "curriculum_highlights": [
+        "Integration of management, quality sciences, and technical sciences",
+        "Focus on digital economy, Industry 4.0, and enterprise process evaluation",
+        "Project-based learning: Problem Based Learning, Design Thinking, Flipped Education",
+        "Flexible education model with ECIU micro-modules and personalized learning",
+        "Preparation for modern workforce: management, economics, engineering, automation, and robotics",
+        "Internships with companies like Accenture, amazon, B/S/H, Fujitsu, Vescom, faurecia"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-business-society-and-technology-englishfrench",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Business,%20Society%20and%20Technology&v=4"
+      ]
+    },
+    "Electronic and Telecommunication Engineering": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Analysis and design of electronic circuits and microprocessor systems",
+        "Software development for embedded and IoT applications",
+        "Modern fiber-optic and wireless telecommunications networks (including 5G)",
+        "Project- and laboratory-based learning with teamwork and soft skills development",
+        "Preparation for Industry 4.0 and international careers",
+        "Internships with companies like ABB, B/S/H, Ericsson, Corning, Harman, Optomer, Orange, Printor"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-electronic-and-telecommunication-engineering",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=electronic%20and%20telecommunication%20engineering&v=4#"
+      ]
+    },
+    "Industrial Biotechnology": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Application of biological systems and enzymes in industrial processes",
+        "Genetic engineering and molecular biology techniques",
+        "Design of sustainable bioprocesses for food, chemical, pharmaceutical, energy, and environmental industries",
+        "Development of innovative bioproducts and bioenergy",
+        "Interdisciplinary training valued by life-science employers",
+        "Internships with companies in the biotechnology sector like Mabion, Biotechnika, Bilberry, Veolia"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-industrial-biotechnology",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Industrial%20Biotechnology&v=4"
+      ]
+    },
+    "Mathematical Methods in Data Analysis": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English",
+      "curriculum_highlights": [
+        "Mathematical foundations for data analysis and model evaluation",
+        "Data mining, classification, and forecasting techniques",
+        "Programming skills for practical data analysis applications",
+        "Soft skills and English for international career readiness",
+        "Internships with companies in sectors like Infosys, Epruf, Commerzbank, and ING Tech"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-mathematical-methods-data-analysis",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Mathematical%20Methods%20in%20Data%20Analysis&v=4"
+      ]
+    },
+    "Mechanical Engineering": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 8,
+      "duration_years": 4,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English/Polish",
+      "curriculum_highlights": [
+        "Comprehensive engineering education with IT, management, and language skills",
+        "Design of mechanical, electronic, and mechatronic devices",
+        "Basics of biomedical engineering and advanced materials",
+        "Use of professional CAD/CAM and engineering software",
+        "Preparation for careers in automotive, aviation, and manufacturing industries",
+        "Internships at leading companies like B/S/H, Hitachi Energy, Corning, Miele"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-mechanical-engineering",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Mechanical%20Engineering&v=4"
+      ]
+    },
+    "Textiles and Fashion Industry": {
+      "cycle": "first-cycle",
+      "cycle_pl": "studia pierwszego stopnia",
+      "duration_semesters": 7,
+      "duration_years": 3.5,
+      "title": "engineer (inżynier)",
+      "mode": "full time",
+      "language": "English/Polish",
+      "curriculum_highlights": [
+        "Interdisciplinary approach to textile and fashion industries",
+        "Innovative creation of solutions for modern textile and clothing sectors",
+        "Application of biotechnology, electrical engineering, and nanotechnology",
+        "Development of smart textiles, biomaterials, and 3D textile products",
+        "Use of textiles in clothing, medical, protective, and technical applications",
+        "Internships with leading textile companies and fashion brands like Monnari, Top Secret, Marilyn, BowiStyl"
+      ],
+      "urls": [
+        "https://apply.p.lodz.pl/en/kierunek/first-cycle-textiles-and-fashion-industry-english",
+        "https://programy.p.lodz.pl/ectslabel-web/?l=en&wersja202526=true&s=programKsztalcenia&pk=Textiles%20and%20Fashion%20Industry&v=4"
+      ]
     }
   },
   "transfer": {
