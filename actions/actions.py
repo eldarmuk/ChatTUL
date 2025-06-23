@@ -99,3 +99,103 @@ class ActionUtterDeadline(Action):
             text="You should check [deadlines page](https://apply.p.lodz.pl/en/enrollment/enroll/deadlines) for precise dates"
         )
         return []
+
+class ActionTransferInfo(Action):
+    def name(self) -> Text:
+        return "action_transfer_info"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        transfer = DATA.get("transfer", {})
+        summary = transfer.get("summary", [])
+        urls = transfer.get("urls", [])
+        contacts = transfer.get("contacts", [])
+        notes = transfer.get("notes", "")
+        text = "Transfer to TUL:\n"
+        for line in summary:
+            text += f"- {line}\n"
+        if contacts:
+            text += f"Contact: {', '.join(contacts)}\n"
+        if urls:
+            text += "More details:\n"
+            for url in urls:
+                text += f"- {url}\n"
+        if notes:
+            text += f"Note: {notes}\n"
+        dispatcher.utter_message(text=text)
+        return []
+
+class ActionEligibilityInfo(Action):
+    def name(self) -> Text:
+        return "action_eligibility_info"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        eligibility = DATA.get("eligibility", {})
+        eu = eligibility.get("EU", {})
+        non_eu = eligibility.get("non-EU", {})
+        text = "Eligibility requirements:\n"
+        if eu:
+            text += "For EU/EEA applicants:\n"
+            for line in eu.get("summary", []):
+                text += f"- {line}\n"
+            urls = eu.get("urls", [])
+            if urls:
+                text += "More details:\n"
+                for url in urls:
+                    text += f"- {url}\n"
+        if non_eu:
+            text += "For non-EU applicants:\n"
+            for line in non_eu.get("summary", []):
+                text += f"- {line}\n"
+            urls = non_eu.get("urls", [])
+            if urls:
+                text += "More details:\n"
+                for url in urls:
+                    text += f"- {url}\n"
+            if non_eu.get("notes"):
+                text += f"{non_eu['notes']}\n"
+        dispatcher.utter_message(text=text)
+        return []
+
+class ActionMobilityInfo(Action):
+    def name(self) -> Text:
+        return "action_mobility_info"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        mobility = DATA.get("mobility", {})
+        text = "Mobility options at TUL:\n"
+        for key, value in mobility.items():
+            text += f"{key}:\n"
+            for line in value.get("summary", []):
+                text += f"- {line}\n"
+            urls = value.get("urls", [])
+            if urls:
+                text += "More info:\n"
+                for url in urls:
+                    text += f"- {url}\n"
+        dispatcher.utter_message(text=text)
+        return []
+
+class ActionCreditsInfo(Action):
+    def name(self) -> Text:
+        return "action_credits_info"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        credits = DATA.get("credits", {})
+        text = ""
+        for line in credits.get("summary", []):
+            text += f"- {line}\n"
+        urls = credits.get("urls", [])
+        if urls:
+            text += "More details:\n"
+            for url in urls:
+                text += f"- {url}\n"
+        dispatcher.utter_message(text=text)
+        return []

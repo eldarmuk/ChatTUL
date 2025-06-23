@@ -9,7 +9,7 @@ stories:
         intent: ask_field_info
         entities:
           - field_of_study: "Computer Science"
-      - action: utter_field_info
+      - action: action_field_info
 
   - story: test duration
     steps:
@@ -102,3 +102,58 @@ stories:
           are you a bot?
         intent: bot_challenge
       - action: utter_iamabot
+
+  - story: test transfer info action
+    steps:
+      - user: |
+          Can you tell me about transfer to TUL?
+        intent: ask_transfer
+      - action: action_transfer_info
+
+  - story: test eligibility info action
+    steps:
+      - user: |
+          What are the eligibility requirements?
+        intent: ask_eligibility
+      - action: action_eligibility_info
+
+  - story: test mobility info action
+    steps:
+      - user: |
+          What mobility options are available?
+        intent: ask_mobility
+      - action: action_mobility_info
+
+  - story: test credits info action
+    steps:
+      - user: |
+          Tell me about ECTS credits.
+        intent: ask_credits
+      - action: action_credits_info
+
+  - story: test field info Business Studies
+    steps:
+      - user: |
+          Tell me about Business Studies at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Business Studies"
+      - action: action_field_info
+
+  - story: test duration Architecture
+    steps:
+      - user: |
+          How long is the Architecture programme?
+        intent: ask_duration
+        entities:
+          - field_of_study: "Architecture"
+      - action: utter_duration
+
+  - story: test degree title Information Technology
+    steps:
+      - user: |
+          What title do I get after Information Technology?
+        intent: ask_degree_title
+        entities:
+          - field_of_study: "Information Technology"
+      - action: utter_degree_title
