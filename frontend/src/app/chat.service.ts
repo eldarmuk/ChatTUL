@@ -32,14 +32,9 @@ export class ChatService {
       });
 
       socket.on("connect", () => {
-        this.messages.next([
-          {
-            id: Date.now(),
-            text: "Hi! I'm ChatTUL, your AI assistant for all things related to recruitment at Lodz University of Technology.\n\nWhether you're a prospective student exploring your options or a first-year student looking for guidance, I'm here to help.\n\nFeel free to ask me anything about recruitment at Lodz University of Technology!",
-            botMessage: true,
-            rating: 0
-          }
-        ]);
+        const initial = "Hi! I'm ChatTUL, your AI assistant for all things related to recruitment at Lodz University of Technology.\n\nWhether you're a prospective student exploring your options or a first-year student looking for guidance, I'm here to help.\n\nFeel free to ask me anything about recruitment at Lodz University of Technology!";
+        this.messages.next([{ id: Date.now(), text: initial, botMessage: true, rating: 0 }]);
+        this.botMessage$.next(initial);
         subscriber.next(socket);
         this._socket = socket;
         this._conversation_id = session.conversation_id;
@@ -69,13 +64,5 @@ export class ChatService {
   
   sendMessage(text: string) {
     this._socket?.emit(USER_UTTERED, { message: text, session_id: this._conversation_id });
-    // Simulate bot response with Markdown-friendly, soft text
-    setTimeout(() => {
-      this.botMessage$.next(
-        "The main campuses of **Łódź University of Technology** are located on *Stefana Żeromskiego street*.\n\nIf you'd like to explore, you can gently use [naviPŁ](https://mapa.p.lodz.pl/) to see for yourself. 😊"
-      );
-    }, 300); // simulate slight delay
-    // Optionally, you can still emit to socket if needed:
-    // this._socket?.emit(USER_UTTERED, { message: text, session_id: this._conversation_id });
   }
 }

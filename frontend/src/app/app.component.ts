@@ -4,6 +4,9 @@ import { ChatService } from './chat.service';
 import { Session, SessionService } from './session.service';
 import { concatMap, EMPTY, Observable, Subscription, tap } from 'rxjs';
 import { Socket } from 'socket.io-client';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { marked } from 'marked';
+import { CommonModule } from '@angular/common';
 
 interface Message {
   id: number,
@@ -13,7 +16,7 @@ interface Message {
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -29,15 +32,15 @@ export class AppComponent implements AfterViewChecked {
 
   private _socket: Socket | undefined = undefined;
 
-  // Chatbot UI state
   isChatbotOpen = signal(false);
   isChatbotMinimized = signal(false);
   isOptionsMenuOpen = signal(false);
   showCloseModal = signal(false);
 
-  // Chat state
   messages = signal<Message[]>([]);
   userMessageValue = '';
+
+  private sanitizer = inject(DomSanitizer);
 
   ngOnInit() {
     this.sessionService.beginSession().pipe(
@@ -53,6 +56,8 @@ export class AppComponent implements AfterViewChecked {
       }
     })
 
+    console.log("Marked test:", marked.parse("**bold** and _italic_"));
+
     this.chatService.botMessage$.subscribe({
       next: (message) => {
         this.messages.update((prev) => {
@@ -61,6 +66,7 @@ export class AppComponent implements AfterViewChecked {
         })
       }
     })
+    console.log("Marked test:", marked.parse("**bold** and _italic_"));
   }
 
   ngAfterViewChecked() {
@@ -71,13 +77,11 @@ export class AppComponent implements AfterViewChecked {
     this.sessionService.endSession();
   }
 
-  // Chatbot UI methods
   toggleChatbot() {
     this.isChatbotOpen.update(open => !open);
     this.isChatbotMinimized.set(false);
     this.isOptionsMenuOpen.set(false);
-    
-    // Focus input when opening chatbot
+
     if (this.isChatbotOpen()) {
       setTimeout(() => {
         if (this.messageInput?.nativeElement) {
@@ -94,7 +98,6 @@ export class AppComponent implements AfterViewChecked {
   }
 
   minimizeChatbot() {
-    // Minimize functionality - this should minimize the entire chatbot, not just hide the body
     this.isChatbotOpen.set(false);
     this.isOptionsMenuOpen.set(false);
   }
@@ -115,10 +118,9 @@ export class AppComponent implements AfterViewChecked {
   confirmEndChat() {
     this.endChat();
     this.closeChatbot();
-    this.showCloseModal.set(false); // Make sure to explicitly set this to false
+    this.showCloseModal.set(false);
   }
 
-  // Chat functionality methods
   newChat() {
     this.messages.set([]);
     this.userMessageValue = '';
@@ -126,9 +128,7 @@ export class AppComponent implements AfterViewChecked {
   }
 
   refreshChat() {
-    // Refresh the current chat session
     this.isOptionsMenuOpen.set(false);
-    // Add any refresh logic here if needed
     console.log('Refreshing chat...');
   }
 
@@ -136,11 +136,7 @@ export class AppComponent implements AfterViewChecked {
     this.messages.set([]);
     this.userMessageValue = '';
     this.isOptionsMenuOpen.set(false);
-    
-    // End the session
     this.sessionService.endSession();
-    
-    // Disconnect from chat service
     this.chatService.disconnect();
   }
 
@@ -154,8 +150,7 @@ export class AppComponent implements AfterViewChecked {
       return [...prev, { id: last_id + 1, text: msg, botMessage: false }];
     })
     this.userMessageValue = '';
-    
-    // Focus input after sending message
+
     setTimeout(() => {
       if (this.messageInput?.nativeElement) {
         this.messageInput.nativeElement.focus();
@@ -182,7 +177,6 @@ export class AppComponent implements AfterViewChecked {
     }
   }
 
-  // Handle keyboard shortcuts
   onKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       if (this.showCloseModal()) {
@@ -193,5 +187,9 @@ export class AppComponent implements AfterViewChecked {
         this.closeChatbot();
       }
     }
+  }
+
+  renderMarkdown(text: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(<string>marked.parse(text));
   }
 }
