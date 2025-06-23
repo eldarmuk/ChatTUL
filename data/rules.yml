@@ -126,55 +126,53 @@ rules:
 #       - intent: ask_sports_updates
 #       - action: utter_ask_sports_updates
 
+# - rule: Respond to studying fees
+#   steps:
+#     - intent: ask_studying_fees
+#     - action: utter_studying_fees
 
+# - rule: Respond to recrutation fees
+#   steps:
+#     - intent: ask_recrutation_fees
+#     - action: utter_recrutation_fees
 
-  # - rule: Respond to studying fees
-  #   steps:
-  #     - intent: ask_studying_fees
-  #     - action: utter_studying_fees
+# - rule: Respond to accomodation
+#   steps:
+#     - intent: ask_accommodation
+#     - action: utter_accommodation
 
-  # - rule: Respond to recrutation fees
-  #   steps:
-  #     - intent: ask_recrutation_fees
-  #     - action: utter_recrutation_fees
+# - rule: Respond to accomodation fees
+#   steps:
+#     - intent: ask_accommodation_fees
+#     - action: utter_accommodation_fees
 
-  # - rule: Respond to accomodation
-  #   steps:
-  #     - intent: ask_accommodation
-  #     - action: utter_accommodation
+# - rule: Respond to student card fees
+#   steps:
+#     - intent: ask_student_card_fee
+#     - action: utter_student_card_fee
 
-  # - rule: Respond to accomodation fees
-  #   steps:
-  #     - intent: ask_accommodation_fees
-  #     - action: utter_accommodation_fees
+# - rule: Respond to doctor fees
+#   steps:
+#     - intent: ask_doctor_fees
+#     - action: utter_doctor_fees
 
-  # - rule: Respond to student card fees
-  #   steps:
-  #     - intent: ask_student_card_fee
-  #     - action: utter_student_card_fee
+# - rule: Respond to failure fees
+#   steps:
+#     - intent: ask_failure_fees
+#     - action: utter_failure_fees
 
-  # - rule: Respond to doctor fees
-  #   steps:
-  #     - intent: ask_doctor_fees
-  #     - action: utter_doctor_fees
+# - rule: Respond to all fees
+#   steps:
+#     - intent: ask_all_fees
+#     - action: utter_studying_fees
+#     - action: utter_recrutation_fees
+#     - action: utter_accommodation_fees
+#     - action: utter_student_card_fee
+#     - action: utter_doctor_fees
+#     - action: utter_failure_fees
 
-  # - rule: Respond to failure fees
-  #   steps: 
-  #     - intent: ask_failure_fees
-  #     - action: utter_failure_fees
-
-  # - rule: Respond to all fees
-  #   steps:
-  #     - intent: ask_all_fees
-  #     - action: utter_studying_fees
-  #     - action: utter_recrutation_fees
-  #     - action: utter_accommodation_fees
-  #     - action: utter_student_card_fee
-  #     - action: utter_doctor_fees
-  #     - action: utter_failure_fees
-
-  # - rule: Respond to language courses
-  #   steps:
-  #     - intent: ask_language_courses
-  #     - action: utter_language_courses
+# - rule: Respond to language courses
+#   steps:
+#     - intent: ask_language_courses
+#     - action: utter_language_courses
 
