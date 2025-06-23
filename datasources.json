@@ -306,7 +306,9 @@
       "Deadlines and detailed requirements are published annually.",
       "Contact the International Cooperation Centre for guidance."
     ],
-    "url": "https://apply.p.lodz.pl/en/enrollment/enroll/transfer",
+    "urls": [
+      "https://apply.p.lodz.pl/en/enrollment/enroll/transfer"
+    ],
     "contacts": [
       "foreignstudents@info.p.lodz.pl"
     ],
@@ -319,7 +321,9 @@
         "Required documents: secondary school certificate, transcript, proof of English proficiency.",
         "Some programmes may require additional entrance exams or interviews."
       ],
-      "url": "https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules"
+      "urls": [
+        "https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules"
+      ]
     },
     "non-EU": {
       "summary": [
@@ -328,7 +332,9 @@
         "Nostrification of documents may be necessary for some countries.",
         "Contact the International Cooperation Centre for individual advice."
       ],
-      "url": "https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules",
+      "urls": [
+        "https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules"
+      ],
       "notes": "Nostrification: https://p.lodz.pl/en/education/nostrification-diploma"
     }
   },
@@ -339,7 +345,9 @@
         "Partner universities across Europe.",
         "Application periods and partner lists are published annually."
       ],
-      "url": "https://www.p.lodz.pl/en/international-cooperation/erasmus"
+      "urls": [
+        "https://www.p.lodz.pl/en/international-cooperation/erasmus"
+      ]
     },
     "ECIU": {
       "summary": [
@@ -347,7 +355,9 @@
         "Students can participate in innovative challenge-based learning with ECIU partners.",
         "Opportunities for international collaboration and mobility."
       ],
-      "url": "https://www.p.lodz.pl/en/international-cooperation/eciu"
+      "urls": [
+        "https://www.p.lodz.pl/en/international-cooperation/eciu"
+      ]
     }
   },
   "credits": {
@@ -356,26 +366,36 @@
       "Credit recognition for previous studies is possible upon review.",
       "Part-time study options may be available for some programmes."
     ],
-    "url": "https://www.p.lodz.pl/en/education/study-regulations"
+    "urls": [
+      "https://www.p.lodz.pl/en/education/study-regulations"
+    ]
   },
   "partners": {
     "ECIU": {
-      "url": "https://www.p.lodz.pl/en/international-cooperation/eciu",
+      "urls": [
+        "https://www.p.lodz.pl/en/international-cooperation/eciu"
+      ],
       "list_page": "https://eciu.org/universities"
     },
     "Erasmus": {
-      "catalogue_url": "https://www.p.lodz.pl/en/international-cooperation/erasmus"
+      "catalogue_urls": [
+        "https://www.p.lodz.pl/en/international-cooperation/erasmus"
+      ]
     }
   },
   "contact": {
     "admissions": {
       "email": "foreignstudents@info.p.lodz.pl",
-      "url": "https://apply.p.lodz.pl/en/contact",
+      "urls": [
+        "https://apply.p.lodz.pl/en/contact"
+      ],
       "address": "International Cooperation Centre, Student Mobility Division, 36 Zwirki Str, 90-539 Lodz, building A16, room 113 (1st floor)"
     },
     "international": {
       "email": "foreignstudents@info.p.lodz.pl",
-      "url": "https://apply.p.lodz.pl/en/contact",
+      "urls": [
+        "https://apply.p.lodz.pl/en/contact"
+      ],
       "phone": "+48 42 638 38 64, +48 42 638 38 78, +48 42 638 38 63",
       "whatsapp": "+48 785 289 588",
       "facebook": "https://www.facebook.com/LodzUniversityofTechnology/?locale=pl_PL",
