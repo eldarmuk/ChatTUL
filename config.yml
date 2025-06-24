@@ -12,6 +12,7 @@ language: en
 
 pipeline:
   - name: WhitespaceTokenizer
+  - name: actions.text_normalizer.TextNormalizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer

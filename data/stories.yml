@@ -234,7 +234,7 @@ stories:
       - action: utter_doctor_fees
 
       - intent: ask_student_card_fee
-      - action:
+      - action: utter_student_card_fee
 
     #   - story: language_courses
     # steps:
