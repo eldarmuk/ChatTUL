@@ -1,31 +1,3 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-
 import json
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
@@ -134,29 +106,36 @@ class ActionEligibilityInfo(Action):
                   tracker: Tracker,
                   domain: DomainDict) -> List[Dict[Text, Any]]:
         eligibility = DATA.get("eligibility", {})
-        eu = eligibility.get("EU", {})
-        non_eu = eligibility.get("non-EU", {})
+        eu_eea = eligibility.get("EU_EEA", {})
+        non_eu_eea = eligibility.get("non_EU_EEA", {})
         text = "Eligibility requirements:\n"
-        if eu:
+        if eu_eea:
             text += "For EU/EEA applicants:\n"
-            for line in eu.get("summary", []):
+            for line in eu_eea.get("summary", []):
                 text += f"- {line}\n"
-            urls = eu.get("urls", [])
+            urls = eu_eea.get("urls", [])
             if urls:
                 text += "More details:\n"
                 for url in urls:
                     text += f"- {url}\n"
-        if non_eu:
-            text += "For non-EU applicants:\n"
-            for line in non_eu.get("summary", []):
+            if eu_eea.get("notes"):
+                text += f"{eu_eea['notes']}\n"
+        if non_eu_eea:
+            text += "For non-EU/EEA applicants:\n"
+            for line in non_eu_eea.get("summary", []):
                 text += f"- {line}\n"
-            urls = non_eu.get("urls", [])
+            recognition = non_eu_eea.get("recognition_requirements", [])
+            if recognition:
+                text += "Recognition requirements:\n"
+                for line in recognition:
+                    text += f"- {line}\n"
+            urls = non_eu_eea.get("urls", [])
             if urls:
                 text += "More details:\n"
                 for url in urls:
                     text += f"- {url}\n"
-            if non_eu.get("notes"):
-                text += f"{non_eu['notes']}\n"
+            if non_eu_eea.get("notes"):
+                text += f"{non_eu_eea['notes']}\n"
         dispatcher.utter_message(text=text)
         return []
 
