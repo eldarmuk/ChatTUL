@@ -6,7 +6,7 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ask_field_info
-      - action: utter_field_info
+      - action: action_field_info
       - intent: ask_duration
       - action: utter_duration
       - intent: ask_degree_title
@@ -137,7 +137,7 @@ stories:
       - intent: ask_field_info
         entities:
           - study_field: computer science
-      - action:
+      - action: action_field_info
 
   - story: grading system faq
     steps:
