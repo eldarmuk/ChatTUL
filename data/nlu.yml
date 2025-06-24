@@ -238,10 +238,10 @@ nlu:
 
   - intent: ask_date
     examples: |
-      - When the [first round of admission](date) [starts](date_type)?
-      - When the [first round of admission](date) for [Masters](study_cycle) [starts](date_type)?
-      - When does [second round of admission](date) [starts](date_type)?
-      - When does [second round of admission](date) [ends](date_type)?
+      - When the [first round of admission](date) [start](date_type)?
+      - When the [first round of admission](date) for [Masters](study_cycle) [start](date_type)?
+      - When does [second round of admission](date) [start](date_type)?
+      - When does [second round of admission](date) [end](date_type)?
       - When does [the academic year](date) start?
       - When does the [summer break](date) take place?
       - When does the [winter break](date) take place?
@@ -250,8 +250,8 @@ nlu:
       - When does the [summer semester](date) start?
       - When does the [exam session](date) start?
       - When do [exams](date) take place?
-      - [Bachelors](study_cycle) [first round of admission](date)
-      - [second round of admission](date)
+      - [Bachelors](study_cycle) [first round of admission](date) [end](date_type)
+      - [second round of admission](date) [start](date_type)
 
   - intent: ask_admission_steps
     examples: |
