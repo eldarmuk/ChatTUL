@@ -125,7 +125,7 @@ stories:
   - story: social media
     steps:
       - intent: ask_social_media
-      - utter: utter_ask_social_media
+      - action: utter_ask_social_media
 
   - story: retrieve contact
     steps:
@@ -248,12 +248,12 @@ stories:
   - story: academic year faq
     steps:
       - intent: ask_academic_year
-      - utter: utter_ask_academic_year
+      - action: utter_ask_academic_year
 
   - story: academic calendar faq
     steps:
       - intent: ask_academic_calendar
-      - utter: utter_ask_academic_calendar
+      - action: utter_ask_academic_calendar
 
   - story: Interested in university schedule 1
     steps:
