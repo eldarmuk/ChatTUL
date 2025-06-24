@@ -132,40 +132,26 @@ stories:
       - intent: ask_contact
       - action: utter_contact
 
-  - story: Ask about grading system and study fields
+  - story: retrieve field info
     steps:
-      - intent: greet
-      - action: utter_greet
+      - intent: ask_field_info
+        entities:
+          - study_field: computer science
+      - action:
+
+  - story: grading system faq
+    steps:
       - intent: ask_grading_system
       - action: utter_grading
 
-      - intent: ask_field_info
-      - action: action_field_info
-
-      - intent: thanks
-      - action: utter_happy_to_help
-
-  - story: Inquire information about where to apply
-    steps:
-      - intent: greet
-      - action: utter_greet
-
-      - intent: ask_location
-        entities:
-          - location: candidate portal
-      - action: utter_candidate_portal_link
-
-      - intent: thanks
-      - action: utter_happy_to_help
-
-  - story: Interested in fees
+  - story: Interested in fees 1
     steps:
       - intent: greet
       - action: utter_greet
 
       - intent: ask_fee_existance
-      - action: utter_fee_kinds  
-      
+      - action: utter_fee_kinds
+
   - story: ask field info direct
     steps:
       - intent: ask_field_info
@@ -226,24 +212,15 @@ stories:
       - action: utter_doctor_fees
       - action: utter_failure_fees
 
-  - story: Wants to know about fees 1
+  - story: language courses faq
     steps:
-      - intent: ask_fee_existance
-      - action: utter_fee_kinds
+      - intent: ask_language_courses
+      - action: utter_language_courses
 
-      - intent: ask_failure_fees
-      - action: utter_failure_fees
-
-      - intent: ask_doctor_fees
-      - action: utter_doctor_fees
-
-      - intent: ask_student_card_fee
-      - action:
-
-    #   - story: language_courses
-    # steps:
-    #   - intent: ask_language_courses
-    #   - action: utter_language_courses
+  - story: admission deadlines faq
+    steps:
+      - intent: ask_deadline
+      - action: utter_admission_deadlines
 
   - story: Interested in the admission process 1
     steps:
