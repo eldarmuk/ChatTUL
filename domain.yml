@@ -3,6 +3,7 @@ version: "3.1"
 intents:
   - affirm
   - ask_academic_calendar
+  - ask_academic_year
   - ask_accommodation
   - ask_accommodation_fees
   - ask_admission_steps

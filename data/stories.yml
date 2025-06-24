@@ -376,19 +376,20 @@ stories:
       - action: utter_accommodation_location
       - action: utter_location
 
-  - story: Asks about language center
-    steps:
-      - intent: ask_language_courses
-      - action: utter_language_courses
+  #! @Marcin - story for language center isn't implemented yet
+  # - story: Asks about language center
+  #   steps:
+  #     - intent: ask_language_courses
+  #     - action: utter_language_courses
 
-      - intent: ask_location
-        entities:
-          - location: language center
-      - action: utter_language_center_location
+  #     - intent: ask_location
+  #       entities:
+  #         - location: language center
+  #     - action: utter_language_center_location
 
-      - intent: ask_fee_existance
-      - action: utter_fee_kinds
-      - action: utter_language_center_fees
+  #     - intent: ask_fee_existance
+  #     - action: utter_fee_kinds
+  #     - action: utter_language_center_fees
 # intent 'affirm' is not used in any story or rule.
 # intent 'ask_all_fees' is not used in any story or rule.
 # intent 'ask_breaks_holidays' is not used in any story or rule.
