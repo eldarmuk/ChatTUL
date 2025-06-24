@@ -157,15 +157,40 @@ responses:
 
   utter_eligibility:
     - text: |
-        For EU/EEA applicants:
-        - Apply under same rules as Polish citizens.
-        - Required: secondary school certificate, transcript, English proof.
-        More details: https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules
-        For non-EU applicants:
-        - Legalized/apostilled certificates, English proof, nostrification may be needed.
-        - Contact International Cooperation Centre for advice.
-        More details: https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules
-        Nostrification: https://p.lodz.pl/en/education/nostrification-diploma
+        For EU/EEA Applicants:
+        - Apply under the same rules as Polish citizens.
+        - Required documents:
+          - Secondary school certificate and transcript (apostilled/legalized as needed within EU/EEA).
+          - Proof of English proficiency (as required by the programme).
+        - Nostrification is not required for EU/EEA qualifications.
+        More details: [Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
+
+        ---
+
+        For Non-EU/Non-EEA Applicants:
+        - All foreign educational documents must be:
+          - Legalized/apostilled and translated into Polish or English (if required).
+          - Submitted with proof of English proficiency (minimum B2, depending on the programme).
+        - **IMPORTANT**: Starting from July 1, 2025 (for the 2025/2026 recruitment cycle), under the Act of April 4, 2025:
+          - Students must attach their recognition (nostrification) or NAWA statement during application, not after acceptance.
+          - Applies to applicants whose certificates come from countries outside EU, EFTA, or OECD, and not covered by a recognition agreement with Poland.
+
+        Required recognition documents:
+        - For Bachelor (first-cycle) or long-cycle programmes:
+          - A statement from the Director of NAWA confirming your secondary school certificate is equivalent to a Polish one.
+        - For Master (second-cycle) programmes:
+          - A NAWA statement or nostrification confirming your Bachelor’s diploma is recognized in Poland.
+
+        ❗ Contact the International Cooperation Centre early to prepare the recognition documents in time for recruitment deadlines. 
+
+        ---
+
+        More Resources:
+        - [Apply portal – Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
+        - [General info about nostrification at Lodz University of Technology](https://p.lodz.pl/en/education/nostrification-diploma)
+        - [NAWA – Recognition for academic purposes](https://nawa.gov.pl/en/recognition/recognition-for-academic-purposes/faq-frequently-asked-questions)
+        - [University of Warsaw – Additional requirements from 2025](https://rekrutacja.uw.edu.pl/en/additional-requirements-for-candidates-with-foreign-documents/)
+        - [Ministry of Education – Recognition system update](https://www.kuratorium.waw.pl/en/nostrification-of-certi/8177%2CRecognition-of-certificates-or-the-level-of-education-or-rights-to-continue-educ.html)
 
   utter_mobility:
     - text: |
@@ -381,12 +406,7 @@ responses:
 
   utter_registration_deadline:
     - text: |
-        You can register on the Candidate Portal at any time
-
-  utter_admission_qualification_rules:
-    - text: >
-        Unfortunately I do not poses the ability to give you the exact qualification rules for a study field.
-        You can find the table of qualification rules here: https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules
+        You can register on the Candidate Portal at any time.
 
   utter_admission_steps:
     - text: |
@@ -439,7 +459,7 @@ responses:
   utter_language_center_fees:
     - text: >
         There are no fees for studying as a student at the language centre in the regular cirrculurum.
-        You can however participate in additional lessons and there are fees for 30,40 and 60 additional hours of lessons.
+        You can however participate in additional lessons and there are fees for 30, 40 and 60 additional hours of lessons.
 
   utter_doctor_fees:
     - text: |
