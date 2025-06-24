@@ -301,6 +301,8 @@ nlu:
     examples: |
       - [accommodation](fee) fees?
       - Are there any [accommodation](fee) fees?
+      - [medical exam](fee) fees?
+      - What do I have to pay for?
 
   - intent: ask_student_clubs
     examples: |
