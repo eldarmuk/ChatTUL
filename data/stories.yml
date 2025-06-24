@@ -181,25 +181,25 @@ stories:
       - intent: ask_degree_title
       - action: utter_degree_title
 
-  # - story: studying_fees
-  #   steps:
-  #     - intent: ask_studying_fees
-  #     - action: utter_studying_fees
+  - story: studying_fees
+    steps:
+      - intent: ask_studying_fees
+      - action: utter_studying_fees
 
-  # - story: recrutation_fees
-  #   steps:
-  #     - intent: ask_recrutation_fees
-  #     - action: utter_recrutation_fees
+  - story: recrutation_fees
+    steps:
+      - intent: ask_recrutation_fees
+      - action: utter_recrutation_fees
 
-  # - story: accommodation
-  #   steps:
-  #     - intent: ask_accommodation
-  #     - action: utter_accommodation
-  
-  # - story: ask_accommodation_fees
-  #   steps:
-  #     - intent: ask_accommodation_fees
-  #     - action: utter_accommodation_fees
+  - story: accommodation
+    steps:
+      - intent: ask_accommodation
+      - action: utter_accommodation
+
+  - story: ask_accommodation_fees
+    steps:
+      - intent: ask_accommodation_fees
+      - action: utter_accommodation_fees
 
   - story: student_card_fees
     steps:
@@ -211,10 +211,10 @@ stories:
       - intent: ask_doctor_fees
       - action: utter_doctor_fees
 
-  # - story: failure_fees
-  #   steps: 
-  #     - intent: ask_failure_fees
-  #     - action: utter_failure_fees
+  - story: fee existence
+    steps:
+      - intent: ask_fee_existance
+      - action: utter_fee_kinds
 
   - story: all_fees
     steps:
@@ -263,11 +263,20 @@ stories:
           - location: candidate portal
       - action: utter_candidate_portal_link
 
+  - story: recruitation fees faq
+    steps:
       - intent: ask_recrutation_fees
       - action: utter_recrutation_fees
 
-      - intent: goodbye
-      - action: utter_goodbye
+  - story: academic year faq
+    steps:
+      - intent: ask_academic_year
+      - utter: utter_ask_academic_year
+
+  - story: academic calendar faq
+    steps:
+      - intent: ask_academic_calendar
+      - utter: utter_ask_academic_calendar
 
   - story: Interested in university schedule 1
     steps:
