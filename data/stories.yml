@@ -91,42 +91,46 @@ stories:
       - intent: thanks
       - action: utter_happy_to_help
 
-  - story: Ask location of buildings around campuses and contact
+  - story: existence of library
     steps:
-      - intent: ask_location
-        entities:
-          - location: null
-      - action: utter_university_location
-      - action: utter_location
-
-      - intent: ask_existence
+      - intent: ask_existance
         entities:
           - location: library
       - action: utter_library
 
-      - intent: ask_existence
+  - story: existence of quiet places
+    steps:
+      - intent: ask_existance
         entities:
           - location: quiet places to study
       - action: utter_student_places
       - action: utter_library
 
-      - intent: ask_location
+  - story: location of building + not specific
+    steps:
+      - intent: aks_location
         entities:
-          - location: library
-      - action: utter_library_location
+          - location: null
+      - action: utter_university_location
       - action: utter_location
 
+  - story: location of building + specific
+    steps:
       - intent: ask_location
         entities:
           - location: TUL
       - action: utter_university_location
       - action: utter_location
 
+  - story: social media
+    steps:
+      - intent: ask_social_media
+      - utter: utter_ask_social_media
+
+  - story: retrieve contact
+    steps:
       - intent: ask_contact
       - action: utter_contact
-
-      - intent: goodbye
-      - action: utter_goodbye
 
   - story: Ask about grading system and study fields
     steps:
@@ -409,4 +413,3 @@ stories:
 # intent 'ask_studying_fees' is not used in any story or rule.
 # intent 'ask_summer_break_duration' is not used in any story or rule.
 # intent 'utter_unknown_admission_process' is not used in any story or rule.
-
