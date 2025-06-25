@@ -1,8 +1,139 @@
 #### This file contains tests to evaluate that your bot behaves as expected.
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
-stories:
-  - story: test field info
+# stories:
+#   - story: test field info
+#     steps:
+#       - user: |
+#           Tell me about Computer Science at TUL.
+#         intent: ask_field_info
+#         entities:
+#           - field_of_study: "Computer Science"
+#       - action: action_field_info
+
+#   - story: test duration
+#     steps:
+#       - user: |
+#           How long is the Computer Science programme?
+#         intent: ask_duration
+#         entities:
+#           - field_of_study: "Computer Science"
+#       - action: utter_duration
+
+#   - story: test degree title
+#     steps:
+#       - user: |
+#           What title do I get after Computer Science?
+#         intent: ask_degree_title
+#         entities:
+#           - field_of_study: "Computer Science"
+#       - action: utter_degree_title
+
+#   - story: test transfer
+#     steps:
+#       - user: |
+#           How to transfer to Lodz University of Technology?
+#         intent: ask_transfer
+#       - action: utter_transfer
+
+#   - story: test eligibility EU
+#     steps:
+#       - user: |
+#           What documents do EU students need?
+#         intent: ask_eligibility
+#         entities:
+#           - origin_country: "Poland"
+#       - action: utter_eligibility
+
+#   - story: test eligibility non-EU
+#     steps:
+#       - user: |
+#           How does a Nigerian student apply?
+#         intent: ask_eligibility
+#         entities:
+#           - origin_country: "Nigeria"
+#       - action: utter_eligibility
+
+#   - story: test mobility
+#     steps:
+#       - user: |
+#           Tell me about Erasmus exchange
+#         intent: ask_mobility
+#       - action: utter_mobility
+
+#   - story: test credits
+#     steps:
+#       - user: |
+#           Minimum ECTS per semester?
+#         intent: ask_credits
+#       - action: utter_credits
+
+#   - story: test partners
+#     steps:
+#       - user: |
+#           Who are your ECIU partners?
+#         intent: ask_partners
+#       - action: utter_partners
+
+#   - story: test contact
+#     steps:
+#       - user: |
+#           Email for foreign students?
+#         intent: ask_contact
+#       - action: utter_contact
+
+#   - story: test fallback
+#     steps:
+#       - user: |
+#           I don't understand
+#         intent: fallback
+#       - action: utter_fallback
+
+#   - story: say goodbye
+#     steps:
+#       - user: |
+#           bye-bye!
+#         intent: goodbye
+#       - action: utter_goodbye
+
+#   - story: bot challenge
+#     steps:
+#       - user: |
+#           are you a bot?
+#         intent: bot_challenge
+#       - action: utter_iamabot
+
+#   - story: test transfer info action
+#     steps:
+#       - user: |
+#           Can you tell me about transfer to TUL?
+#         intent: ask_transfer
+#       - action: action_transfer_info
+
+#   - story: test eligibility info action
+#     steps:
+#       - user: |
+#           What are the eligibility requirements?
+#         intent: ask_eligibility
+#       - action: action_eligibility_info
+
+#   - story: test mobility info action
+#     steps:
+#       - user: |
+#           What mobility options are available?
+#         intent: ask_mobility
+#       - action: action_mobility_info
+
+#   - story: test credits info action
+#     steps:
+#       - user: |
+#           Tell me about ECTS credits.
+#         intent: ask_credits
+#       - action: action_credits_info
+
+  #!             FIELDS OF STUDY
+
+  - story: test field info Computer Science - formal
     steps:
       - user: |
           Tell me about Computer Science at TUL.
@@ -11,127 +142,25 @@ stories:
           - field_of_study: "Computer Science"
       - action: action_field_info
 
-  - story: test duration
+  - story: test field info Computer Science - casual
     steps:
       - user: |
-          How long is the Computer Science programme?
-        intent: ask_duration
+          Computer Science at TUL.
+        intent: ask_field_info
         entities:
           - field_of_study: "Computer Science"
-      - action: utter_duration
+      - action: action_field_info
 
-  - story: test degree title
+  - story: test field info Computer Science - abbreviated
     steps:
       - user: |
-          What title do I get after Computer Science?
-        intent: ask_degree_title
+          CS at TUL
+        intent: ask_field_info
         entities:
           - field_of_study: "Computer Science"
-      - action: utter_degree_title
+      - action: action_field_info
 
-  - story: test transfer
-    steps:
-      - user: |
-          How to transfer to Lodz University of Technology?
-        intent: ask_transfer
-      - action: utter_transfer
-
-  - story: test eligibility EU
-    steps:
-      - user: |
-          What documents do EU students need?
-        intent: ask_eligibility
-        entities:
-          - origin_country: "Poland"
-      - action: utter_eligibility
-
-  - story: test eligibility non-EU
-    steps:
-      - user: |
-          How does a Nigerian student apply?
-        intent: ask_eligibility
-        entities:
-          - origin_country: "Nigeria"
-      - action: utter_eligibility
-
-  - story: test mobility
-    steps:
-      - user: |
-          Tell me about Erasmus exchange
-        intent: ask_mobility
-      - action: utter_mobility
-
-  - story: test credits
-    steps:
-      - user: |
-          Minimum ECTS per semester?
-        intent: ask_credits
-      - action: utter_credits
-
-  - story: test partners
-    steps:
-      - user: |
-          Who are your ECIU partners?
-        intent: ask_partners
-      - action: utter_partners
-
-  - story: test contact
-    steps:
-      - user: |
-          Email for foreign students?
-        intent: ask_contact
-      - action: utter_contact
-
-  - story: test fallback
-    steps:
-      - user: |
-          I don't understand
-        intent: fallback
-      - action: utter_fallback
-
-  - story: say goodbye
-    steps:
-      - user: |
-          bye-bye!
-        intent: goodbye
-      - action: utter_goodbye
-
-  - story: bot challenge
-    steps:
-      - user: |
-          are you a bot?
-        intent: bot_challenge
-      - action: utter_iamabot
-
-  - story: test transfer info action
-    steps:
-      - user: |
-          Can you tell me about transfer to TUL?
-        intent: ask_transfer
-      - action: action_transfer_info
-
-  - story: test eligibility info action
-    steps:
-      - user: |
-          What are the eligibility requirements?
-        intent: ask_eligibility
-      - action: action_eligibility_info
-
-  - story: test mobility info action
-    steps:
-      - user: |
-          What mobility options are available?
-        intent: ask_mobility
-      - action: action_mobility_info
-
-  - story: test credits info action
-    steps:
-      - user: |
-          Tell me about ECTS credits.
-        intent: ask_credits
-      - action: action_credits_info
-
-  - story: test field info Business Studies
+  - story: test field info Business Studies - formal
     steps:
       - user: |
           Tell me about Business Studies at TUL.
@@ -140,20 +169,256 @@ stories:
           - field_of_study: "Business Studies"
       - action: action_field_info
 
-  - story: test duration Architecture
+  - story: test field info Business Studies - casual
     steps:
       - user: |
-          How long is the Architecture programme?
-        intent: ask_duration
+          Business Studies at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Business Studies"
+      - action: action_field_info
+
+  - story: test field info Architecture - formal
+    steps:
+      - user: |
+          Tell me about Architecture at TUL.
+        intent: ask_field_info
         entities:
           - field_of_study: "Architecture"
-      - action: utter_duration
+      - action: action_field_info
 
-  - story: test degree title Information Technology
+  - story: test field info Architecture - casual
     steps:
       - user: |
-          What title do I get after Information Technology?
-        intent: ask_degree_title
+          Architecture at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Architecture"
+      - action: action_field_info
+
+  - story: test field info Information Technology - formal
+    steps:
+      - user: |
+          Tell me about Information Technology at TUL.
+        intent: ask_field_info
         entities:
           - field_of_study: "Information Technology"
-      - action: utter_degree_title
+      - action: action_field_info
+
+  - story: test field info Information Technology - casual
+    steps:
+      - user: |
+          Information Technology at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Information Technology"
+      - action: action_field_info
+
+  - story: test field info Information Technology - abbreviated
+    steps:
+      - user: |
+          IT at TUL
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Information Technology"
+      - action: action_field_info
+
+  - story: test field info Modelling and Data Science - formal
+    steps:
+      - user: |
+          Tell me about Modelling and Data Science at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Modelling and Data Science"
+      - action: action_field_info
+
+  - story: test field info Modelling and Data Science - casual
+    steps:
+      - user: |
+          Modelling and Data Science at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Modelling and Data Science"
+      - action: action_field_info
+
+  - story: test field info Digital Management - formal
+    steps:
+      - user: |
+          Tell me about Digital Management at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Digital Management"
+      - action: action_field_info
+
+  - story: test field info Digital Management - casual
+    steps:
+      - user: |
+          Digital Management at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Digital Management"
+      - action: action_field_info
+
+  - story: test field info Advanced Biobased and Bioinspired Materials - formal
+    steps:
+      - user: |
+          Tell me about Advanced Biobased and Bioinspired Materials at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Advanced Biobased and Bioinspired Materials"
+      - action: action_field_info
+
+  - story: test field info Advanced Biobased and Bioinspired Materials - casual
+    steps:
+      - user: |
+          Advanced Biobased and Bioinspired Materials at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Advanced Biobased and Bioinspired Materials"
+      - action: action_field_info
+
+  - story: test field info Biomedical Engineering and Technologies - formal
+    steps:
+      - user: |
+          Tell me about Biomedical Engineering and Technologies at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Biomedical Engineering and Technologies"
+      - action: action_field_info
+
+  - story: test field info Biomedical Engineering and Technologies - casual
+    steps:
+      - user: |
+          Biomedical Engineering and Technologies at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Biomedical Engineering and Technologies"
+      - action: action_field_info
+
+  - story: test field info Business, Society and Technology - formal
+    steps:
+      - user: |
+          Tell me about Business, Society and Technology at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Business, Society and Technology"
+      - action: action_field_info
+
+  - story: test field info Business, Society and Technology - casual
+    steps:
+      - user: |
+          Business, Society and Technology at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Business, Society and Technology"
+      - action: action_field_info
+
+  - story: test field info Electronic and Telecommunication Engineering - formal
+    steps:
+      - user: |
+          Tell me about Electronic and Telecommunication Engineering at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Electronic and Telecommunication Engineering"
+      - action: action_field_info
+
+  - story: test field info Electronic and Telecommunication Engineering - casual
+    steps:
+      - user: |
+          Electronic and Telecommunication Engineering at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Electronic and Telecommunication Engineering"
+      - action: action_field_info
+
+  - story: test field info Industrial Biotechnology - formal
+    steps:
+      - user: |
+          Tell me about Industrial Biotechnology at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Industrial Biotechnology"
+      - action: action_field_info
+
+  - story: test field info Industrial Biotechnology - casual
+    steps:
+      - user: |
+          Industrial Biotechnology at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Industrial Biotechnology"
+      - action: action_field_info
+
+  - story: test field info Mathematical Methods in Data Analysis - formal
+    steps:
+      - user: |
+          Tell me about Mathematical Methods in Data Analysis at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Mathematical Methods in Data Analysis"
+      - action: action_field_info
+
+  - story: test field info Mathematical Methods in Data Analysis - casual
+    steps:
+      - user: |
+          Mathematical Methods in Data Analysis at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Mathematical Methods in Data Analysis"
+      - action: action_field_info
+
+  - story: test field info Mechanical Engineering - formal
+    steps:
+      - user: |
+          Tell me about Mechanical Engineering at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Mechanical Engineering"
+      - action: action_field_info
+
+  - story: test field info Mechanical Engineering - casual
+    steps:
+      - user: |
+          Mechanical Engineering at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Mechanical Engineering"
+      - action: action_field_info
+
+  - story: test field info Textiles and Fashion Industry - formal
+    steps:
+      - user: |
+          Tell me about Textiles and Fashion Industry at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Textiles and Fashion Industry"
+      - action: action_field_info
+
+  - story: test field info Textiles and Fashion Industry - casual
+    steps:
+      - user: |
+          Textiles and Fashion Industry at TUL.
+        intent: ask_field_info
+        entities:
+          - field_of_study: "Textiles and Fashion Industry"
+      - action: action_field_info
+
+  #!             FIELDS OF STUDY - DURATION AND DEGREE TITLE
+
+  # - story: test duration Architecture
+  #   steps:
+  #     - user: |
+  #         How long is the Architecture programme?
+  #       intent: ask_duration
+  #       entities:
+  #         - field_of_study: "Architecture"
+  #     - action: utter_duration
+
+  # - story: test degree title Information Technology
+  #   steps:
+  #     - user: |
+  #         What title do I get after Information Technology?
+  #       intent: ask_degree_title
+  #       entities:
+  #         - field_of_study: "Information Technology"
+  #     - action: utter_degree_title

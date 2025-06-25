@@ -45,3 +45,18 @@ nlu:
     examples: |
       - BHP
       - Health and Safety
+
+  - synonym: Computer Science
+    examples: |
+      - CS
+      - Computer Science and Engineering
+      - Computer Engineering
+      - Informatics
+      - Informatyka
+
+  - synonym: Information Technology
+    examples: |
+      - IT
+      - Information Technologies
+      - Information Technology and Computer Science
+      - Information Systems
