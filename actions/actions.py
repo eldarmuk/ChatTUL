@@ -261,3 +261,37 @@ class ActionFieldHighlights(Action):
         else:
             dispatcher.utter_message(text="Please specify a valid field of study to get highlights information.")
         return []
+
+class ActionLocationPlacement(Action):
+    def name(self) -> Text:
+        return "action_location_placement"
+    
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        intent = tracker.get_intent_of_latest_message()
+        field = next(tracker.get_latest_entity_values("location")) or "Lodz University of Technology"
+        
+        if intent is None:
+            dispatcher.utter_message(text="Error occured, could not get latest message intent")
+            return []
+        dispatcher.utter_message(text="sample action_location_placement")
+
+        return []
+    
+class ActionLocationInfo(Action):
+    def name(self) -> Text:
+        return "action_location_info"
+    
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        intent = tracker.get_intent_of_latest_message()
+        field = next(tracker.get_latest_entity_values("location")) or "Lodz University of Technology"
+        
+        if intent is None:
+            dispatcher.utter_message(text="Error occured, could not get latest message intent")
+            return []
+        dispatcher.utter_message(text="sample action_location_placement")
+
+        return []
