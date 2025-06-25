@@ -14,9 +14,7 @@ intents:
   - ask_credits
   - ask_date
   - ask_deadline
-  - ask_degree_title
   - ask_doctor_fees
-  - ask_duration
   - ask_eligibility
   - ask_existence
   - ask_failure_fees

@@ -7,15 +7,16 @@ stories:
       - action: utter_greet
       - intent: ask_field_info
       - action: action_field_info
-      - intent: ask_duration
-      - action: utter_duration
-      - intent: ask_degree_title
-      - action: utter_degree_title
+    
+  - story: field info flow with entity
+    steps:
+      - intent: ask_field_info
+        entities:
+          - study_field: "Computer Science"
+      - action: action_field_info
 
   - story: transfer enquiry
     steps:
-      - intent: greet
-      - action: utter_greet
       - intent: ask_transfer
       - action: action_transfer_info
 
@@ -75,17 +76,17 @@ stories:
 
       - intent: ask_date
         entities:
-          - date: first round of admission
+          - date: "first round of admission"
       - action: utter_first_round
 
       - intent: ask_date
         entities:
-          - date: summer break
+          - date: "summer break"
       - action: utter_ask_summer_break
 
       - intent: ask_date
         entities:
-          - date: second round of admission
+          - date: "second round of admission"
       - action: utter_second_round
 
       - intent: thanks
@@ -95,16 +96,16 @@ stories:
     steps:
       - intent: ask_existence
         entities:
-          - location: library
+          - location: "library"
       - action: utter_library
 
   - story: existence of quiet places
     steps:
       - intent: ask_existence
         entities:
-          - location: quiet places to study
+          - location: "quiet places to study"
       - action: utter_student_places
-      - action: utter_library
+      - action: utter_location
 
   - story: location of building + not specific
     steps:
@@ -118,7 +119,7 @@ stories:
     steps:
       - intent: ask_location
         entities:
-          - location: TUL
+          - location: "TUL"
       - action: utter_university_location
       - action: utter_location
 
@@ -131,13 +132,6 @@ stories:
     steps:
       - intent: ask_contact
       - action: utter_contact
-
-  - story: retrieve field info
-    steps:
-      - intent: ask_field_info
-        entities:
-          - study_field: computer science
-      - action: action_field_info
 
   - story: grading system faq
     steps:
@@ -156,16 +150,6 @@ stories:
     steps:
       - intent: ask_field_info
       - action: action_field_info
-
-  # - story: ask duration direct
-  #   steps:
-  #     - intent: ask_duration
-  #     - action: utter_duration
-
-  - story: ask degree title direct
-    steps:
-      - intent: ask_degree_title
-      - action: utter_degree_title
 
   - story: studying_fees
     steps:
@@ -202,16 +186,6 @@ stories:
       - intent: ask_fee_existance
       - action: utter_fee_kinds
 
-  # - story: all_fees
-  #   steps:
-  #     - intent: ask_all_fees
-  #     - action: utter_studying_fees
-  #     - action: utter_recrutation_fees
-  #     - action: utter_accommodation_fees
-  #     - action: utter_student_card_fee
-  #     - action: utter_doctor_fees
-  #     - action: utter_failure_fees
-
   - story: language courses faq
     steps:
       - intent: ask_language_courses
@@ -229,7 +203,7 @@ stories:
 
       - intent: ask_date
         entities:
-          - date: first round of admission
+          - date: "first round of admission"
       - action: utter_first_round
 
       - intent: ask_admission_steps
@@ -237,7 +211,7 @@ stories:
 
       - intent: ask_location
         entities:
-          - location: candidate portal
+          - location: "candidate portal"
       - action: utter_candidate_portal_link
 
   - story: recruitation fees faq
@@ -266,18 +240,18 @@ stories:
       - intent: ask_existence
         entities:
         #   location: null
-          - date: holidays
+          - date: "holidays"
       - action: utter_ask_breaks_holidays
 
       - intent: ask_date
         entities:
-          - date: summer break
+          - date: "summer break"
       - action: utter_ask_summer_break
       - action: utter_checkout_academic_calendar
 
       - intent: ask_date
         entities:
-          - date: the academic year
+          - date: "the academic year"
       - action: utter_ask_academic_year
 
       - intent: thanks
@@ -288,7 +262,7 @@ stories:
       - intent: ask_existence
         entities:
           # - location: null
-          - date: holidays
+          - date: "holidays"
       - action: utter_ask_breaks_holidays
 
       - intent: ask_date
@@ -298,17 +272,17 @@ stories:
 
       - intent: ask_date
         entities:
-          - date: holidays
+          - date: "holidays"
       - action: utter_ask_academic_calendar
 
       - intent: ask_date
         entities:
-          - date: winter semester
+          - date: "winter semester"
       - action: utter_ask_academic_calendar
 
       - intent: ask_existence
         entities:
-          - date: semester breaks
+          - date: "semester breaks"
       - action: utter_ask_breaks_holidays
       - action: utter_ask_academic_calendar
 
@@ -317,14 +291,14 @@ stories:
 
       - intent: ask_date
         entities:
-          - date: summer semester
+          - date: "summer semester"
       - action: utter_ask_academic_calendar
 
   - story: Are some classes mandatory?
     steps:
       - intent: ask_mandatory_classes
         entities:
-          - class: physical education
+          - class: "physical education"
       - action: utter_ask_pe_mandatory
 
       - intent: ask_sports_activities
@@ -332,7 +306,7 @@ stories:
 
       - intent: ask_mandatory_classes
         entities:
-          - class: Health and Safety training
+          - class: "Health and Safety training"
       - action: utter_health_and_safety
 
   - story: wants to contact a human
@@ -362,40 +336,6 @@ stories:
 
       - intent: ask_location
         entities:
-          - location: dormitories
+          - location: "dormitories"
       - action: utter_accommodation_location
       - action: utter_location
-
-  #! @Marcin - story for language center isn't implemented yet
-  # - story: Asks about language center
-  #   steps:
-  #     - intent: ask_language_courses
-  #     - action: utter_language_courses
-
-  #     - intent: ask_location
-  #       entities:
-  #         - location: language center
-  #     - action: utter_language_center_location
-
-  #     - intent: ask_fee_existance
-  #     - action: utter_fee_kinds
-  #     - action: utter_language_center_fees
-# intent 'affirm' is not used in any story or rule.
-# intent 'ask_all_fees' is not used in any story or rule.
-# intent 'ask_breaks_holidays' is not used in any story or rule.
-# intent 'ask_clarification' is not used in any story or rule.
-# intent 'ask_doctor_fees' is not used in any story or rule.
-# intent 'ask_failure_fees' is not used in any story or rule.
-# intent 'ask_language_courses' is not used in any story or rule.
-# intent 'ask_mandatory_classes' is not used in any story or rule.
-# intent 'ask_recrutation_fees' is not used in any story or rule.
-# intent 'ask_rectors_scholarship' is not used in any story or rule.
-# intent 'ask_scholarship_application' is not used in any story or rule.
-# intent 'ask_scholarship_multiple' is not used in any story or rule.
-# intent 'ask_scholarship_types' is not used in any story or rule.
-# intent 'ask_sports_updates' is not used in any story or rule.
-# intent 'ask_student_card_fee' is not used in any story or rule.
-# intent 'ask_student_clubs' is not used in any story or rule.
-# intent 'ask_studying_fees' is not used in any story or rule.
-# intent 'ask_summer_break_duration' is not used in any story or rule.
-# intent 'utter_unknown_admission_process' is not used in any story or rule.

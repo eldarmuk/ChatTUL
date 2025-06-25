@@ -21,16 +21,6 @@ rules:
       - intent: ask_field_info
       - action: action_field_info
 
-  - rule: Answer duration
-    steps:
-    - intent: ask_duration
-    - action: utter_duration
-
-# - rule: Answer degree title
-#   steps:
-#   - intent: ask_degree_title
-#   - action: utter_degree_title
-
   - rule: Answer transfer
     steps:
     - intent: ask_transfer

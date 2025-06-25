@@ -13,12 +13,13 @@ nlu:
       - Technical University of Lodz
       - Lodz Polytechnic
 
-  - synonym: Chemical Department
+  - synonym: Alchemium
     examples: |
-      - Alchemium
+      - Chemical Department
       - Alchem
       - Chemistry Department
       - Department of Chemistry
+      - Faculty of Chemistry
 
   - synonym: research groups
     examples: |
@@ -48,7 +49,6 @@ nlu:
 
   - synonym: Computer Science
     examples: |
-      - CS
       - Computer Science and Engineering
       - Computer Engineering
       - Informatics
