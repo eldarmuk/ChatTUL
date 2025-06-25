@@ -17,21 +17,55 @@ class ActionFieldInfo(Action):
             tracker: Tracker,
             domain: DomainDict) -> List[Dict[Text, Any]]:
         field = tracker.get_slot("field_of_study")
-        if field and field in DATA["field_of_study"]:
-            info = DATA["field_of_study"][field]
-            text = f"{field} ({info['cycle']}, {info['mode']}, in {info['language']}) at TUL:\n"
-            text += f"- Duration: {info['duration_semesters']} semesters ({info['duration_years']} years)\n"
-            text += f"- Title: {info['title']}\n"
-            text += f"- Highlights: {', '.join(info['curriculum_highlights'])}\n"
-            urls = info.get('urls', [])
+        specificity = tracker.get_slot("field_info_specificity")
+        print(f"Field: {field}, Specificity: {specificity}")
+        if not field or field not in DATA["field_of_study"]:
+            dispatcher.utter_message(text="Please specify a valid field of study (e.g., Computer Science).")
+            return [SlotSet("field_info_specificity", None)]
+
+        info = DATA["field_of_study"][field]
+
+        urls = info.get('urls', [])
+        cycle = info.get('cycle', '')
+        cycle_pl = info.get('cycle_pl', '')
+        duration_semesters = info.get('duration_semesters', '')
+        duration_years = info.get('duration_years', '')
+        title = info.get('title', '')
+        mode = info.get('mode', '')
+        language = info.get('language', '')
+        highlights = ', '.join(info.get('curriculum_highlights', []))
+
+        if specificity == "duration":
+            text = f"The {field} programme lasts {duration_semesters} semesters ({duration_years} years)."
+            if urls:
+                text += "\nMore details:\n"
+                for url in urls:
+                    text += f"- {url}\n"
+        elif specificity == "title":
+            text = f"Graduates of {field} receive the professional title: {title}."
+            if urls:
+                text += "\nMore details:\n"
+                for url in urls:
+                    text += f"- {url}\n"
+        elif specificity == "highlights":
+            text = f"Highlights of {field}:\n{highlights}."
+            if urls:
+                text += "\nMore details:\n"
+                for url in urls:
+                    text += f"- {url}\n"
+        else:
+            text = (
+                f"{field} ({cycle} / {cycle_pl}, {mode}, in {language}) at TUL:\n"
+                f"- Duration: {duration_semesters} semesters ({duration_years} years)\n"
+                f"- Title: {title}\n"
+                f"- Highlights: {highlights}\n"
+            )
             if urls:
                 text += "More details:\n"
                 for url in urls:
                     text += f"- {url}\n"
-            dispatcher.utter_message(text=text)
-        else:
-            dispatcher.utter_message(text="Please specify a valid field of study (e.g., Computer Science).")
-        return []
+        dispatcher.utter_message(text=text)
+        return [SlotSet("field_info_specificity", None)]
 
 
 class ActionUtterDeadline(Action):
@@ -177,4 +211,53 @@ class ActionCreditsInfo(Action):
             for url in urls:
                 text += f"- {url}\n"
         dispatcher.utter_message(text=text)
+        return []
+
+class ActionFieldDuration(Action):
+    def name(self) -> Text:
+        return "action_field_duration"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        field = tracker.get_slot("field_of_study")
+        if field and field in DATA["field_of_study"]:
+            info = DATA["field_of_study"][field]
+            text = f"The {field} programme lasts {info['duration_semesters']} semesters ({info['duration_years']} years)."
+            dispatcher.utter_message(text=text)
+        else:
+            dispatcher.utter_message(text="Please specify a valid field of study to get duration information.")
+        return []
+
+class ActionFieldTitle(Action):
+    def name(self) -> Text:
+        return "action_field_title"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        field = tracker.get_slot("field_of_study")
+        if field and field in DATA["field_of_study"]:
+            info = DATA["field_of_study"][field]
+            text = f"Graduates of {field} receive the professional title: {info['title']}."
+            dispatcher.utter_message(text=text)
+        else:
+            dispatcher.utter_message(text="Please specify a valid field of study to get degree title information.")
+        return []
+
+class ActionFieldHighlights(Action):
+    def name(self) -> Text:
+        return "action_field_highlights"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: DomainDict) -> List[Dict[Text, Any]]:
+        field = tracker.get_slot("field_of_study")
+        if field and field in DATA["field_of_study"]:
+            info = DATA["field_of_study"][field]
+            highlights = ', '.join(info['curriculum_highlights'])
+            text = f"Highlights of {field}: {highlights}."
+            dispatcher.utter_message(text=text)
+        else:
+            dispatcher.utter_message(text="Please specify a valid field of study to get highlights information.")
         return []

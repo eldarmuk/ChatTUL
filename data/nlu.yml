@@ -49,67 +49,90 @@ nlu:
 
   - intent: ask_field_info
     examples: |
-      - [Digital Management](field_of_study) at TUL
-      - Tell me about [Computer Science](field_of_study) at TUL.
-      - I want to know about [Business Studies](field_of_study).
-      - What is the [Architecture](field_of_study) programme?
-      - Give me details about [Information Technology](field_of_study).
-      - Information about [Modelling and Data Science](field_of_study).
-      - Tell me about [Digital Management](field_of_study).
-      - I want to know more about [Advanced Biobased and Bioinspired Materials](field_of_study).
-      - What is the [Biomedical Engineering and Technologies](field_of_study) programme?
-      - Give me details about [Business, Society and Technology](field_of_study).
-      - Information about [Electronic and Telecommunication Engineering](field_of_study).
-      - Info for [Industrial Biotechnology](field_of_study).
-      - Tell me about [Industrial Biotechnology](field_of_study).
-      - I want to know about [Mathematical Methods in Data Analysis](field_of_study).
-      - What is the [Mechanical Engineering](field_of_study) programme?
-      - Give me details about [Textiles and Fashion Industry](field_of_study).
-      - Tell me about [Computer Science](field_of_study) at TUL.
-      - I want to know about [Computer Science](field_of_study).
-      - What is the [Computer Science](field_of_study) programme?
-      - Give me details about [Computer Science](field_of_study).
-      - Information about [Computer Science](field_of_study).
-
-  - intent: ask_duration
-    examples: |
-      - [Computer Science](field_of_study) programme duration?
-      - How long is the [Computer Science](field_of_study) programme?
-      - What is the duration of [Computer Science](field_of_study)?
-      - How many semesters for [Computer Science](field_of_study)?
-      - Duration of [Computer Science](field_of_study)?
-      - How long is the [Business Studies](field_of_study) programme?
-      - What is the duration of [Architecture](field_of_study)?
-      - How many semesters for [Information Technology](field_of_study)?
-      - Duration of [Modelling and Data Science](field_of_study)?
-      - How long is the [Digital Management](field_of_study) programme?
-      - What is the duration of [Advanced Biobased and Bioinspired Materials](field_of_study)?
-      - How many semesters for [Biomedical Engineering and Technologies](field_of_study)?
-      - Duration of [Business, Society and Technology](field_of_study)?
-      - How long is the [Electronic and Telecommunication Engineering](field_of_study) programme?
-      - What is the duration of [Industrial Biotechnology](field_of_study)?
-      - How many semesters for [Mathematical Methods in Data Analysis](field_of_study)?
-      - Duration of [Mechanical Engineering](field_of_study)?
-      - How long is the [Textiles and Fashion Industry](field_of_study) programme?
-
-  - intent: ask_degree_title
-    examples: |
-      - What title do I get after [Computer Science](field_of_study)?
-      - What is the awarded degree for [Computer Science](field_of_study)?
-      - What professional title will I receive?
-      - What title do I get after [Business Studies](field_of_study)?
-      - What is the awarded degree for [Architecture](field_of_study)?
-      - What title do I get after [Information Technology](field_of_study)?
-      - What is the awarded degree for [Modelling and Data Science](field_of_study)?
-      - What title do I get after [Digital Management](field_of_study)?
-      - What is the awarded degree for [Advanced Biobased and Bioinspired Materials](field_of_study)?
-      - What title do I get after [Biomedical Engineering and Technologies](field_of_study)?
-      - What is the awarded degree for [Business, Society and Technology](field_of_study)?
-      - What title do I get after [Electronic and Telecommunication Engineering](field_of_study)?
-      - What is the awarded degree for [Industrial Biotechnology](field_of_study)?
-      - What title do I get after [Mathematical Methods in Data Analysis](field_of_study)?
-      - What is the awarded degree for [Mechanical Engineering](field_of_study)?
-      - What title do I get after [Textiles and Fashion Industry](field_of_study)?
+    - Tell me about [Computer Science](field_of_study).
+    - Tell me about [Business Studies](field_of_study) at TUL.
+    - I want to know more about [Architecture](field_of_study).
+    - I’m interested in [Information Technology](field_of_study); give me an overview.
+    - Provide information on [Modelling and Data Science](field_of_study).
+    - Give me details about [Digital Management](field_of_study) at TUL.
+    - I’d like information on [Advanced Biobased and Bioinspired Materials](field_of_study).
+    - Could you outline [Biomedical Engineering and Technologies](field_of_study)?
+    - I’d like to learn about [Business, Society and Technology](field_of_study).
+    - Provide info on [Electronic and Telecommunication Engineering](field_of_study).
+    - Tell me about [Industrial Biotechnology](field_of_study).
+    - Could you describe [Mathematical Methods in Data Analysis](field_of_study) at TUL?
+    - I’d like information about [Mechanical Engineering](field_of_study).
+    - Give me details about [Textiles and Fashion Industry](field_of_study).
+    - Could you give me an overview of [Computer Science](field_of_study)?
+    - Could you give me an overview of [Business Studies](field_of_study) at TUL?
+    - Could you give me an overview of [Architecture](field_of_study)?
+    - Could you give me an overview of [Information Technology](field_of_study)?
+    - Could you give me an overview of [Modelling and Data Science](field_of_study)?
+    - Could you give me an overview of [Digital Management](field_of_study) at TUL?
+    - Could you give me an overview of [Advanced Biobased and Bioinspired Materials](field_of_study)?
+    - Could you give me an overview of [Biomedical Engineering and Technologies](field_of_study)?
+    - Could you give me an overview of [Business, Society and Technology](field_of_study)?
+    - Could you give me an overview of [Electronic and Telecommunication Engineering](field_of_study)?
+    - Could you give me an overview of [Industrial Biotechnology](field_of_study)?
+    - Could you give me an overview of [Mathematical Methods in Data Analysis](field_of_study)?
+    - Could you give me an overview of [Mechanical Engineering](field_of_study)?
+    - Could you give me an overview of [Textiles and Fashion Industry](field_of_study)?
+    - What are the [highlights](field_info_specificity) of [Computer Science](field_of_study)?
+    - What are the [main features](field_info_specificity) of [Business Studies](field_of_study)?
+    - What are the [key highlights](field_info_specificity) of [Architecture](field_of_study)?
+    - What makes [Information Technology](field_of_study) unique? Tell me the [highlights](field_info_specificity).
+    - What are the [highlights](field_info_specificity) of [Modelling and Data Science](field_of_study)?
+    - What are the [main features](field_info_specificity) of [Digital Management](field_of_study)?
+    - What makes [Advanced Biobased and Bioinspired Materials](field_of_study) distinctive? List its [highlights](field_info_specificity).
+    - What are the [key highlights](field_info_specificity) of [Biomedical Engineering and Technologies](field_of_study)?
+    - What are the [highlights](field_info_specificity) of [Business, Society and Technology](field_of_study)?
+    - What are the [main features](field_info_specificity) of [Electronic and Telecommunication Engineering](field_of_study)?
+    - What makes [Industrial Biotechnology](field_of_study) special? Tell me its [highlights](field_info_specificity).
+    - What are the [highlights](field_info_specificity) of [Mathematical Methods in Data Analysis](field_of_study)?
+    - What are the [key highlights](field_info_specificity) of [Mechanical Engineering](field_of_study)?
+    - What makes [Textiles and Fashion Industry](field_of_study) unique? Share its [highlights](field_info_specificity).
+    - How long is the [Computer Science](field_of_study) programme [duration](field_info_specificity)?
+    - What is the [duration](field_info_specificity) of [Business Studies](field_of_study)?
+    - How many semesters does [Architecture](field_of_study) take? ([duration](field_info_specificity))
+    - What is the [duration](field_info_specificity) of [Information Technology](field_of_study)?
+    - How long is the [Modelling and Data Science](field_of_study) programme? ([duration](field_info_specificity))
+    - How many semesters long is [Digital Management](field_of_study)? ([duration](field_info_specificity))
+    - How long does the [Advanced Biobased and Bioinspired Materials](field_of_study) programme last? ([duration](field_info_specificity))
+    - What is the [duration](field_info_specificity) of [Biomedical Engineering and Technologies](field_of_study)?
+    - How many semesters does [Business, Society and Technology](field_of_study) have? ([duration](field_info_specificity))
+    - How long is the [Electronic and Telecommunication Engineering](field_of_study) programme? ([duration](field_info_specificity))
+    - What is the [duration](field_info_specificity) of [Industrial Biotechnology](field_of_study)?
+    - How many semesters does [Mathematical Methods in Data Analysis](field_of_study) take? ([duration](field_info_specificity))
+    - How long is the [Mechanical Engineering](field_of_study) programme? ([duration](field_info_specificity))
+    - What is the [duration](field_info_specificity) of [Textiles and Fashion Industry](field_of_study)?
+    - What [degree](field_info_specificity) is awarded for [Computer Science](field_of_study)?
+    - What [title](field_info_specificity) do I get after [Business Studies](field_of_study)?
+    - What [degree](field_info_specificity) is awarded for [Architecture](field_of_study)?
+    - What [professional title](field_info_specificity) comes with [Information Technology](field_of_study)?
+    - What [degree](field_info_specificity) do graduates earn in [Modelling and Data Science](field_of_study)?
+    - What [title](field_info_specificity) is awarded for [Digital Management](field_of_study)?
+    - What [degree](field_info_specificity) is conferred in [Advanced Biobased and Bioinspired Materials](field_of_study)?
+    - Which [professional title](field_info_specificity) is awarded for [Biomedical Engineering and Technologies](field_of_study)?
+    - What [degree](field_info_specificity) will I obtain after [Business, Society and Technology](field_of_study)?
+    - What [title](field_info_specificity) is granted for [Electronic and Telecommunication Engineering](field_of_study)?
+    - What [degree](field_info_specificity) will I get for [Industrial Biotechnology](field_of_study)?
+    - Which [degree](field_info_specificity) is awarded for [Mathematical Methods in Data Analysis](field_of_study)?
+    - What [professional title](field_info_specificity) do graduates receive in [Mechanical Engineering](field_of_study)?
+    - What [degree](field_info_specificity) is conferred for [Textiles and Fashion Industry](field_of_study)?
+    - Could you tell me about [Computer Science](field_of_study) at TUL?
+    - Please give me an overview of [Business Studies](field_of_study).
+    - I’d appreciate details on [Architecture](field_of_study).
+    - May I get information on [Information Technology](field_of_study)?
+    - Would you outline the [Modelling and Data Science](field_of_study) programme?
+    - Please share key features of [Digital Management](field_of_study).
+    - Could you provide the duration of [Advanced Biobased and Bioinspired Materials](field_of_study)?
+    - May I know which degree comes with [Biomedical Engineering and Technologies](field_of_study)?
+    - I’d appreciate an overview of [Business, Society and Technology](field_of_study).
+    - Please tell me the highlights of [Electronic and Telecommunication Engineering](field_of_study).
+    - Could you share the duration for [Industrial Biotechnology](field_of_study)?
+    - May I get details on the degree for [Mathematical Methods in Data Analysis](field_of_study)?
+    - Would you provide information on [Mechanical Engineering](field_of_study)?
+    - Please outline what title is awarded for [Textiles and Fashion Industry](field_of_study).
 
   - intent: ask_transfer
     examples: |
@@ -374,9 +397,9 @@ nlu:
 
   - intent: ask_mandatory_classes
     examples: |
-      - Is [PE](class) mandatory?
+      - Is [Physical Education](class) mandatory?
       - Is [Health and Safety training](class) mandatory?
-      - Do I have to do [physical education](class)?
+      - Do I have to do [Physical Education](class)?
 
   - intent: ask_sports_updates
     examples: |

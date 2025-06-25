@@ -36,7 +36,7 @@ nlu:
       - summer holidays
       - summer leave
 
-  - synonym: physical education
+  - synonym: Physical Education
     examples: |
       - PE
       - P.E.
@@ -60,3 +60,10 @@ nlu:
       - Information Technologies
       - Information Technology and Computer Science
       - Information Systems
+
+  - synonym: Highlights
+    examples: |
+      - important information
+      - main details
+      - highligts
+      - higlights

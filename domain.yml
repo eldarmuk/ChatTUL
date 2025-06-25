@@ -56,6 +56,7 @@ entities:
   - location
   - deadline
   - field_of_study
+  - field_info_specificity
   - origin_country
   - study_cycle
   - mobility_program
@@ -69,6 +70,12 @@ slots:
     mappings:
       - type: from_entity
         entity: field_of_study
+  field_info_specificity:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: field_info_specificity
   origin_country:
     type: text
     influence_conversation: true
@@ -87,6 +94,7 @@ slots:
     mappings:
       - type: from_entity
         entity: mobility_program
+
 responses:
   affirm:
     - text: "Great! How can I assist you further?"
@@ -340,7 +348,7 @@ responses:
 
   utter_ask_pe_mandatory:
     - text: |
-        Yes, PE is required for most first-cycle students. You must pass 3 semesters of PE.
+        Yes, Physical Education (PE) is required for most first-cycle students. You must pass 3 semesters of Physical Education.
 
   utter_ask_sports_updates:
     - text: |
