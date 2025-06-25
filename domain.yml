@@ -8,7 +8,6 @@ intents:
   - ask_accommodation_fees
   - ask_admission_steps
   - ask_book_rental
-  - ask_breaks_holidays
   - ask_clarification
   - ask_contact
   - ask_credits
@@ -466,6 +465,8 @@ actions:
   - action_eligibility_info
   - action_mobility_info
   - action_credits_info
+  - action_location_placement
+  - action_location_info
 
 session_config:
   session_expiration_time: 60
