@@ -16,10 +16,10 @@ rules:
       - intent: nlu_fallback
       - action: utter_fallback
 
-  # - rule: Answer field info
-  #   steps:
-  #     - intent: ask_field_info
-  #     - action: action_field_info
+  - rule: Answer field info
+    steps:
+      - intent: ask_field_info
+      - action: action_field_info
 
 # - rule: Answer duration
 #   steps:

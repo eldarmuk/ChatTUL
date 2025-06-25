@@ -9,13 +9,10 @@ nlu:
       - hello there
       - good morning
       - good evening
-      - moin
       - hey there
       - let's go
-      - hey dude
-      - goodmorning
-      - goodevening
       - good afternoon
+      - Cześć
 
   - intent: goodbye
     examples: |
@@ -438,14 +435,14 @@ nlu:
       - Price for fail
       - Failed subject price
 
-  - intent: ask_all_fees
-    examples: |
-      - Additional cost
-      - What else will I have to pay?
-      - Is anything else paid?
-      - Show me the cost of everything
-      - What do I have to pay for?
-      - All costs
+  # - intent: ask_all_fees
+  #   examples: |
+  #     - Additional cost
+  #     - What else will I have to pay?
+  #     - Is anything else paid?
+  #     - Show me the cost of everything
+  #     - What do I have to pay for?
+  #     - All costs
 
   - intent: ask_accommodation
     examples: |
@@ -472,3 +469,11 @@ nlu:
       - would [Business Studies](field_of_study) fit me?
       - is [Computer Science](field_of_study) interesting?
       - is it interesting?
+
+  - intent: ask_academic_year
+    examples: |
+      - When does the academic year start?
+      - What is the academic year schedule?
+      - When does the academic year end?
+      - Academic year dates
+      - Academic year calendar

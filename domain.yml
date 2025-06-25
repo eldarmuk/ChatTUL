@@ -7,7 +7,7 @@ intents:
   - ask_accommodation
   - ask_accommodation_fees
   - ask_admission_steps
-  - ask_all_fees
+  # - ask_all_fees
   - ask_book_rental
   - ask_breaks_holidays
   - ask_clarification
@@ -89,18 +89,25 @@ slots:
       - type: from_entity
         entity: mobility_program
 responses:
+  affirm:
+    - text: "Great! How can I assist you further?"
+    - text: "Glad to hear that! What else would you like to know?"
+
   utter_candidate_portal_link:
     - text: "You can find the candidate portal under the following link: https://apply.p.lodz/en/apply"
 
   utter_greet:
     - text: Hello! How can I help you with admissions at Lodz University of Technology?
+    - text: Hi there! I'm here to assist you with any questions about admissions at Lodz University of Technology.
 
   utter_goodbye:
     - text: Goodbye! If you have more questions, feel free to ask.
+    - text: Bye! Don't hesitate to return if you have more questions.
 
   utter_happy_to_help:
     - text: I'm happy to help!
     - text: I am happy to know my insight is usefull, carry on!
+    - text: I am glad to be of assistance, please continue!
 
   utter_fallback:
     - text: >
@@ -398,11 +405,6 @@ responses:
   utter_admission_deadline_table:
     - text: |
         Make sure to check online for precise dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
-
-  utter_where_to_register:
-    - text: >
-        In order to participate in the admission process you have to register
-        on the online [Candidate Portal](https://apply.p.lodz.pl/en/apply).
 
   utter_registration_deadline:
     - text: |

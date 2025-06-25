@@ -108,7 +108,7 @@ stories:
 
   - story: location of building + not specific
     steps:
-      - intent: aks_location
+      - intent: ask_location
         entities:
           - location: null
       - action: utter_university_location
@@ -157,10 +157,10 @@ stories:
       - intent: ask_field_info
       - action: action_field_info
 
-  - story: ask duration direct
-    steps:
-      - intent: ask_duration
-      - action: utter_duration
+  # - story: ask duration direct
+  #   steps:
+  #     - intent: ask_duration
+  #     - action: utter_duration
 
   - story: ask degree title direct
     steps:
@@ -202,15 +202,15 @@ stories:
       - intent: ask_fee_existance
       - action: utter_fee_kinds
 
-  - story: all_fees
-    steps:
-      - intent: ask_all_fees
-      - action: utter_studying_fees
-      - action: utter_recrutation_fees
-      - action: utter_accommodation_fees
-      - action: utter_student_card_fee
-      - action: utter_doctor_fees
-      - action: utter_failure_fees
+  # - story: all_fees
+  #   steps:
+  #     - intent: ask_all_fees
+  #     - action: utter_studying_fees
+  #     - action: utter_recrutation_fees
+  #     - action: utter_accommodation_fees
+  #     - action: utter_student_card_fee
+  #     - action: utter_doctor_fees
+  #     - action: utter_failure_fees
 
   - story: language courses faq
     steps:
