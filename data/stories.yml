@@ -7,7 +7,7 @@ stories:
       - action: utter_greet
       - intent: ask_field_info
       - action: action_field_info
-    
+
   - story: field info flow with entity
     steps:
       - intent: ask_field_info
@@ -96,32 +96,20 @@ stories:
     steps:
       - intent: ask_existence
         entities:
-          - location: "library"
-      - action: utter_library
-
-  - story: existence of quiet places
-    steps:
-      - intent: ask_existence
-        entities:
-          - location: "quiet places to study"
-      - action: utter_student_places
-      - action: utter_location
+          - location: library
+      - action: action_location_info
 
   - story: location of building + not specific
     steps:
       - intent: ask_location
-        # entities:
-        #   location: null
-      - action: utter_university_location
-      - action: utter_location
+      - action: action_location_placement
 
   - story: location of building + specific
     steps:
       - intent: ask_location
         entities:
           - location: "TUL"
-      - action: utter_university_location
-      - action: utter_location
+      - action: action_location_placement
 
   - story: social media
     steps:
@@ -239,7 +227,6 @@ stories:
 
       - intent: ask_existence
         entities:
-        #   location: null
           - date: "holidays"
       - action: utter_ask_breaks_holidays
 
@@ -337,5 +324,45 @@ stories:
       - intent: ask_location
         entities:
           - location: "dormitories"
-      - action: utter_accommodation_location
+      - action: action_location_placement
       - action: utter_location
+
+  - story: sports updates faq
+    steps:
+      - intent: ask_sports_updates
+      - action: utter_ask_sports_updates
+
+  - story: book rental faq
+    steps:
+      - intent: ask_book_rental
+      - action: utter_library_location
+
+  - story: failure fees faq
+    steps:
+      - intent: ask_failure_fees
+      - action: utter_failure_fees
+
+  - story: rectors scholarship faq
+    steps:
+      - intent: ask_rectors_scholarship
+      - action: utter_ask_rectors_scholarship
+
+  - story: scholarship application faq
+    steps:
+      - intent: ask_scholarship_application
+      - action: utter_ask_scholarship_application
+
+  - story: multiple scholarships faq
+    steps:
+      - intent: ask_scholarship_multiple
+      - action: utter_ask_scholarship_multiple
+
+  - story: scholarship types faq
+    steps:
+      - intent: ask_scholarship_types
+      - action: utter_ask_scholarship_types
+
+  - story: student clubs info faq
+    steps:
+      - intent: ask_student_clubs
+      - action: utter_clubs
