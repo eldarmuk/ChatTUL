@@ -306,7 +306,7 @@
       "Deadlines and detailed requirements are published annually.",
       "Contact the International Cooperation Centre for guidance."
     ],
-    "urls_markdown": [
+    "urls": [
       "[Transfer](https://apply.p.lodz.pl/en/enrollment/enroll/transfer)"
     ],
     "contacts": [
@@ -323,7 +323,7 @@
         "- Proof of English proficiency (as required by the programme).",
         "Nostrification is not required for EU/EEA qualifications."
       ],
-      "urls_markdown": [
+      "urls": [
         "[Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)"
       ],
       "notes": "More details: Qualification rules at https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules"
@@ -343,7 +343,7 @@
         "For Master (second-cycle) programmes:",
         "- A NAWA statement or nostrification confirming your Bachelor’s diploma is recognized in Poland."
       ],
-      "urls_markdown": [
+      "urls": [
         "[Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)",
         "[Nostrification at TUL](https://p.lodz.pl/en/education/nostrification-diploma)",
         "[NAWA Recognition FAQ](https://nawa.gov.pl/en/recognition/recognition-for-academic-purposes/faq-frequently-asked-questions)",

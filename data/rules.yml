@@ -21,35 +21,35 @@ rules:
       - intent: ask_field_info
       - action: action_field_info
 
-# - rule: Answer duration
-#   steps:
-#   - intent: ask_duration
-#   - action: utter_duration
+  - rule: Answer duration
+    steps:
+    - intent: ask_duration
+    - action: utter_duration
 
 # - rule: Answer degree title
 #   steps:
 #   - intent: ask_degree_title
 #   - action: utter_degree_title
 
-# - rule: Answer transfer
-#   steps:
-#   - intent: ask_transfer
-#   - action: utter_transfer
+  - rule: Answer transfer
+    steps:
+    - intent: ask_transfer
+    - action: action_transfer_info
 
-# - rule: Answer eligibility
-#   steps:
-#   - intent: ask_eligibility
-#   - action: utter_eligibility
+  - rule: Answer eligibility
+    steps:
+    - intent: ask_eligibility
+    - action: action_eligibility_info
 
-# - rule: Answer mobility
-#   steps:
-#   - intent: ask_mobility
-#   - action: utter_mobility
+  - rule: Answer mobility
+    steps:
+    - intent: ask_mobility
+    - action: action_mobility_info
 
-# - rule: Answer credits
-#   steps:
-#   - intent: ask_credits
-#   - action: utter_credits
+  - rule: Answer credits
+    steps:
+    - intent: ask_credits
+    - action: action_credits_info
 
 # - rule: Answer partners
 #   steps:

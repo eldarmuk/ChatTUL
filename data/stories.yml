@@ -17,35 +17,35 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ask_transfer
-      - action: utter_transfer
+      - action: action_transfer_info
 
   - story: eligibility EU
     steps:
       - intent: ask_eligibility
         entities:
           - origin_country: "Poland"
-      - action: utter_eligibility
+      - action: action_eligibility_info
 
   - story: eligibility non-EU
     steps:
       - intent: ask_eligibility
         entities:
           - origin_country: "Nigeria"
-      - action: utter_eligibility
+      - action: action_eligibility_info
 
   - story: mobility
     steps:
       - intent: greet
       - action: utter_greet
       - intent: ask_mobility
-      - action: utter_mobility
+      - action: action_mobility_info
 
   - story: credits
     steps:
       - intent: greet
       - action: utter_greet
       - intent: ask_credits
-      - action: utter_credits
+      - action: action_credits_info
 
   - story: partners
     steps:
@@ -69,8 +69,8 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ask_deadline
-        entities:
-          - deadline: null
+        # entities:
+        #   deadline: null
       - action: utter_admission_deadlines
 
       - intent: ask_date
@@ -93,14 +93,14 @@ stories:
 
   - story: existence of library
     steps:
-      - intent: ask_existance
+      - intent: ask_existence
         entities:
           - location: library
       - action: utter_library
 
   - story: existence of quiet places
     steps:
-      - intent: ask_existance
+      - intent: ask_existence
         entities:
           - location: quiet places to study
       - action: utter_student_places
@@ -109,8 +109,8 @@ stories:
   - story: location of building + not specific
     steps:
       - intent: ask_location
-        entities:
-          - location: null
+        # entities:
+        #   location: null
       - action: utter_university_location
       - action: utter_location
 
@@ -265,7 +265,7 @@ stories:
 
       - intent: ask_existence
         entities:
-          - location: null
+        #   location: null
           - date: holidays
       - action: utter_ask_breaks_holidays
 
@@ -287,7 +287,7 @@ stories:
     steps:
       - intent: ask_existence
         entities:
-          - location: null
+          # - location: null
           - date: holidays
       - action: utter_ask_breaks_holidays
 
@@ -306,7 +306,7 @@ stories:
           - date: winter semester
       - action: utter_ask_academic_calendar
 
-      - intent: ask_existance
+      - intent: ask_existence
         entities:
           - date: semester breaks
       - action: utter_ask_breaks_holidays
@@ -349,7 +349,7 @@ stories:
       - intent: thanks
       - action: utter_happy_to_help
 
-  - story: Interested in Accomodation
+  - story: Interested in Accommodation
     steps:
       - intent: greet
       - action: utter_greet

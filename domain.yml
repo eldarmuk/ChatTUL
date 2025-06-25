@@ -50,7 +50,6 @@ intents:
   - mood_unhappy
   - thanks
   - ask_fee_existance
-  - ask_existance
 
 entities:
   - date
@@ -162,42 +161,42 @@ responses:
         - Contact: foreignstudents@info.p.lodz.pl
         More details: https://apply.p.lodz.pl/en/enrollment/enroll/transfer
 
-  utter_eligibility:
-    - text: |
-        For EU/EEA Applicants:
-        - Apply under the same rules as Polish citizens.
-        - Required documents:
-          - Secondary school certificate and transcript (apostilled/legalized as needed within EU/EEA).
-          - Proof of English proficiency (as required by the programme).
-        - Nostrification is not required for EU/EEA qualifications.
-        More details: [Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
+  # utter_eligibility:
+  #   - text: |
+  #       For EU/EEA Applicants:
+  #       - Apply under the same rules as Polish citizens.
+  #       - Required documents:
+  #         - Secondary school certificate and transcript (apostilled/legalized as needed within EU/EEA).
+  #         - Proof of English proficiency (as required by the programme).
+  #       - Nostrification is not required for EU/EEA qualifications.
+  #       More details: [Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
 
-        ---
+  #       ---
 
-        For Non-EU/Non-EEA Applicants:
-        - All foreign educational documents must be:
-          - Legalized/apostilled and translated into Polish or English (if required).
-          - Submitted with proof of English proficiency (minimum B2, depending on the programme).
-        - **IMPORTANT**: Starting from July 1, 2025 (for the 2025/2026 recruitment cycle), under the Act of April 4, 2025:
-          - Students must attach their recognition (nostrification) or NAWA statement during application, not after acceptance.
-          - Applies to applicants whose certificates come from countries outside EU, EFTA, or OECD, and not covered by a recognition agreement with Poland.
+  #       For Non-EU/Non-EEA Applicants:
+  #       - All foreign educational documents must be:
+  #         - Legalized/apostilled and translated into Polish or English (if required).
+  #         - Submitted with proof of English proficiency (minimum B2, depending on the programme).
+  #       - **IMPORTANT**: Starting from July 1, 2025 (for the 2025/2026 recruitment cycle), under the Act of April 4, 2025:
+  #         - Students must attach their recognition (nostrification) or NAWA statement during application, not after acceptance.
+  #         - Applies to applicants whose certificates come from countries outside EU, EFTA, or OECD, and not covered by a recognition agreement with Poland.
 
-        Required recognition documents:
-        - For Bachelor (first-cycle) or long-cycle programmes:
-          - A statement from the Director of NAWA confirming your secondary school certificate is equivalent to a Polish one.
-        - For Master (second-cycle) programmes:
-          - A NAWA statement or nostrification confirming your Bachelor’s diploma is recognized in Poland.
+  #       Required recognition documents:
+  #       - For Bachelor (first-cycle) or long-cycle programmes:
+  #         - A statement from the Director of NAWA confirming your secondary school certificate is equivalent to a Polish one.
+  #       - For Master (second-cycle) programmes:
+  #         - A NAWA statement or nostrification confirming your Bachelor’s diploma is recognized in Poland.
 
-        ❗ Contact the International Cooperation Centre early to prepare the recognition documents in time for recruitment deadlines. 
+  #       ❗ Contact the International Cooperation Centre early to prepare the recognition documents in time for recruitment deadlines. 
 
-        ---
+  #       ---
 
-        More Resources:
-        - [Apply portal – Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
-        - [General info about nostrification at Lodz University of Technology](https://p.lodz.pl/en/education/nostrification-diploma)
-        - [NAWA – Recognition for academic purposes](https://nawa.gov.pl/en/recognition/recognition-for-academic-purposes/faq-frequently-asked-questions)
-        - [University of Warsaw – Additional requirements from 2025](https://rekrutacja.uw.edu.pl/en/additional-requirements-for-candidates-with-foreign-documents/)
-        - [Ministry of Education – Recognition system update](https://www.kuratorium.waw.pl/en/nostrification-of-certi/8177%2CRecognition-of-certificates-or-the-level-of-education-or-rights-to-continue-educ.html)
+  #       More Resources:
+  #       - [Apply portal – Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
+  #       - [General info about nostrification at Lodz University of Technology](https://p.lodz.pl/en/education/nostrification-diploma)
+  #       - [NAWA – Recognition for academic purposes](https://nawa.gov.pl/en/recognition/recognition-for-academic-purposes/faq-frequently-asked-questions)
+  #       - [University of Warsaw – Additional requirements from 2025](https://rekrutacja.uw.edu.pl/en/additional-requirements-for-candidates-with-foreign-documents/)
+  #       - [Ministry of Education – Recognition system update](https://www.kuratorium.waw.pl/en/nostrification-of-certi/8177%2CRecognition-of-certificates-or-the-level-of-education-or-rights-to-continue-educ.html)
 
   utter_mobility:
     - text: |

@@ -50,6 +50,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+story_graph.dot
 
 # Translations
 *.mo
