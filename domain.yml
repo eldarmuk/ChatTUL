@@ -7,7 +7,6 @@ intents:
   - ask_accommodation
   - ask_accommodation_fees
   - ask_admission_steps
-  # - ask_all_fees
   - ask_book_rental
   - ask_breaks_holidays
   - ask_clarification
@@ -108,8 +107,8 @@ responses:
     - text: Hi there! I'm here to assist you with any questions about admissions at Lodz University of Technology.
 
   utter_goodbye:
-    - text: Goodbye! If you have more questions, feel free to ask.
-    - text: Bye! Don't hesitate to return if you have more questions.
+    - text: Goodbye! If you have more questions, I'm here to help.
+    - text: Bye! Feel free to return anytime if you need more information.
 
   utter_happy_to_help:
     - text: I'm happy to help!
@@ -118,224 +117,161 @@ responses:
 
   utter_fallback:
     - text: >
-        Sorry, I didn't understand. Could you rephrase your question?
-        Phrasing in terms of a single sentence or a question will help me understand you better
-
-  utter_default:
-    - text: >
-        Sorry, I don't know what you mean by tathhthththt.
-    - text: >
-        Thy words bear no weight with me.
-
-  utter_field_info:
-    # - condition:
-    #     - type: slot
-    #       name: field_of_study
-    #       value: Computer Science
-    #   text: |
-    #     Computer Science (first-cycle, full time, in English) at TUL:
-    #     - Duration: 7 semesters (3.5 years)
-    #     - Title: engineer (inżynier)
-    #     - Highlights: Programming (Java, C/C++, Python), web/mobile apps, databases, networks, AI, modern labs, internships.
-    #     More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
-    - text: Please specify the field of study you are interested in (e.g., Computer Science).
-
-  utter_duration:
-    # - condition:
-    #     - type: slot
-    #       name: field_of_study
-    #       value: Computer Science
-    #   text: |
-    #     The Computer Science programme lasts 7 semesters (3.5 years).
-    #     More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
-    - text: Please specify the field of study to get duration information.
-
-  utter_degree_title:
-    # - condition:
-    #     - type: slot
-    #       name: field_of_study
-    #       value: Computer Science
-    #   text: |
-    #     Graduates of Computer Science receive the professional title: engineer (inżynier).
-    #     More details: https://apply.p.lodz.pl/en/kierunek/first-cycle-computer-science
-    - text: Please specify the field of study to get degree title information.
-
-  utter_transfer:
-    - text: |
-        Transfer to TUL:
-        - Transfer possible after at least one semester at another university.
-        - Active student status and transcripts required.
-        - Deadlines and requirements change yearly.
-        - Contact: foreignstudents@info.p.lodz.pl
-        More details: https://apply.p.lodz.pl/en/enrollment/enroll/transfer
-
-  # utter_eligibility:
-  #   - text: |
-  #       For EU/EEA Applicants:
-  #       - Apply under the same rules as Polish citizens.
-  #       - Required documents:
-  #         - Secondary school certificate and transcript (apostilled/legalized as needed within EU/EEA).
-  #         - Proof of English proficiency (as required by the programme).
-  #       - Nostrification is not required for EU/EEA qualifications.
-  #       More details: [Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
-
-  #       ---
-
-  #       For Non-EU/Non-EEA Applicants:
-  #       - All foreign educational documents must be:
-  #         - Legalized/apostilled and translated into Polish or English (if required).
-  #         - Submitted with proof of English proficiency (minimum B2, depending on the programme).
-  #       - **IMPORTANT**: Starting from July 1, 2025 (for the 2025/2026 recruitment cycle), under the Act of April 4, 2025:
-  #         - Students must attach their recognition (nostrification) or NAWA statement during application, not after acceptance.
-  #         - Applies to applicants whose certificates come from countries outside EU, EFTA, or OECD, and not covered by a recognition agreement with Poland.
-
-  #       Required recognition documents:
-  #       - For Bachelor (first-cycle) or long-cycle programmes:
-  #         - A statement from the Director of NAWA confirming your secondary school certificate is equivalent to a Polish one.
-  #       - For Master (second-cycle) programmes:
-  #         - A NAWA statement or nostrification confirming your Bachelor’s diploma is recognized in Poland.
-
-  #       ❗ Contact the International Cooperation Centre early to prepare the recognition documents in time for recruitment deadlines. 
-
-  #       ---
-
-  #       More Resources:
-  #       - [Apply portal – Qualification rules](https://apply.p.lodz.pl/en/enrollment/enroll/qualification-rules)
-  #       - [General info about nostrification at Lodz University of Technology](https://p.lodz.pl/en/education/nostrification-diploma)
-  #       - [NAWA – Recognition for academic purposes](https://nawa.gov.pl/en/recognition/recognition-for-academic-purposes/faq-frequently-asked-questions)
-  #       - [University of Warsaw – Additional requirements from 2025](https://rekrutacja.uw.edu.pl/en/additional-requirements-for-candidates-with-foreign-documents/)
-  #       - [Ministry of Education – Recognition system update](https://www.kuratorium.waw.pl/en/nostrification-of-certi/8177%2CRecognition-of-certificates-or-the-level-of-education-or-rights-to-continue-educ.html)
+        Sorry, I didn't understand. Could you rephrase your question?  
+        Phrasing in terms of a single sentence or a question will help me understand you better.
 
   utter_mobility:
     - text: |
         Mobility options at TUL:
-        - Erasmus+: student exchanges with European partners. See: https://www.p.lodz.pl/en/international-cooperation/erasmus
-        - ECIU: challenge-based learning with international partners. See: https://www.p.lodz.pl/en/international-cooperation/eciu
+
+        - **Erasmus+**: student exchanges with European partners.  
+          See: [Erasmus+](https://www.p.lodz.pl/en/international-cooperation/erasmus)
+
+        - **ECIU**: challenge-based learning with international partners.  
+          See: [ECIU](https://www.p.lodz.pl/en/international-cooperation/eciu)
 
   utter_credits:
     - text: |
-        Full-time students must complete at least 30 ECTS credits per semester.
-        Credit recognition for previous studies is possible.
-        More details: https://www.p.lodz.pl/en/education/study-regulations
+        Full-time students must complete at least **30 ECTS credits per semester**.  
+        Credit recognition for previous studies is possible.  
+        More details: [Study Regulations](https://www.p.lodz.pl/en/education/study-regulations)
 
   utter_partners:
     - text: |
-        TUL is a member of ECIU (https://eciu.org/universities) and has many Erasmus+ partners (https://www.p.lodz.pl/en/international-cooperation/erasmus).
+        TUL is a member of [ECIU](https://eciu.org/universities) and has many [Erasmus+ partners](https://www.p.lodz.pl/en/international-cooperation/erasmus).
         See full lists on the official pages.
 
   utter_contact:
     - text: |
-        Admissions/International Office:
-        - Email: foreignstudents@info.p.lodz.pl
-        - Address: 36 Zwirki Str, 90-539 Lodz, building A16, room 113
-        - WhatsApp: +48 785 289 588
-        More details: https://apply.p.lodz.pl/en/contact
+        **Admissions/International Office**  
+        - **Email:** foreignstudents@info.p.lodz.pl  
+        - **Address:** 36 Żwirki St, 90-539 Łódź, building A16, room 113  
+        - **WhatsApp:** +48 785 289 588  
+        [More details](https://apply.p.lodz.pl/en/contact)
 
   utter_did_that_help:
-    - text: Did that help you?
+    - text: Was this information helpful?
+    - text: Does this answer your question, or would you like to know more?
 
   utter_happy:
-    - text: Great, carry on!
+    - text: That's great to hear! Please let me know if you have any more questions.
 
   utter_iamabot:
     - text: >
-        I am a bot, meant to answer any questions regarding admission of Łódź University Of Technology.
-        Don't be afraid, ask away!
+        I'm an AI assistant designed to help you with questions about admissions at Łódź University of Technology.
+        Please let me know how I can assist you.
+
   utter_study_freeze:
-    - text: >
-        It is not possible to completely freeze the cycle of study. 
-        However it is possible to go on a long-term leave which may be granted by the Vice-Rector 
-        at the documented written request of a student regardless of study cycle.
-        More details can be found in [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations)
+    - text: |
+        **Study freeze at TUL**
+
+        It is not possible to completely freeze the cycle of study.  
+        However, it is possible to go on a long-term leave, which may be granted by the Vice-Rector  
+        at the documented written request of a student, regardless of study cycle.
+
+        More details can be found in the [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations).
+
   utter_clubs:
     - text: >
         You can find information about our most prominent [student groups under this link](https://p.lodz.pl/en/students/students-research-groups).
-        Unfortunately the full list is in [polish language only](https://p.lodz.pl/studenci/kola-naukowe-i-organizacje-studenckie), sorry about that.
+        Unfortunately, the full list is available [only in Polish](https://p.lodz.pl/studenci/kola-naukowe-i-organizacje-studenckie).
+
   utter_grading:
     - text: >
-        Our grading scale is from 2.0 (lowest) to 5.0 (highest) and includes "zal" (meaning completed).
-        The semester final grade is simply a weighted average of all course grades during that semester. 
-        The specifics can be found in [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations)
+        - text: |
+          **Grading system at TUL:**
+
+          - Grades range from **2.0** (fail) to **5.0** (excellent).
+          - "zal" means "completed" (pass/fail courses).
+          - The semester final grade is a weighted average of all course grades for that semester.
+
+          For details, see the [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations).
+
   utter_library:
-    - text: >
-        TUL has a library where you can rent books,
-        participate in training classes or find a quiet place to study
-        You can find information about it [here](https://bg.p.lodz.pl/en)
+    - text: |
+        TUL has a library where you can:
+        - Rent books
+        - Participate in training classes
+        - Find a quiet place to study
+
+        You can find more information about it [here](https://bg.p.lodz.pl/en).
 
   utter_student_places:
     - text: >
-        TUL departments have many places where students can work and study freely.
-        These include simple benches with tables, dedicated rooms from our sponsors and 
-        quiet cabinets found at IFE.
+        TUL departments have many places where students can work and study freely.  
+        These include simple benches with tables, dedicated rooms from our sponsors, and quiet cabinets found at IFE.
 
   utter_ask_scholarship_types:
     - text: |
         We offer several types of scholarships:
-        - Social scholarship
-        - Rector's scholarship for the best students
-        - Scholarship for people with disabilities
-        - Minister’s scholarship
-        - One-time financial support
-        More info: https://p.lodz.pl/en/students/support-students/scholarships
+
+        - **Social scholarship**
+        - **Rector's scholarship for the best students**
+        - **Scholarship for people with disabilities**
+        - **Minister’s scholarship**
+        - **One-time financial support**
+
+        [More info: Scholarships](https://p.lodz.pl/en/students/support-students/scholarships)
 
   utter_ask_scholarship_application:
     - text: |
-        Application forms and deadlines are available at:
-        https://p.lodz.pl/en/students/support-students/scholarships
-        Submit forms at A33 building, 4th floor.
+        You can find application forms and deadlines on the [Scholarships](https://p.lodz.pl/en/students/support-students/scholarships) page.
+        Please submit your completed forms at the A33 building, 4th floor.
 
   utter_ask_scholarship_multiple:
     - text: |
-        Yes, you can apply for multiple scholarships if you meet all criteria.
-        Details: https://p.lodz.pl/en/students/support-students/scholarships
+        You may apply for more than one scholarship, provided you meet the eligibility criteria for each.
+        For more information, please see: [Scholarships](https://p.lodz.pl/en/students/support-students/scholarships)
 
   utter_ask_rectors_scholarship:
     - text: |
-        Rector's scholarship:
-        - Min. GPA: 4.0
-        - National/international achievements
-        - Top 10% in your field
-        More info: https://p.lodz.pl/en/students/support-students/scholarships
+        **Rector's scholarship:**
+        - **Min. GPA:** 4.0
+        - **National/international achievements**
+        - **Top 10% in your field**
+        More info: [Scholarships](https://p.lodz.pl/en/students/support-students/scholarships)
 
   utter_ask_academic_year:
     - text: |
-        The academic year start in October and ends September next year.
-        More details: https://p.lodz.pl/en/students/academic-calendar
+        The academic year at TUL begins in October and ends in September of the following year.
+        For detailed dates, please see the [Academic Calendar](https://p.lodz.pl/en/students/academic-calendar).
 
   utter_ask_academic_calendar:
     - text: |
-        You can find academic calendar here: https://p.lodz.pl/en/students/academic-year-calendar
+        You can view the academic calendar here: [Academic Year Calendar](https://p.lodz.pl/en/students/academic-year-calendar)
 
   utter_ask_exam_sessions:
     - text: |
-        Exam sessions:
-        - Winter: Jan–Feb
-        - Summer: June–early July and September
-        Details: https://p.lodz.pl/en/students/academic-calendar
+        **Exam sessions:**
+        - **Winter:** January–February
+        - **Summer:** June–early July and September
+
+        [See the Academic Calendar](https://p.lodz.pl/en/students/academic-calendar) for details.
 
   utter_ask_breaks_holidays:
     - text: |
-        Breaks include:
-        - Winter (Christmas–New Year)
-        - Semester (Feb)
-        - Easter
-        - Summer (July–Sept)
-        Calendar: https://p.lodz.pl/en/students/academic-calendar
+        **Breaks include:**
+        - **Winter (Christmas–New Year)**
+        - **Semester break (February)**
+        - **Easter**
+        - **Summer (July–September)**
+
+        [See the Academic Calendar](https://p.lodz.pl/en/students/academic-calendar) for exact dates.
 
   utter_ask_summer_break:
     - text: |
-        Summer break is from July to September.
+        The summer break at TUL typically lasts from July to September.
 
   utter_health_and_safety:
     - text: |
-        Passing Health and Safety training is mandatory for all TUL students
+        All TUL students are required to complete Health and Safety training.
 
   utter_ask_social_media:
     - text: |
         Follow us:
-        - Facebook: https://www.facebook.com/PolitechnikaLodzka
-        - Instagram: https://www.instagram.com/politechnika_lodzka
-        - LinkedIn: https://www.linkedin.com/school/politechnika-lodzka/
+        - [Facebook](https://www.facebook.com/PolitechnikaLodzka)
+        - [Instagram](https://www.instagram.com/politechnika_lodzka)
+        - [LinkedIn](https://www.linkedin.com/school/politechnika-lodzka/)
 
   utter_checkout_academic_calendar:
     - text: |
@@ -356,9 +292,8 @@ responses:
 
   utter_university_location:
     - text: >
-        The main campuses of Łódź University of Technology are placed
-        on Stefana Żeromskiego street.
-        You can use [naviPŁ](https://mapa.p.lodz.pl/) to see for urself
+        The main campuses of Łódź University of Technology are located on Stefana Żeromskiego Street.  
+        You can use [naviPŁ](https://mapa.p.lodz.pl/) to see for yourself.
 
   utter_library_location:
     - text: |
@@ -377,136 +312,154 @@ responses:
 
   utter_ife_location:
     - text: |
-        [IFE (International Faculty of Engineering)](https://mapa.p.lodz.pl/?geo=38) can be found on campus A, near Faculty of Chemistry
+        [International Faculty of Engineering (IFE)](https://mapa.p.lodz.pl/?geo=38) can be found on campus A, near Faculty of Chemistry
 
   utter_unknown_location:
     - text: >
-        Sorry, but I do not know which location you are reffering to.
-        I may lack information about it.
+        I'm sorry, I don't have information about that location at the moment.
+        Please provide more details or ask about another place.
 
   utter_admission_deadlines:
-    - text: >
-        For first cycle studies (Bachelor) admission opens as early as June and closes late September.
-        For summer semester of second-cycle (Masters) it opens in December and closes in March.
-        Precise dates can be found here: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+    - text: |
+        Admission deadlines vary by study cycle and semester.  
+        For **first cycle studies (Bachelor's)**, the first round typically opens in early June and closes in late September.  
+        For **second cycle studies (Master's)**, the winter semester admission usually begins in early September and concludes in October, while the summer semester admission starts in early July and ends in late March.
+
+        You can find precise dates here: [Admission Deadlines](https://apply.p.lodz.pl/en/enrollment/enroll/deadlines)
 
   utter_first_round:
     - text: >
-        The first round of admission for first cycle study (Bachelors) typically opens in early June.
-        Make sure to check the deadline for precise dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+        The first round of admission for first cycle studies (Bachelors) typically opens in **early June** and closes in **late September**.  
+        Make sure to check the deadline for precise dates: [Admission Deadlines](https://apply.p.lodz.pl/en/enrollment/enroll/deadlines)
 
   utter_second_round:
     - text: >
-        The second round of admission for first cycle study (Bachelors) typically opens in early February.
-        Make sure to check the deadline for precise dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+        The second round of admission for first cycle studies (Bachelors) usually opens in early February.  
+        Please refer to the [official website](https://apply.p.lodz.pl/en/enrollment/enroll/deadlines) for the most up-to-date deadlines.
 
   utter_masters_semesters:
-    - text: Second cycle studies don't have multiple rounds of admission instead you can apply for winter semester or summer semester.
+    - text: |
+        For second-cycle (Master's) studies, there are two main admission periods: winter semester and summer semester. There are no multiple rounds of admission; you may apply for either semester depending on your preference and eligibility.
 
   utter_winter_semester_admission:
-    - text: The winter semester admission typically starts in early September and ends in October
+    - text: |
+        The winter semester admission usually begins in early September and concludes in October.
 
   utter_summer_semester_admission:
-    - text: The summer semester admission typically starts in early July and ends in late March.
+    - text: |
+        The summer semester admission usually begins in early July and concludes in late March.
 
   utter_admission_deadline_table:
     - text: |
-        Make sure to check online for precise dates: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
+        Please refer to the official website for the most up-to-date deadlines: https://apply.p.lodz.pl/en/enrollment/enroll/deadlines
 
   utter_registration_deadline:
     - text: |
-        You can register on the Candidate Portal at any time.
+        You may register on the Candidate Portal at any time. Please note that registration for the first round of admission for first cycle studies (Bachelors) typically opens in early June and closes in late September.
 
   utter_admission_steps:
     - text: |
-        In order to enroll you need to:
-          1. Register on the Candidate Portal
-          2. Choose the study fields you are interested in. You can choose up to four.
-          3. Fill all relevant information (highschool diploma, language test result etc.)
-          4. Pay recruitation fee for each of the study fields you picked
-          5. Wait for the results
-          6. Print the application from recruitment portal, sign it and upload it again to the portal. \
-          If you picked multiple study fields and got into multiple of them, this is your time to pick single one.
-          7. Deliver the signed application from recruitment portal to the Student Mobility Division.
-        After that, congrats! You are accepted!
+        To enroll at TUL, please follow these steps:
+
+        1. Register on the Admission Portal [here](https://apply.p.lodz.pl/en/apply).
+        2. Select up to four study fields you are interested in.
+        3. Complete all required information (such as high school diploma, language test results, nostrification, etc.).
+        4. Pay the enrollment fee for each selected study field.
+        5. Wait for the admission results.
+        6. Print the application from the recruitment portal, sign it, and upload the signed version back to the portal.  
+          If you are accepted to multiple study fields, this is the time to choose one.
+        7. Submit the signed application to the Student Mobility Division.
+
+        Once these steps are completed, congratulations — you will be accepted!
 
   utter_studying_fees:
     - text: |
-        For students with Polish citizenship, full-time studies at TUL are free of charge. 
-        The fees for part-time studies for Polish students can be found at:
-        https://rekrutacja.p.lodz.pl/studia-i-i-ii-stopnia/rekrutuj/oplaty#studia_i_stopnia%3Eoplata_za_studia
-        For foreign students, the current fees are available at:
-        https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships#first_cycle_studies%3Etuition_fee
-        Additional announcements regarding the tuition fees are available at: 
-        https://p.lodz.pl/en/students/documents/tuition-fees-for-educational-services
+        For students with Polish citizenship, **full-time studies at TUL are free of charge**.
+
+        - Fees for part-time studies (Polish students): [See here](https://rekrutacja.p.lodz.pl/studia-i-i-ii-stopnia/rekrutuj/oplaty#studia_i_stopnia%3Eoplata_za_studia)
+        - Fees for foreign students: [Current fees](https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships#first_cycle_studies%3Etuition_fee)
+        - Additional announcements: [Tuition fees documents](https://p.lodz.pl/en/students/documents/tuition-fees-for-educational-services)
 
   utter_recrutation_fees:
     - text: |
         Current recrutation fees are available at:
-        https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships
+        [Fees and Scholarships](https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships)
 
   utter_accommodation_fees:
     - text: |
-        The fees for accommodation in the dormitories are available at:
-        https://p.lodz.pl/en/students/tul-residential-area#accommodation-fees-at-tul-residential-area-557
+        The fees for accommodation in the dormitories are available in [Accommodation Fees at TUL Residential Area](https://p.lodz.pl/en/students/tul-residential-area#accommodation-fees-at-tul-residential-area-557).
 
   utter_accommodation:
     - text: |
-        Lodz University of Technology has 9 student halls of residence, with a total of 2,591 beds, of which: 
-        - 20% in single rooms,
-        - 80% in double rooms, 
-        as well as 100 places in higher-standard guest rooms.
-        More details are available at:
-        https://p.lodz.pl/en/students/tul-residential-area
+        Lodz University of Technology has **9 student halls of residence**, with a total of **2,591 beds**, of which:  
+        - **20%** in single rooms  
+        - **80%** in double rooms  
+        - **100 places** in higher-standard guest rooms  
+        More details are available at:  
+        [TUL Residential Area](https://p.lodz.pl/en/students/tul-residential-area)
 
   utter_language_courses:
     - text: |
-        Languages are taught in the Language Centre. It provides students with courses in English, German, Spanish, Italian, French and Russian, available at levels from A1 to C2. The courses are divided into modules, each lasting one semester.
-        The Language Centre website is: https://www.cj.p.lodz.pl/in-english/about-us/language-centre
-        There also are basic Polish courses for beginners, details at: https://www.cj.p.lodz.pl/in-english/for-intl-student/polish-courses
+        Languages are taught in the **Language Centre**. Students can take courses in:
+
+        - **English**
+        - **German**
+        - **Spanish**
+        - **Italian**
+        - **French**
+        - **Russian**
+
+        Courses are available from **A1 to C2** levels and are divided into modules, each lasting one semester.
+
+        - More info: [Language Centre](https://www.cj.p.lodz.pl/in-english/about-us/language-centre)
+        - Basic Polish courses for beginners: [Polish Courses](https://www.cj.p.lodz.pl/in-english/for-intl-student/polish-courses)
 
   utter_language_center_fees:
-    - text: >
-        There are no fees for studying as a student at the language centre in the regular cirrculurum.
-        You can however participate in additional lessons and there are fees for 30, 40 and 60 additional hours of lessons.
+    - text: |
+        **There are no fees for studying as a student at the Language Centre in the regular curriculum.**
+        However, you can participate in additional lessons, and there are fees for 30, 40, and 60 additional hours of lessons.
 
   utter_doctor_fees:
     - text: |
         The medical examinations are free of charge if performed by one of the entities with a signed agreement. More details at:
-        https://p.lodz.pl/en/students/documents/initial-and-periodic-medical-examinations
+        [Initial and Periodic Medical Examinations](https://p.lodz.pl/en/students/documents/initial-and-periodic-medical-examinations)
 
   utter_student_card_fee:
     - text: |
-        The student ID card costs 22 PLN. A duplicate student ID card costs 33 PLN.
+        The student ID card costs **22 PLN**.  
+        A duplicate student ID card costs **33 PLN**.
 
   utter_failure_fees:
     - text: |
-        A student who fails a subject and wants to continue studying at the university, must pay a fee depending on: 
-        - the number of ECTS points the subject is worth,
-        - the Faculty the student is studying at,
-        - the price per ECTS point.
-        The fees regarding subject failures are explained in documents uploaded to: 
-        https://p.lodz.pl/en/students/documents/tuition-fees-for-educational-services
-        In June 2025, the latest version of the relevant document is from June 2024: https://p.lodz.pl/en/students/announcements/announcement-vice-rector-student-affairs-lodz-university-technology-10-june-2024
-        Details regarding subject failure fees for foreign students are also explained in the application portal at:
-        https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships#first_cycle_studies%3Eother_fees
+        **Failure Fees**
+
+        If a student fails a subject and wishes to continue studying at the university, a fee must be paid. The amount depends on:
+        - The number of ECTS points the subject is worth
+        - The Faculty the student is studying at
+        - The price per ECTS point
+
+        The rules and amounts for subject failure fees are explained in the following documents:
+        - [Tuition Fees for Educational Services](https://p.lodz.pl/en/students/documents/tuition-fees-for-educational-services)
+        - [Announcement - Vice-Rector for Student Affairs](https://p.lodz.pl/en/students/announcements/announcement-vice-rector-student-affairs-lodz-university-technology-10-june-2024)
+
+        For foreign students, details regarding subject failure fees are also available in the [Application Portal](https://apply.p.lodz.pl/en/enrollment/enroll/fees-and-scholarships#first_cycle_studies%3Eother_fees).
 
   utter_fee_kinds:
     - text: >
-        There are a couple fees you might run into while studying at TUL:
-          - doctor/medical examination fees
-          - fee for the student card
-          - accommodation fees
-          - recruitation fees
+        There are a couple of fees you might encounter while studying at TUL:
+
+        - **Doctor/medical examination fees**
+        - **Student card fee**
+        - **Accommodation fees**
+        - **Recruitment fees**
 
   utter_summer_break_duration:
     - text: >
-        The summer break lasts 3 months - July till September
+        The summer break lasts from the beginning of July to the end of September.
 
   utter_accommodation_location:
     - text: >
-        Student dormitories are mainly placed along Politechnika avenue with the exception of campus F
-        which is located near Pomorska street.
+        Student dormitories are mainly located along Politechnika Avenue, except for Campus F, which is situated near Pomorska Street.
 
 actions:
   - action_utter_deadline
