@@ -49,17 +49,19 @@ nlu:
 
   - synonym: Computer Science
     examples: |
+      - CS
       - Computer Science and Engineering
       - Computer Engineering
-      - Informatics
-      - Informatyka
+      - Computer Science
 
   - synonym: Information Technology
     examples: |
       - IT
+      - Informatics
       - Information Technologies
       - Information Technology and Computer Science
       - Information Systems
+      - Information Technology
 
   - synonym: Highlights
     examples: |
