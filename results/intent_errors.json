@@ -1,0 +1,18 @@
+[
+  {
+    "text": "medical exam fees",
+    "intent": "ask_doctor_fees",
+    "intent_prediction": {
+      "name": "ask_fee_existance",
+      "confidence": 0.5586742758750916
+    }
+  },
+  {
+    "text": "What is the academic year schedule?",
+    "intent": "ask_academic_year",
+    "intent_prediction": {
+      "name": "ask_academic_calendar",
+      "confidence": 0.6338889002799988
+    }
+  }
+]
