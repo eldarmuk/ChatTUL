@@ -1,18 +1,26 @@
 version: "3.1"
 
 stories:
-  - story: field info flow
+  - story: ask about field info
     steps:
-      - intent: greet
-      - action: utter_greet
       - intent: ask_field_info
       - action: action_field_info
 
-  - story: field info flow with entity
+  - story: ask field info + multiple
     steps:
       - intent: ask_field_info
         entities:
-          - study_field: "Computer Science"
+          - field_of_study: "Computer Science"
+      - action: action_field_info
+
+      - intent: ask_field_info
+        entities:
+          - field_of_study: "Information Technology"
+      - action: action_field_info
+
+  - story: ask field duration
+    steps:
+      - intent: ask_field_duration
       - action: action_field_info
 
   - story: transfer enquiry
@@ -109,6 +117,16 @@ stories:
       - intent: ask_location
         entities:
           - location: "TUL"
+      - action: action_location_placement
+
+      - intent: ask_location
+        entities:
+          - location: "library"
+      - action: action_location_placement
+
+      - intent: ask_location
+        entities:
+          - location: "places to study"
       - action: action_location_placement
 
   - story: social media
