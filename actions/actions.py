@@ -18,6 +18,11 @@ class ActionFieldInfo(Action):
             domain: DomainDict) -> List[Dict[Text, Any]]:
         field = tracker.get_slot("field_of_study")
         specificity = tracker.get_slot("field_info_specificity")
+        
+        intent = tracker.get_intent_of_latest_message()
+        if intent is not None and intent == "ask_field_duration":
+            specificity = "duration"
+        
         print(f"Field: {field}, Specificity: {specificity}")
         if not field or field not in DATA["field_of_study"]:
             dispatcher.utter_message(text="Please specify a valid field of study (e.g., Computer Science).")
