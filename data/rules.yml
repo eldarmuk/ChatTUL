@@ -23,147 +23,20 @@ rules:
 
   - rule: Answer transfer
     steps:
-    - intent: ask_transfer
-    - action: action_transfer_info
+      - intent: ask_transfer
+      - action: action_transfer_info
 
   - rule: Answer eligibility
     steps:
-    - intent: ask_eligibility
-    - action: action_eligibility_info
+      - intent: ask_eligibility
+      - action: action_eligibility_info
 
   - rule: Answer mobility
     steps:
-    - intent: ask_mobility
-    - action: action_mobility_info
+      - intent: ask_mobility
+      - action: action_mobility_info
 
   - rule: Answer credits
     steps:
-    - intent: ask_credits
-    - action: action_credits_info
-
-# - rule: Answer partners
-#   steps:
-#   - intent: ask_partners
-#   - action: utter_partners
-
-# - rule: Answer contact
-#   steps:
-#   - intent: ask_contact
-#   - action: utter_contact
-
-# - rule: Fallback
-#   steps:
-#   - intent: fallback
-#   - action: utter_fallback
-
-# rules:
-#   - rule: Say goodbye anytime the user says goodbye
-#     steps:
-#       - intent: goodbye
-#       - action: utter_goodbye
-
-#   - rule: Say 'I am a bot' anytime the user challenges
-#     steps:
-#       - intent: bot_challenge
-#       - action: utter_iamabot
-
-#   - rule: Handle low confidence intent
-#     steps:
-#       - intent: nlu_fallback
-#       - action: utter_fallback
-
-#   - rule: Respond to scholarship types
-#     steps:
-#       - intent: ask_scholarship_types
-#       - action: utter_ask_scholarship_types
-
-#   - rule: Respond to scholarship application
-#     steps:
-#       - intent: ask_scholarship_application
-#       - action: utter_ask_scholarship_application
-
-#   - rule: Respond to multiple scholarships query
-#     steps:
-#       - intent: ask_scholarship_multiple
-#       - action: utter_ask_scholarship_multiple
-
-#   - rule: Respond to rector's scholarship query
-#     steps:
-#       - intent: ask_rectors_scholarship
-#       - action: utter_ask_rectors_scholarship
-
-#   - rule: Respond to academic calendar
-#     steps:
-#       - intent: ask_academic_calendar
-#       - action: utter_ask_academic_calendar
-
-#   - rule: Respond to breaks and holidays
-#     steps:
-#       - intent: ask_breaks_holidays
-#       - action: utter_ask_breaks_holidays
-
-#   - rule: Respond to social media
-#     steps:
-#       - intent: ask_social_media
-#       - action: utter_ask_social_media
-
-#   - rule: Respond to PE mandatory
-#     steps:
-#       - intent: ask_pe_mandatory
-#       - action: utter_ask_pe_mandatory
-
-#   - rule: Respond to sports updates
-#     steps:
-#       - intent: ask_sports_updates
-#       - action: utter_ask_sports_updates
-
-# - rule: Respond to studying fees
-#   steps:
-#     - intent: ask_studying_fees
-#     - action: utter_studying_fees
-
-# - rule: Respond to recrutation fees
-#   steps:
-#     - intent: ask_recrutation_fees
-#     - action: utter_recrutation_fees
-
-# - rule: Respond to accomodation
-#   steps:
-#     - intent: ask_accommodation
-#     - action: utter_accommodation
-
-# - rule: Respond to accomodation fees
-#   steps:
-#     - intent: ask_accommodation_fees
-#     - action: utter_accommodation_fees
-
-# - rule: Respond to student card fees
-#   steps:
-#     - intent: ask_student_card_fee
-#     - action: utter_student_card_fee
-
-# - rule: Respond to doctor fees
-#   steps:
-#     - intent: ask_doctor_fees
-#     - action: utter_doctor_fees
-
-# - rule: Respond to failure fees
-#   steps:
-#     - intent: ask_failure_fees
-#     - action: utter_failure_fees
-
-# - rule: Respond to all fees
-#   steps:
-#     - intent: ask_all_fees
-#     - action: utter_studying_fees
-#     - action: utter_recrutation_fees
-#     - action: utter_accommodation_fees
-#     - action: utter_student_card_fee
-#     - action: utter_doctor_fees
-#     - action: utter_failure_fees
-
-# - rule: Respond to language courses
-#   steps:
-#     - intent: ask_language_courses
-#     - action: utter_language_courses
-
+      - intent: ask_credits
+      - action: action_credits_info
