@@ -46,6 +46,7 @@ intents:
   - mood_unhappy
   - thanks
   - ask_fee_existance
+  - ask_field_duration
 
 entities:
   - date
