@@ -4,4 +4,15 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "chromadb>=1.1.0",
+    "langchain>=0.3.27",
+    "sentence-transformers>=5.1.1",
+]
+
+[dependency-groups]
+dev = [
+    "flake8>=7.3.0",
+    "ty>=0.0.1a21",
+    "uv>=0.8.22",
+]
