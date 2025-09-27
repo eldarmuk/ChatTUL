@@ -18,3 +18,8 @@ dev = [
     "ruff>=0.13.2",
     "uv>=0.8.22",
 ]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "test"
+]
