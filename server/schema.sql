@@ -1,7 +1,0 @@
-
-CREATE TABLE message(
-    id INTEGER PRIMARY KEY AUTOINCREMENT
-    type VARCHAR(255) NOT NULL
-    message VARCHAR(255),
-    rating INTEGER 
-);
