@@ -2,8 +2,10 @@
 command = "ruff"
 args = ["server"]
 
+[language-server.pylsp.config.pylsp.plugins.ruff]
+enabled = true
+
 [[language]]
 name = "python"
-language-servers = ["ruff"]
+language-servers = ["ruff", "pylsp"]
 auto-format = true
-
