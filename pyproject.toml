@@ -3,5 +3,5 @@ name = "chattul"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = "<=3.10"
-dependencies = ["rasa>=3.6.21"]
+requires-python = ">=3.11"
+dependencies = []
