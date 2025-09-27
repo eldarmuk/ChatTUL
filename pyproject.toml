@@ -12,7 +12,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "flake8>=7.3.0",
     "ruff>=0.13.2",
     "uv>=0.8.22",
 ]
