@@ -115,23 +115,23 @@ responses:
 
   utter_fallback:
     - text: >
-        Sorry, I didn't understand. Could you rephrase your question?  
+        Sorry, I didn't understand. Could you rephrase your question?
         Phrasing in terms of a single sentence or a question will help me understand you better.
 
   utter_mobility:
     - text: |
         Mobility options at TUL:
 
-        - **Erasmus+**: student exchanges with European partners.  
+        - **Erasmus+**: student exchanges with European partners.
           See: [Erasmus+](https://www.p.lodz.pl/en/international-cooperation/erasmus)
 
-        - **ECIU**: challenge-based learning with international partners.  
+        - **ECIU**: challenge-based learning with international partners.
           See: [ECIU](https://www.p.lodz.pl/en/international-cooperation/eciu)
 
   utter_credits:
     - text: |
-        Full-time students must complete at least **30 ECTS credits per semester**.  
-        Credit recognition for previous studies is possible.  
+        Full-time students must complete at least **30 ECTS credits per semester**.
+        Credit recognition for previous studies is possible.
         More details: [Study Regulations](https://www.p.lodz.pl/en/education/study-regulations)
 
   utter_partners:
@@ -141,10 +141,10 @@ responses:
 
   utter_contact:
     - text: |
-        **Admissions/International Office**  
-        - **Email:** foreignstudents@info.p.lodz.pl  
-        - **Address:** 36 Żwirki St, 90-539 Łódź, building A16, room 113  
-        - **WhatsApp:** +48 785 289 588  
+        **Admissions/International Office**
+        - **Email:** foreignstudents@info.p.lodz.pl
+        - **Address:** 36 Żwirki St, 90-539 Łódź, building A16, room 113
+        - **WhatsApp:** +48 785 289 588
         [More details](https://apply.p.lodz.pl/en/contact)
 
   utter_did_that_help:
@@ -163,8 +163,8 @@ responses:
     - text: |
         **Study freeze at TUL**
 
-        It is not possible to completely freeze the cycle of study.  
-        However, it is possible to go on a long-term leave, which may be granted by the Vice-Rector  
+        It is not possible to completely freeze the cycle of study.
+        However, it is possible to go on a long-term leave, which may be granted by the Vice-Rector
         at the documented written request of a student, regardless of study cycle.
 
         More details can be found in the [Study Regulations](https://p.lodz.pl/en/students/documents/study-regulations).
@@ -196,7 +196,7 @@ responses:
 
   utter_student_places:
     - text: >
-        TUL departments have many places where students can work and study freely.  
+        TUL departments have many places where students can work and study freely.
         These include simple benches with tables, dedicated rooms from our sponsors, and quiet cabinets found at IFE.
 
   utter_ask_scholarship_types:
@@ -290,7 +290,7 @@ responses:
 
   utter_university_location:
     - text: >
-        The main campuses of Łódź University of Technology are located on Stefana Żeromskiego Street.  
+        The main campuses of Łódź University of Technology are located on Stefana Żeromskiego Street.
         You can use [naviPŁ](https://mapa.p.lodz.pl/) to see for yourself.
 
   utter_library_location:
@@ -319,20 +319,20 @@ responses:
 
   utter_admission_deadlines:
     - text: |
-        Admission deadlines vary by study cycle and semester.  
-        For **first cycle studies (Bachelor's)**, the first round typically opens in early June and closes in late September.  
+        Admission deadlines vary by study cycle and semester.
+        For **first cycle studies (Bachelor's)**, the first round typically opens in early June and closes in late September.
         For **second cycle studies (Master's)**, the winter semester admission usually begins in early September and concludes in October, while the summer semester admission starts in early July and ends in late March.
 
         You can find precise dates here: [Admission Deadlines](https://apply.p.lodz.pl/en/enrollment/enroll/deadlines)
 
   utter_first_round:
     - text: >
-        The first round of admission for first cycle studies (Bachelors) typically opens in **early June** and closes in **late September**.  
+        The first round of admission for first cycle studies (Bachelors) typically opens in **early June** and closes in **late September**.
         Make sure to check the deadline for precise dates: [Admission Deadlines](https://apply.p.lodz.pl/en/enrollment/enroll/deadlines)
 
   utter_second_round:
     - text: >
-        The second round of admission for first cycle studies (Bachelors) usually opens in early February.  
+        The second round of admission for first cycle studies (Bachelors) usually opens in early February.
         Please refer to the [official website](https://apply.p.lodz.pl/en/enrollment/enroll/deadlines) for the most up-to-date deadlines.
 
   utter_masters_semesters:
@@ -364,7 +364,7 @@ responses:
         3. Complete all required information (such as high school diploma, language test results, nostrification, etc.).
         4. Pay the enrollment fee for each selected study field.
         5. Wait for the admission results.
-        6. Print the application from the recruitment portal, sign it, and upload the signed version back to the portal.  
+        6. Print the application from the recruitment portal, sign it, and upload the signed version back to the portal.
           If you are accepted to multiple study fields, this is the time to choose one.
         7. Submit the signed application to the Student Mobility Division.
 
@@ -389,11 +389,11 @@ responses:
 
   utter_accommodation:
     - text: |
-        Lodz University of Technology has **9 student halls of residence**, with a total of **2,591 beds**, of which:  
-        - **20%** in single rooms  
-        - **80%** in double rooms  
-        - **100 places** in higher-standard guest rooms  
-        More details are available at:  
+        Lodz University of Technology has **9 student halls of residence**, with a total of **2,591 beds**, of which:
+        - **20%** in single rooms
+        - **80%** in double rooms
+        - **100 places** in higher-standard guest rooms
+        More details are available at:
         [TUL Residential Area](https://p.lodz.pl/en/students/tul-residential-area)
 
   utter_language_courses:
@@ -424,7 +424,7 @@ responses:
 
   utter_student_card_fee:
     - text: |
-        The student ID card costs **22 PLN**.  
+        The student ID card costs **22 PLN**.
         A duplicate student ID card costs **33 PLN**.
 
   utter_failure_fees:
