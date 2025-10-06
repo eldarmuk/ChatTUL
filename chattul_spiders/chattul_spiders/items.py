@@ -4,6 +4,14 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from dataclasses import dataclass
+
+
+@dataclass
+class AdmissionEnItem:
+    url: str
+    title: str
+    content: str
 
 
 class ChattulSpidersItem(scrapy.Item):
