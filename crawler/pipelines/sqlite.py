@@ -1,13 +1,3 @@
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-
-
-# useful for handling different item types with a single interface
-# from itemadapter import ItemAdapter
-
-# from itemadapter import ItemAdapter
 import scrapy
 import sqlite3
 from .items import AdmissionEnItem
@@ -31,14 +21,15 @@ SQLITE_MIGRATIONS = {
     """
 }
 SQLITE_MIGRATION_KEYS = sorted(SQLITE_MIGRATIONS.keys())
+SQLITE_DATABASE_NAME = "crawl_items.sqlite3"
 
 
-class SqliteInsertPipeline:
+class SqliteStoragePipeline:
     connections: dict[str, sqlite3.Connection | None]
 
     def __init__(self):
         self.connections = {}
-        con = sqlite3.connect("crawl_items.sqlite3")
+        con = sqlite3.connect(SQLITE_DATABASE_NAME)
         try:
             with con as trx:
                 self.upgrade_schema(trx)
@@ -81,7 +72,7 @@ class SqliteInsertPipeline:
         return 0 if res is None else res[0]
 
     def open_spider(self, spider: scrapy.Spider):
-        self.connections[spider.name] = sqlite3.connect("crawl_items.sqlite3")
+        self.connections[spider.name] = sqlite3.connect(SQLITE_DATABASE_NAME)
 
     def close_spider(self, spider: scrapy.Spider):
         con = self.connections[spider.name]

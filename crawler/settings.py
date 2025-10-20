@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "chattul_spiders"
+BOT_NAME = "crawler"
 
-SPIDER_MODULES = ["chattul_spiders.spiders"]
-NEWSPIDER_MODULE = "chattul_spiders.spiders"
+SPIDER_MODULES = ["crawler.spiders"]
+NEWSPIDER_MODULE = "crawler.spiders"
 
 ADDONS = {}
 
@@ -41,13 +41,11 @@ DOWNLOAD_DELAY = 1
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
-#    "chattul_spiders.middlewares.ChattulSpidersSpiderMiddleware": 543,
 # }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
-#    "chattul_spiders.middlewares.ChattulSpidersDownloaderMiddleware": 543,
 # }
 
 # Enable or disable extensions
@@ -59,7 +57,7 @@ DOWNLOAD_DELAY = 1
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    "chattul_spiders.pipelines.SqliteInsertPipeline": 300,
+    "crawler.pipelines.sqlite.SqliteStoragePipeline": 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
