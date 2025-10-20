@@ -16,7 +16,7 @@ ADDONS = {}
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = "chattul_spiders (+http://www.yourdomain.com)"
+USER_AGENT = "ChatTULBot (+https://github.com/eldarmuk/ChatTUL)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
