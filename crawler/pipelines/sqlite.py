@@ -1,6 +1,6 @@
 import scrapy
 import sqlite3
-from .items import AdmissionEnItem
+from ..items import AdmissionEnItem
 
 SQLITE_MIGRATIONS = {
     1: """
@@ -88,6 +88,15 @@ class SqliteStoragePipeline:
         con: sqlite3.Connection = con
 
         if isinstance(item, AdmissionEnItem):
+            res = (
+                con.cursor()
+                .execute("SELECT url FROM admission_en WHERE url=?", (item.url,))
+                .fetchone()
+            )
+
+            if res is not None:
+                return None
+
             stmt = "INSERT INTO admission_en(url, title, content) VALUES(?, ?, ?)"
             with con as tx:
                 cur = tx.cursor()
