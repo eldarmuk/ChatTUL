@@ -108,6 +108,8 @@ def get_relevant_fragments(q: str, k: int = Query(10, gt=0)) -> list[QueryResult
         distance = q_result["distances"][i]
 
         results.append(
-            QueryResult(url=metadata["url"], content=document, distance=distance)
+            QueryResult(
+                url=metadata["url"], content=b64encode(document), distance=distance
+            )
         )
     return results
