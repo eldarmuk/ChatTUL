@@ -88,7 +88,7 @@ def get_source_document(base64_url: str) -> SourceDocument:
     return SourceDocument(
         url=metadata["url"],
         timestamp=metadata["timestamp"],
-        content=b64encode(document.encode("utf-8").decode("utf-8")),
+        content=b64encode(document),
     )
 
 
