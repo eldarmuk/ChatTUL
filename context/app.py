@@ -44,8 +44,8 @@ def put_source_document(base64_url: str, item: SourceDocument):
         raise HTTPException(status_code=400, detail="Bad url path parameter")
 
     try:
-        item.content = b64decode(item.content)
-    except binascii.Error as e:
+        item.content = b64decode(item.content).decode("utf-8")
+    except binascii.Error | UnicodeDecodeError as e:
         raise HTTPException(status_code=400, detail=f"Could not decode content: {e}")
 
     if item.url != url:
