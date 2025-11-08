@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 from contextlib import asynccontextmanager
-from base64 import urlsafe_b64decode, urlsafe_b64encode, b64decode, b64encode, binascii
+from base64 import urlsafe_b64decode, b64decode, b64encode, binascii
 from datetime import datetime
 
 from . import chroma
