@@ -112,14 +112,12 @@ def get_relevant_fragments(q: str, k: int = Query(10, gt=0)) -> list[QueryResult
     )
     results: list[QueryResult] = []
 
-    for i in range(len(q_result["documents"])):
-        document = q_result["documents"][i]
-        metadata = q_result["metadatas"][i]
-        distance = q_result["distances"][i]
+    for i in range(len(q_result["documents"][0])):
+        document = q_result["documents"][0][i]
+        metadata = q_result["metadatas"][0][i]
+        distance = q_result["distances"][0][i]
 
         results.append(
-            QueryResult(
-                url=metadata["url"], content=b64encode(document), distance=distance
-            )
+            QueryResult(url=metadata["url"], content=document, distance=distance)
         )
     return results
