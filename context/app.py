@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 from contextlib import asynccontextmanager
-from base64 import b64decode, b64encode, binascii
+from base64 import urlsafe_b64decode, urlsafe_b64encode, b64decode, b64encode, binascii
 from datetime import datetime
 
 from . import chroma
@@ -39,7 +39,7 @@ def get_root():
 @app.put("/index/{base64_url}")
 def put_source_document(base64_url: str, item: SourceDocument):
     try:
-        url = b64decode(base64_url).decode("utf-8")
+        url = urlsafe_b64decode(base64_url).decode("utf-8")
     except binascii.Error | UnicodeDecodeError:
         raise HTTPException(status_code=400, detail="Bad url path parameter")
 
@@ -73,7 +73,7 @@ def put_source_document(base64_url: str, item: SourceDocument):
 @app.get("/index/{base64_url}")
 def get_source_document(base64_url: str, no_content: bool = False) -> SourceDocument:
     try:
-        url = b64decode(base64_url).decode("utf-8")
+        url = urlsafe_b64decode(base64_url).decode("utf-8")
     except binascii.Error | UnicodeDecodeError:
         raise HTTPException(status_code=400, detail="Bad url path parameter")
 
