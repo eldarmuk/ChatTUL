@@ -71,24 +71,34 @@ def put_source_document(base64_url: str, item: SourceDocument):
 
 
 @app.get("/index/{base64_url}")
-def get_source_document(base64_url: str) -> SourceDocument:
+def get_source_document(base64_url: str, no_content: bool = False) -> SourceDocument:
     try:
         url = b64decode(base64_url).decode("utf-8")
     except binascii.Error | UnicodeDecodeError:
         raise HTTPException(status_code=400, detail="Bad url path parameter")
 
+    include = ["metadatas"]
+    if not no_content:
+        include.append("documents")
+
     db_client = chroma.get_client()
     source_documents = db_client.get_collection(chroma.SOURCE_DOCUMENTS_COLLECTION)
-    result = source_documents.get(where={"url": {"$eq": url}}, limit=1)
-    if len(result["documents"]) == 0:
+    result = source_documents.get(where={"url": {"$eq": url}}, limit=1, include=include)
+    if len(result["metadatas"]) == 0:
         raise HTTPException(status_code=404, detail="Document not found")
 
-    document: str = result["documents"][0]
-    metadata: dict = result["metadata"][0]
+    metadata: dict = result["metadatas"][0]
+
+    if no_content:
+        content = ""
+    else:
+        document: str = result["documents"][0]
+        content = b64encode(document.encode("utf-8")).decode("utf-8")
+
     return SourceDocument(
         url=metadata["url"],
         timestamp=metadata["timestamp"],
-        content=b64encode(document),
+        content=content,
     )
 
 
