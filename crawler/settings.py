@@ -59,7 +59,7 @@ LOG_LEVEL = "INFO"
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    "crawler.pipelines.sqlite.SqliteStoragePipeline": 300,
+    # "crawler.pipelines.sqlite.SqliteStoragePipeline": 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
