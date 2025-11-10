@@ -60,34 +60,65 @@ def table_to_markdown(table_el) -> str:
         lines.append(mkrow(r))
     return "\n".join(lines) + "\n\n"
 
+def tabs_to_markdown(container) -> str:
+    navs = container.xpath(".//nav")
+    tab_contents = container.xpath(".//div[contains(@class,'tab-content')]")
+    if not navs or not tab_contents:
+        return ""
+    nav = navs[0]
+    tab_content = tab_contents[0]
+
+    label_nodes = nav.xpath(".//a|.//button|.//li")
+    labels = [ _text(n) for n in label_nodes if _text(n) ]
+
+    panes = [c for c in tab_content.getchildren() if isinstance(c.tag, str)]
+    out = []
+    if labels and panes:
+        n = min(len(labels), len(panes))
+        for i in range(n):
+            label = labels[i]
+            pane = panes[i]
+            out.append("### " + label + "\n\n")
+            for child in pane.iterchildren():
+                out.append(element_to_markdown(child))
+    else:
+        for pane in panes:
+            for child in pane.iterchildren():
+                out.append(element_to_markdown(child))
+    return "\n".join(out) + "\n\n"
+
 def element_to_markdown(el) -> str:
-	# table
-	if el.tag == "table":
-		return table_to_markdown(el)
+    # table
+    if el.tag == "table":
+        return table_to_markdown(el)
 
-	# headings
-	if re.match(r"h[1-6]", el.tag):
-		level = int(el.tag[1])
-		return ("#" * level) + " " + _text(el) + "\n\n"
+    # tab container (nav + .tab-content)
+    if el.tag == "div" and el.xpath(".//nav") and el.xpath(".//div[contains(@class,'tab-content')]"):
+        return tabs_to_markdown(el)
+    
+    # headings
+    if re.match(r"h[1-6]", el.tag):
+        level = int(el.tag[1])
+        return ("#" * level) + " " + _text(el) + "\n\n"
 
-	# paragraph
-	if el.tag == "p":
-		return _text(el) + "\n\n"
+    # paragraph
+    if el.tag == "p":
+        return _text(el) + "\n\n"
 
-	# lists
-	if el.tag == "ul":
-		items = []
-		for li in el.xpath("./li"):
-			items.append("- " + _text(li))
-		return "\n".join(items) + "\n\n"
-	if el.tag == "ol":
-		items = []
-		for i, li in enumerate(el.xpath("./li"), start=1):
-			items.append(f"{i}. " + _text(li))
-		return "\n".join(items) + "\n\n"
+    # lists
+    if el.tag == "ul":
+        items = []
+        for li in el.xpath("./li"):
+            items.append("- " + _text(li))
+        return "\n".join(items) + "\n\n"
+    if el.tag == "ol":
+        items = []
+        for i, li in enumerate(el.xpath("./li"), start=1):
+            items.append(f"{i}. " + _text(li))
+        return "\n".join(items) + "\n\n"
 
-	# fallback
-	return _text(el) + ("\n\n" if _text(el) else "")
+    # fallback
+    return _text(el) + ("\n\n" if _text(el) else "")
 
 def html_main_to_markdown(main_html: str) -> str:
 	frag = html.fromstring(main_html)
