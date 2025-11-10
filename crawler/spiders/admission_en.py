@@ -35,30 +35,52 @@ def table_to_markdown(table_el) -> str:
 
     if not rows:
         return ""
-    
-    # TODO: handle colspan/rowspan
+
+    cols = max(len(r) for r in rows)
+    for r in rows:
+        while len(r) < cols:
+            r.append("")
+
+    use_header = bool(table_el.xpath(".//th")) or len(rows) > 1
+    header = rows[0] if use_header else [""] * cols
+    body = rows[1:] if use_header else rows
+
+    col_widths = [0] * cols
+    for r in [header] + body:
+        for i, cell in enumerate(r):
+            col_widths[i] = max(col_widths[i], len(cell))
+
+    def mkrow(r):
+        return "| " + " | ".join((r[i].ljust(col_widths[i]) for i in range(cols))) + " |"
+
+    lines = []
+    lines.append(mkrow(header))
+    lines.append("| " + " | ".join(("-" * max(3, col_widths[i]) for i in range(cols))) + " |")
+    for r in body:
+        lines.append(mkrow(r))
+    return "\n".join(lines) + "\n\n"
 
 def element_to_markdown(el) -> str:
-	# detect table
-	if getattr(el, "tag", "") == "table":
+	# table
+	if el.tag == "table":
 		return table_to_markdown(el)
 
 	# headings
-	if re.match(r"h[1-6]", getattr(el, "tag", "")):
+	if re.match(r"h[1-6]", el.tag):
 		level = int(el.tag[1])
 		return ("#" * level) + " " + _text(el) + "\n\n"
 
 	# paragraph
-	if getattr(el, "tag", "") == "p":
+	if el.tag == "p":
 		return _text(el) + "\n\n"
 
 	# lists
-	if getattr(el, "tag", "") == "ul":
+	if el.tag == "ul":
 		items = []
 		for li in el.xpath("./li"):
 			items.append("- " + _text(li))
 		return "\n".join(items) + "\n\n"
-	if getattr(el, "tag", "") == "ol":
+	if el.tag == "ol":
 		items = []
 		for i, li in enumerate(el.xpath("./li"), start=1):
 			items.append(f"{i}. " + _text(li))
@@ -70,6 +92,7 @@ def element_to_markdown(el) -> str:
 def html_main_to_markdown(main_html: str) -> str:
 	frag = html.fromstring(main_html)
 	parts = []
+
 	for child in frag.iterchildren():
 		parts.append(element_to_markdown(child))
 	return "".join(parts).strip() + "\n"
