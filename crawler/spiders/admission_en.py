@@ -7,6 +7,10 @@ from lxml import html
 
 from ..items import AdmissionEnItem
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 def _text(node):
 	if node is None:
 		return ""
@@ -90,10 +94,12 @@ def tabs_to_markdown(container) -> str:
 def element_to_markdown(el) -> str:
     # table
     if el.tag == "table":
+        logging.debug("Matched: table")
         return table_to_markdown(el)
 
     # tab container (nav + .tab-content)
     if el.tag == "div" and el.xpath(".//nav") and el.xpath(".//div[contains(@class,'tab-content')]"):
+        logging.debug("Matched: tabs")
         return tabs_to_markdown(el)
     
     # headings
@@ -149,9 +155,11 @@ class AdmissionEnSpider(scrapy.Spider):
         main_html = main_xpath.get()
         try:
             markdown = html_main_to_markdown(main_html)
-        except Exception:
+        except Exception as e:
+            self.logger.error(f"Markdown conversion failed: {e}")
             markdown = main_html
 
+        self.logger.info(f"Markdown content: {markdown}")
         # pass it to the pipeline
         yield AdmissionEnItem(
             response.url, title if title is not None else response.url, markdown
