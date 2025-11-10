@@ -18,20 +18,46 @@ def _escape_pipe(text):
         return text.replace("|", "\\|")
     return ""
 
+def table_to_markdown(table_el) -> str:
+    rows = []
+    thead = table_el.xpath(".//thead")
+    if thead:
+        for tr in thead[0].xpath(".//tr"):
+            cells = [ _escape_pipe(_text(c)) for c in tr.xpath("./th|./td") ]
+            if any(c != "" for c in cells):
+                rows.append(cells)
+    for tr in table_el.xpath(".//tr"):
+        if any(tr.getparent() is t.getparent() for t in thead) if thead else False:
+            continue
+        cells = [ _escape_pipe(_text(c)) for c in tr.xpath("./th|./td") ]
+        if any(c != "" for c in cells):
+            rows.append(cells)
+
+    if not rows:
+        return ""
+    
+    # TODO: handle colspan/rowspan
+
 def element_to_markdown(el) -> str:
+	# detect table
+	if getattr(el, "tag", "") == "table":
+		return table_to_markdown(el)
+
+	# headings
 	if re.match(r"h[1-6]", getattr(el, "tag", "")):
 		level = int(el.tag[1])
 		return ("#" * level) + " " + _text(el) + "\n\n"
 
+	# paragraph
 	if getattr(el, "tag", "") == "p":
 		return _text(el) + "\n\n"
 
+	# lists
 	if getattr(el, "tag", "") == "ul":
 		items = []
 		for li in el.xpath("./li"):
 			items.append("- " + _text(li))
 		return "\n".join(items) + "\n\n"
-
 	if getattr(el, "tag", "") == "ol":
 		items = []
 		for i, li in enumerate(el.xpath("./li"), start=1):
