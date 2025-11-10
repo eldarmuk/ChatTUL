@@ -1,9 +1,52 @@
 import urllib
+import re
 
 import scrapy
 from scrapy.http import Response
+from lxml import html
 
 from ..items import AdmissionEnItem
+
+def _text(node):
+	if node is None:
+		return ""
+	text = "".join(node.itertext()) if hasattr(node, "itertext") else str(node)
+	return re.sub(r"\s+", " ", text).strip()
+
+def _escape_pipe(text):
+    if text is not None:
+        return text.replace("|", "\\|")
+    return ""
+
+def element_to_markdown(el) -> str:
+	if re.match(r"h[1-6]", getattr(el, "tag", "")):
+		level = int(el.tag[1])
+		return ("#" * level) + " " + _text(el) + "\n\n"
+
+	if getattr(el, "tag", "") == "p":
+		return _text(el) + "\n\n"
+
+	if getattr(el, "tag", "") == "ul":
+		items = []
+		for li in el.xpath("./li"):
+			items.append("- " + _text(li))
+		return "\n".join(items) + "\n\n"
+
+	if getattr(el, "tag", "") == "ol":
+		items = []
+		for i, li in enumerate(el.xpath("./li"), start=1):
+			items.append(f"{i}. " + _text(li))
+		return "\n".join(items) + "\n\n"
+
+	# fallback
+	return _text(el) + ("\n\n" if _text(el) else "")
+
+def html_main_to_markdown(main_html: str) -> str:
+	frag = html.fromstring(main_html)
+	parts = []
+	for child in frag.iterchildren():
+		parts.append(element_to_markdown(child))
+	return "".join(parts).strip() + "\n"
 
 
 class AdmissionEnSpider(scrapy.Spider):
@@ -23,9 +66,15 @@ class AdmissionEnSpider(scrapy.Spider):
         # extract the title of the page
         title = response.xpath("//head//title/text()").get()
 
+        main_html = main_xpath.get()
+        try:
+            markdown = html_main_to_markdown(main_html)
+        except Exception:
+            markdown = main_html
+
         # pass it to the pipeline
         yield AdmissionEnItem(
-            response.url, title if title is not None else response.url, main_xpath.get()
+            response.url, title if title is not None else response.url, markdown
         )
 
         # get all links
