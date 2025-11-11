@@ -112,6 +112,14 @@ def element_to_markdown(el) -> str:
                 continue
             parts.append(element_to_markdown(child))
         return "".join(parts)
+    
+    # inline formatting
+    if el.tag in ("span", "strong", "em", "b", "i", "code"):
+        return _text(el)
+
+    # line breaks
+    if el.tag == "br":
+        return "\n"
 
     # table
     if el.tag == "table":
@@ -148,12 +156,15 @@ def element_to_markdown(el) -> str:
     return _text(el) + ("\n\n" if _text(el) else "")
 
 def html_main_to_markdown(main_html: str) -> str:
-	frag = html.fromstring(main_html)
-	parts = []
+    frag = html.fromstring(main_html)
+    parts = []
 
-	for child in frag.iterchildren():
-		parts.append(element_to_markdown(child))
-	return "".join(parts).strip() + "\n"
+    for child in frag.iterchildren():
+        try:
+            parts.append(element_to_markdown(child))
+        except Exception as e:
+            logging.warning(f"Skipping child <{child.tag}>: {e}")
+    return "".join(parts).strip() + "\n"
 
 
 class AdmissionEnSpider(scrapy.Spider):
@@ -178,7 +189,7 @@ class AdmissionEnSpider(scrapy.Spider):
             markdown = html_main_to_markdown(main_html)
         except Exception as e:
             self.logger.error(f"Markdown conversion failed: {e}")
-            markdown = main_html
+            markdown = _text(html.fromstring(main_html))
 
         self.logger.info(f"Markdown content: {markdown}")
         # pass it to the pipeline
