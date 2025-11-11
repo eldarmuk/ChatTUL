@@ -190,7 +190,11 @@ class AdmissionEnSpider(scrapy.Spider):
         self.logger.info(f"Markdown content: {markdown}")
         # pass it to the pipeline
         yield AdmissionEnItem(
-            response.url, title if title is not None else response.url, markdown
+            url=response.url, 
+            title=title if title is not None else response.url, 
+            content=markdown
+            # content_text=_text(html.fromstring(main_html)) # This is for plain text content, use it when the time comes :)
+            # TODO: Add more fields, e.g., lang, content_markdown, timestamp to integrate into ChromaDB
         )
 
         # get all links
