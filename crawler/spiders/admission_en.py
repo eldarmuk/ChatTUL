@@ -7,9 +7,7 @@ from lxml import html
 
 from ..items import AdmissionEnItem
 
-import logging
-
-logging.basicConfig(level=logging.INFO)
+import warnings
 
 def _text(node):
 	if node is None:
@@ -123,12 +121,10 @@ def element_to_markdown(el) -> str:
 
     # table
     if el.tag == "table":
-        logging.debug("Matched: table")
         return table_to_markdown(el)
 
     # tab container (nav + .tab-content)
     if el.tag == "div" and el.xpath(".//nav") and el.xpath(".//div[contains(@class,'tab-content')]"):
-        logging.debug("Matched: tabs")
         return tabs_to_markdown(el)
     
     # headings
@@ -163,7 +159,7 @@ def html_main_to_markdown(main_html: str) -> str:
         try:
             parts.append(element_to_markdown(child))
         except Exception as e:
-            logging.warning(f"Skipping child <{child.tag}>: {e}")
+            warnings.warn(f"Skipping child <{child.tag}>: {e}", RuntimeWarning)
     return "".join(parts).strip() + "\n"
 
 
@@ -178,7 +174,7 @@ class AdmissionEnSpider(scrapy.Spider):
         # page content is placed in <main id="content">
         main_xpath = response.xpath('//main[@id="content"]')
         if len(main_xpath) == 0:
-            self.logger.warn("missing <main id='content'>, skipping..")
+            warnings.warn("missing <main id='content'>, skipping..", RuntimeWarning)
             return None
 
         # extract the title of the page
