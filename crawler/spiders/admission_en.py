@@ -92,6 +92,27 @@ def tabs_to_markdown(container) -> str:
     return "\n".join(out) + "\n\n"
 
 def element_to_markdown(el) -> str:
+    # links
+    if el.tag == "a":
+        href = el.get("href") or ""
+        text = _text(el) or href
+        return f"[{text}]({href})" if href else text
+
+    # images
+    if el.tag == "img":
+        src = el.get("src") or el.get("data-src") or ""
+        alt = el.get("alt") or ""
+        return f"![{alt}]({src})" if src else alt
+
+    # container blocks: recurse into children (section/div/article)
+    if el.tag in ("section", "div", "article"):
+        parts = []
+        for child in el.iterchildren():
+            if not isinstance(child.tag, str):
+                continue
+            parts.append(element_to_markdown(child))
+        return "".join(parts)
+
     # table
     if el.tag == "table":
         logging.debug("Matched: table")
