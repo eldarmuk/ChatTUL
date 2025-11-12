@@ -124,6 +124,10 @@ def element_to_markdown(el) -> str:
     if el.tag == "table":
         return table_to_markdown(el)
     
+    # tab container (nav + .tab-content)
+    if el.tag == "div" and el.xpath(".//nav") and el.xpath(".//div[contains(@class,'tab-content')]"):
+        return tabs_to_markdown(el)
+
     # headings
     if re.match(r"h[1-6]", el.tag):
         level = int(el.tag[1])
@@ -180,7 +184,7 @@ class AdmissionEnSpider(scrapy.Spider):
         main_html = main_xpath.get()
         try:
             markdown = html_main_to_markdown(main_html)
-        except Exception as e:
+        except Exception:
             markdown = _text(html.fromstring(main_html))
 
         # pass it to the pipeline
