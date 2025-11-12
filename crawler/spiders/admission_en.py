@@ -7,7 +7,8 @@ from lxml import html
 
 from ..items import AdmissionEnItem
 
-import warnings
+import logging
+logger = logging.getLogger(__name__)
 
 def _text(node):
 	if node is None:
@@ -122,10 +123,6 @@ def element_to_markdown(el) -> str:
     # table
     if el.tag == "table":
         return table_to_markdown(el)
-
-    # tab container (nav + .tab-content)
-    if el.tag == "div" and el.xpath(".//nav") and el.xpath(".//div[contains(@class,'tab-content')]"):
-        return tabs_to_markdown(el)
     
     # headings
     if re.match(r"h[1-6]", el.tag):
@@ -159,7 +156,7 @@ def html_main_to_markdown(main_html: str) -> str:
         try:
             parts.append(element_to_markdown(child))
         except Exception as e:
-            warnings.warn(f"Skipping child <{child.tag}>: {e}", RuntimeWarning)
+            logger.warning(f"Skipping child <{child.tag}>: {e}")
     return "".join(parts).strip() + "\n"
 
 
@@ -174,7 +171,7 @@ class AdmissionEnSpider(scrapy.Spider):
         # page content is placed in <main id="content">
         main_xpath = response.xpath('//main[@id="content"]')
         if len(main_xpath) == 0:
-            warnings.warn("missing <main id='content'>, skipping..", RuntimeWarning)
+            logger.warning("missing <main id='content'>, skipping..")
             return None
 
         # extract the title of the page
@@ -184,10 +181,8 @@ class AdmissionEnSpider(scrapy.Spider):
         try:
             markdown = html_main_to_markdown(main_html)
         except Exception as e:
-            self.logger.error(f"Markdown conversion failed: {e}")
             markdown = _text(html.fromstring(main_html))
 
-        self.logger.info(f"Markdown content: {markdown}")
         # pass it to the pipeline
         yield AdmissionEnItem(
             url=response.url, 
