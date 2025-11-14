@@ -2,17 +2,9 @@ import scrapy
 from itemadapter import ItemAdapter
 
 import requests
-
-import os
 import datetime
 from base64 import urlsafe_b64encode, b64encode
 from pydantic import BaseModel
-
-CONTEXT_SERVICE_HOSTNAME = (
-    os.getenv("CONTEXT_SERVICE_HOSTNAME") or "http://localhost"
-).rstrip("/")
-CONTEXT_SERVICE_PORT = int(os.getenv("CONTEXT_SERVICE_POST") or 8001)
-CONTEXT_SERVICE_URL = f"{CONTEXT_SERVICE_HOSTNAME}:{CONTEXT_SERVICE_PORT}"
 
 
 class SourceDocument(BaseModel):
