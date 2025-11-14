@@ -1,22 +1,10 @@
 from fastapi import FastAPI, HTTPException, Query
-from pydantic import BaseModel
 from contextlib import asynccontextmanager
 from base64 import urlsafe_b64decode, b64decode, b64encode, binascii
 from datetime import datetime
 
 from . import chroma
-
-
-class SourceDocument(BaseModel):
-    url: str | None
-    timestamp: int
-    content: str  # TODO: should this be a list? to accommodate multimodal content...
-
-
-class QueryResult(BaseModel):
-    url: str
-    content: str
-    distance: float
+from .model import SourceDocument, QueryResult
 
 
 uptime_start = datetime.utcnow()
