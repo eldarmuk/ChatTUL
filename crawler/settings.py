@@ -7,6 +7,8 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
+
 BOT_NAME = "crawler"
 
 SPIDER_MODULES = ["crawler.spiders"]
@@ -88,3 +90,9 @@ ITEM_PIPELINES = {
 FEED_EXPORT_ENCODING = "utf-8"
 
 # SCHEDULER_PRIORITY_QUEUE = "scrapy.pqueues.DownloaderAwarePriorityQueue"
+
+CONTEXT_SERVICE_HOSTNAME = (
+    os.getenv("CONTEXT_SERVICE_HOSTNAME") or "http://localhost"
+).rstrip("/")
+CONTEXT_SERVICE_PORT = int(os.getenv("CONTEXT_SERVICE_POST") or 8001)
+CONTEXT_SERVICE_URL = f"{CONTEXT_SERVICE_HOSTNAME}:{CONTEXT_SERVICE_PORT}"

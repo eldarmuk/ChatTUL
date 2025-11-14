@@ -15,23 +15,6 @@ CONTEXT_SERVICE_PORT = int(os.getenv("CONTEXT_SERVICE_POST") or 8001)
 CONTEXT_SERVICE_URL = f"{CONTEXT_SERVICE_HOSTNAME}:{CONTEXT_SERVICE_PORT}"
 
 
-def _validate_http_response(resp: requests.Response) -> requests.Response:
-    assert resp.headers.get("Content-Type") == "application/json"
-    return resp
-
-
-def _put(path: str, *args, **kwargs) -> requests.Response:
-    return _validate_http_response(
-        requests.put(CONTEXT_SERVICE_URL + path, *args, **kwargs)
-    )
-
-
-def _get(path: str, *args, **kwargs) -> requests.Response:
-    return _validate_http_response(
-        requests.get(CONTEXT_SERVICE_URL + path, *args, **kwargs)
-    )
-
-
 class SourceDocument(BaseModel):
     url: str
     timestamp: int
@@ -44,12 +27,27 @@ class ContextServicePipeline:
     """
 
     item_meta_cache: dict[str, SourceDocument]
+    service_url: str
 
-    def __init__(self):
-        resp = _get("/health")
+    def __init__(self, service_hostname: str, service_port: int):
+        self.item_meta_cache = {}
+        self.service_url = f"{service_hostname}:{service_port}"
+
+        resp = self._get("/health")
         assert resp.status_code == 200
 
-        self.item_meta_cache = {}
+    @classmethod
+    def from_crawler(cls, crawler: scrapy.crawler.Crawler):
+        return cls(
+            crawler.settings.get("CONTEXT_SERVICE_HOSTNAME"),
+            crawler.settings.get("CONTEXT_SERVICE_PORT"),
+        )
+
+    def _put(self, path: str, *args, **kwargs) -> requests.Response:
+        return requests.put(self.service_url + path, *args, **kwargs)
+
+    def _get(self, path: str, *args, **kwargs) -> requests.Response:
+        return requests.get(self.service_url + path, *args, **kwargs)
 
     def fetch_item_meta(self, url: str) -> SourceDocument | None:
         """
@@ -60,7 +58,7 @@ class ContextServicePipeline:
         if url in self.item_meta_cache:
             return self.item_meta_cache[url]
 
-        resp = _get(
+        resp = self._get(
             f"/index/{urlsafe_b64encode(url.encode('utf-8')).decode('utf-8')}?no_content=1"
         )
         if resp.status_code == 404:
@@ -91,10 +89,9 @@ class ContextServicePipeline:
 
         meta = self.fetch_item_meta(url)
         if meta is None or meta.get("timestamp") < timestamp:
-            resp = _put(
+            resp = self._put(
                 f"/index/{urlsafe_b64encode(url.encode('utf-8')).decode('utf-8')}",
                 json={
-                    "url": url,
                     "timestamp": timestamp,
                     "content": b64encode(content.encode("utf-8")).decode("utf-8"),
                 },
