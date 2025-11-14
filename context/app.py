@@ -27,7 +27,7 @@ def get_root():
 @app.put("/index/{base64_url}")
 def put_source_document(base64_url: str, item: SourceDocument):
     if item.url is not None:
-        raise HTTPException(status=400, detail="Unexpected `url` field")
+        raise HTTPException(status_code=400, detail="Unexpected `url` field")
 
     try:
         url = urlsafe_b64decode(base64_url).decode("utf-8")
