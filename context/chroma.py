@@ -1,4 +1,4 @@
-from chromadb import Client, ClientAPI
+from chromadb import PersistentClient, ClientAPI
 
 SOURCE_DOCUMENTS_COLLECTION = "source_documents"
 _client: ClientAPI | None = None
@@ -8,7 +8,7 @@ def get_client() -> ClientAPI:
     global _client
 
     if _client is None:
-        _client = Client()
+        _client = PersistentClient(path="./.chroma")
 
     return _client
 
