@@ -6,7 +6,7 @@ import requests
 import os
 import datetime
 from base64 import urlsafe_b64encode, b64encode
-from typing import TypedDict
+from pydantic import BaseModel
 
 CONTEXT_SERVICE_HOSTNAME = (
     os.getenv("CONTEXT_SERVICE_HOSTNAME") or "http://localhost"
@@ -32,9 +32,10 @@ def _get(path: str, *args, **kwargs) -> requests.Response:
     )
 
 
-class ItemMeta(TypedDict):
+class SourceDocument(BaseModel):
     url: str
-    timestamp: datetime.datetime
+    timestamp: int
+    content: str | None = None
 
 
 class ContextServicePipeline:
@@ -42,7 +43,7 @@ class ContextServicePipeline:
     Item pipeline that sends items over HTTP endpoint to be saved by context service.
     """
 
-    item_meta_cache: dict[str, ItemMeta]
+    item_meta_cache: dict[str, SourceDocument]
 
     def __init__(self):
         resp = _get("/health")
@@ -50,7 +51,7 @@ class ContextServicePipeline:
 
         self.item_meta_cache = {}
 
-    def fetch_item_meta(self, url: str) -> ItemMeta | None:
+    def fetch_item_meta(self, url: str) -> SourceDocument | None:
         """
         Fetch item metadata without it's content.
 
@@ -66,13 +67,8 @@ class ContextServicePipeline:
             return None
         assert resp.status_code == 200
 
-        body = resp.json()
-        # TODO: what to do if context service returns object in invalid schema??
-        assert isinstance(body, dict)
-        assert body.get("url") == url
-        assert body.get("timestamp") is not None
+        meta = SourceDocument.parse_raw(resp.text)
 
-        meta = ItemMeta(url=body["url"], timestamp=body["timestamp"])
         self.item_meta_cache[url] = meta
         return meta
 
@@ -107,5 +103,5 @@ class ContextServicePipeline:
                 print(resp.json())
 
             assert resp.status_code == 200
-            self.item_meta_cache[url] = ItemMeta(url=url, timestamp=timestamp)
+            self.item_meta_cache[url] = SourceDocument(url=url, timestamp=timestamp)
         return item
