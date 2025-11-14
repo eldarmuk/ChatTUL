@@ -340,6 +340,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "chromadb" },
     { name = "langchain" },
+    { name = "pydantic" },
     { name = "pytest" },
     { name = "requests" },
     { name = "scrapy" },
@@ -358,6 +359,7 @@ dev = [
 requires-dist = [
     { name = "chromadb", specifier = ">=1.1.0" },
     { name = "langchain", specifier = ">=0.3.27" },
+    { name = "pydantic", specifier = ">=2.11.9" },
     { name = "pytest", specifier = ">=8.4.2" },
     { name = "requests", specifier = ">=2.32.5" },
     { name = "scrapy", specifier = ">=2.13.3" },
