@@ -26,6 +26,9 @@ def get_root():
 
 @app.put("/index/{base64_url}")
 def put_source_document(base64_url: str, item: SourceDocument):
+    if item.url is not None:
+        raise HTTPException(status=400, detail="Unexpected `url` field")
+
     try:
         url = urlsafe_b64decode(base64_url).decode("utf-8")
     except binascii.Error | UnicodeDecodeError:
@@ -34,12 +37,8 @@ def put_source_document(base64_url: str, item: SourceDocument):
     try:
         item.content = b64decode(item.content).decode("utf-8")
     except binascii.Error | UnicodeDecodeError as e:
-        raise HTTPException(status_code=400, detail=f"Could not decode content: {e}")
-
-    if item.url != url:
         raise HTTPException(
-            status_code=400,
-            detail="url path parameter and url of document to be inserted don't match",
+            status_code=400, detail=f"Could not decode content: {e.reason}"
         )
 
     # TODO: chunk documents

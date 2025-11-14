@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class SourceDocument(BaseModel):
-    url: str | None
+    url: str | None = None
     timestamp: int
     content: str  # TODO: should this be a list? to accommodate multimodal content...
 
