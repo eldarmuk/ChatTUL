@@ -13,7 +13,7 @@ argparser.add_argument(
     "--pipelines",
     choices=["context_service", "PRESET-PROD"],
     help="Enable item pipelines that by default are optional",
-    nargs="*",
+    nargs="+",
 )
 argparser.add_argument(
     "-o", "--output", type=Path, help="Specify jsonline feed output path"
@@ -57,6 +57,8 @@ if args.pipelines is not None:
         item_pipelines[PIPELINE_NAME_TO_MODULE["context_service"]] = (
             max(item_pipelines.values(), default=0) + 1
         )
+
+    settings.set("ITEM_PIPELINES", item_pipelines)
 
 crawler_process = CrawlerProcess(settings)
 crawler_process.crawl(AdmissionEnSpider)
