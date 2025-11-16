@@ -30,7 +30,7 @@ def table_to_markdown(table_el) -> str:
             if any(c != "" for c in cells):
                 rows.append(cells)
     for tr in table_el.xpath(".//tr"):
-        if any(tr.getparent() is t.getparent() for t in thead) if thead else False:
+        if thead and any(tr.getparent() is t.getparent() for t in thead):
             continue
         cells = [ _escape_pipe(_text(c)) for c in tr.xpath("./th|./td") ]
         if any(c != "" for c in cells):
@@ -102,6 +102,10 @@ def element_to_markdown(el) -> str:
         src = el.get("src") or el.get("data-src") or ""
         alt = el.get("alt") or ""
         return f"![{alt}]({src})" if src else alt
+    
+    # tab container
+    if el.tag == "div" and (el.xpath(".//nav") or el.xpath(".//ul[@role='tablist']")) and el.xpath(".//div[contains(@class,'tab-content')]"):
+        return tabs_to_markdown(el)
 
     # container blocks: recurse into children (section/div/article)
     if el.tag in ("section", "div", "article"):
@@ -123,10 +127,6 @@ def element_to_markdown(el) -> str:
     # table
     if el.tag == "table":
         return table_to_markdown(el)
-    
-    # tab container (nav + .tab-content)
-    if el.tag == "div" and el.xpath(".//nav") and el.xpath(".//div[contains(@class,'tab-content')]"):
-        return tabs_to_markdown(el)
 
     # headings
     if re.match(r"h[1-6]", el.tag):
