@@ -24,7 +24,4 @@ dev = [
     "uv>=0.8.22",
 ]
 
-[tool.pytest.ini_options]
-testpaths = [
-    "test"
-]
+# [tool.pytest.ini_options]
