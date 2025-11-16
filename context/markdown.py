@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Any
 
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
@@ -15,7 +15,7 @@ def create_markdown_processor(
     return mistune.create_markdown(renderer=renderer, plugins=["table"])
 
 
-format = create_markdown_processor(renderer=MarkdownRenderer)
+format = create_markdown_processor(renderer=MarkdownRenderer())
 get_ast = create_markdown_processor()
 
 
@@ -37,51 +37,54 @@ class MarkdownSection:
     def __str__(self):
         stringified = ""
         for lvl, h in enumerate(self.headings):
-            stringified += "#" * (lvl + 1) + h + "\n\n"
+            stringified += "#" * (lvl + 1) + " " + h + "\n\n"
 
         stringified += self.content
         return stringified
 
 
-def split_by_sections(content: str) -> list[MarkdownSection]:
+def split_by_sections(document_content: str) -> list[MarkdownSection]:
     renderer = MarkdownRenderer()
-    ast = get_ast(content)
 
-    content = []
-    headings = []
-    sections = []
+    ast: list[dict[str, Any]] | str = get_ast(document_content)
+    if isinstance(ast, str):
+        return [MarkdownSection([], ast)]
 
-    def is_section_top_level():
-        return len(headings) == 0
+    content: list[dict[str, Any]] = []
+    headings: list[dict[str, Any]] = []
+    sections: list[MarkdownSection] = []
 
-    def is_section_empty():
-        return len(content) == 0
-
-    def should_split_section(token):
-        # provided the token is a heading
-        # .. if the previous heading has higher or equal level
-        # .. (with examption on top level section)
-        # .. and the section content is not empty
-        # .. the section should be split
-        return (
-            token.get("type") == "heading"
-            and (is_section_top_level() or headings[-1]["level"] >= token["level"])
-            and not is_section_empty()
+    def push_section(heading: dict[str, Any] | None = None):
+        sections.append(
+            MarkdownSection(
+                [h["children"][0]["raw"] for h in headings],
+                renderer.render_tokens(content, mistune.BlockState()),
+            )
         )
+        content.clear()
+
+        if heading is not None:
+            while (
+                len(headings) != 0
+                and headings[-1]["attrs"]["level"] >= heading["attrs"]["level"]
+            ):
+                headings.pop()
 
     for token in ast:
-        if token.get("type") == "heading":
-            if should_split_section(token):
-                sections.append(
-                    MarkdownSection(list(headings), renderer.render_tokens(content))
-                )
-                content = []
-                if not is_section_top_level():
-                    headings.pop()
+        token_type = token.get("type")
+        if token_type == "blank_line":
+            continue
+
+        if token_type == "heading":
+            if len(content) != 0:
+                push_section(token)
 
             headings.append(token)
             continue
 
-        content += [token]
+        content.append(token)
+
+    if len(content) != 0:
+        push_section()
 
     return sections
