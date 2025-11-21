@@ -6,7 +6,9 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "chromadb>=1.1.0",
+    "fastapi[standard]>=0.121.0",
     "langchain>=0.3.27",
+    "mistune>=3.1.4",
     "pydantic>=2.11.9",
     "pytest>=8.4.2",
     "requests>=2.32.5",
@@ -22,7 +24,4 @@ dev = [
     "uv>=0.8.22",
 ]
 
-[tool.pytest.ini_options]
-testpaths = [
-    "test"
-]
+# [tool.pytest.ini_options]
