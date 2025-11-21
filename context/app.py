@@ -26,11 +26,12 @@ def get_root():
 
 @app.put("/index/{base64_url}")
 def put_source_document(base64_url: str, item: SourceDocument):
+    # TODO: use explicit pydantic model
     if item.url is not None:
         raise HTTPException(status_code=400, detail="Unexpected `url` field")
 
     try:
-        url = urlsafe_b64decode(base64_url).decode("utf-8")
+        item.url = urlsafe_b64decode(base64_url).decode("utf-8")
     except binascii.Error | UnicodeDecodeError:
         raise HTTPException(status_code=400, detail="Bad url path parameter")
 
@@ -41,20 +42,8 @@ def put_source_document(base64_url: str, item: SourceDocument):
             status_code=400, detail=f"Could not decode content: {e.reason}"
         )
 
-    # TODO: chunk documents
     db_client = chroma.get_client()
-    source_documents = db_client.get_collection(chroma.SOURCE_DOCUMENTS_COLLECTION)
-    source_documents.add(
-        ids=[url],  # TODO: make this more smarter
-        documents=[item.content],
-        metadatas=[
-            {
-                "url": url,
-                "timestamp": item.timestamp,
-            }
-        ],
-    )
-    pass
+    chroma.insert_document(db_client, item, overwrite=True)
 
 
 @app.get("/index/{base64_url}")
@@ -92,9 +81,9 @@ def get_source_document(base64_url: str, no_content: bool = False) -> SourceDocu
 @app.get("/search")
 def get_relevant_fragments(q: str, k: int = Query(10, gt=0)) -> list[QueryResult]:
     db_client = chroma.get_client()
-    source_documents = db_client.get_collection(chroma.SOURCE_DOCUMENTS_COLLECTION)
+    document_fragments = db_client.get_collection(chroma.DOCUMENT_FRAGMENTS_COLLECTION)
 
-    q_result = source_documents.query(
+    q_result = document_fragments.query(
         query_texts=[q], n_results=k, include=["metadatas", "documents", "distances"]
     )
     results: list[QueryResult] = []

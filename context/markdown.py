@@ -1,4 +1,4 @@
-from typing import Literal, Any
+from typing import Literal, Any, TypeAlias
 
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
@@ -16,7 +16,9 @@ def create_markdown_processor(
 
 
 format = create_markdown_processor(renderer=MarkdownRenderer())
-get_ast = create_markdown_processor()
+_get_ast = create_markdown_processor()
+
+Token: TypeAlias = dict[str, Any]
 
 
 class MarkdownSection:
@@ -28,9 +30,9 @@ class MarkdownSection:
     """
 
     headings: list[str]
-    content: str
+    content: list[Token]
 
-    def __init__(self, headings: list[str], content: str):
+    def __init__(self, headings: list[str], content: list[Token]):
         self.headings = headings
         self.content = content
 
@@ -43,22 +45,30 @@ class MarkdownSection:
         return stringified
 
 
+def get_ast(document_content: str) -> list[Token]:
+    ast, _ = _get_ast.parse()
+
+    # NOTE: if this is tripped, it indicades a programmer error
+    #
+    assert not isinstance(ast, str), (
+        "could not get AST of Markdown document, is renderer set to None?"
+    )
+
+    return ast
+
+
 def split_by_sections(document_content: str) -> list[MarkdownSection]:
-    renderer = MarkdownRenderer()
+    ast: list[Token] = get_ast(document_content)
 
-    ast: list[dict[str, Any]] | str = get_ast(document_content)
-    if isinstance(ast, str):
-        return [MarkdownSection([], ast)]
-
-    content: list[dict[str, Any]] = []
-    headings: list[dict[str, Any]] = []
+    content: list[Token] = []
+    headings: list[Token] = []
     sections: list[MarkdownSection] = []
 
-    def push_section(heading: dict[str, Any] | None = None):
+    def push_section(heading: Token | None = None):
         sections.append(
             MarkdownSection(
                 [h["children"][0]["raw"] for h in headings],
-                renderer.render_tokens(content, mistune.BlockState()),
+                format.renderer.render_tokens(content, mistune.BlockState()),
             )
         )
         content.clear()

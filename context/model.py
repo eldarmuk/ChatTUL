@@ -1,8 +1,13 @@
 from pydantic import BaseModel
 
 
+class PutSourceDocumentModel(BaseModel):
+    timestamp: int
+    content: str
+
+
 class SourceDocument(BaseModel):
-    url: str | None = None
+    url: str
     timestamp: int
     content: str  # TODO: should this be a list? to accommodate multimodal content...
 
