@@ -90,40 +90,95 @@ def tabs_to_markdown(container) -> str:
                 out.append(element_to_markdown(child))
     return "\n".join(out) + "\n\n"
 
-def expand_tabs_to_sections(container):
+def expand_tabs_to_sections(container, _visited_panes=None):
+    if _visited_panes is None:
+        _visited_panes = set()
+
+    # find tablist (try ul[role=tablist] then nav with tab buttons/links)
     tablist = container.xpath('.//ul[@role="tablist"]')
     if not tablist:
         tablist = container.xpath('.//nav[.//button[@role="tab"] or .//a[@role="tab"]]')
     if not tablist:
         return container
     tablist = tablist[0]
+
+    # ensure tablist belongs to this container (avoid deep-nested ones)
+    tablist_parent = tablist.getparent()
+    depth = 0
+    current = tablist_parent
+    while current is not None and current != container:
+        current = current.getparent()
+        depth += 1
+        if depth > 10:
+            logger.warning("Tablist parent depth exceeded safety limit")
+            return container
+
     tab_buttons = tablist.xpath('.//button[@aria-controls] | .//a[@aria-controls]')
+    if not tab_buttons:
+        logger.debug("No tab buttons found with aria-controls attribute")
+        return container
+
     sections = []
+    processed_panes_at_this_level = set()
+    processed_count = 0
+
     for button in tab_buttons:
-        label = _text(button)
-        pane_id = button.get('aria-controls')
-        if not pane_id:
+        try:
+            label = _text(button) or "Untitled Tab"
+            pane_id = button.get('aria-controls')
+            if not pane_id or pane_id in processed_panes_at_this_level:
+                continue
+
+            _visited_panes.add(pane_id)
+            escaped_id = pane_id.replace('"', '\\"')
+            pane_nodes = container.xpath(f'.//*[@id="{escaped_id}"]')
+            if not pane_nodes:
+                logger.debug(f"No pane found for ID: {pane_id}")
+                continue
+            pane = pane_nodes[0]
+
+            processed_panes_at_this_level.add(pane_id)
+
+            section = html.Element('section')
+            h3 = html.Element('h3')
+            h3.text = label
+            section.append(h3)
+
+            # DFS: expand nested tablists first
+            nested_tablist = pane.xpath('.//ul[@role="tablist"]')
+            if nested_tablist:
+                branch_visited = _visited_panes | {pane_id}
+                try:
+                    expanded_pane = expand_tabs_to_sections(pane, branch_visited)
+                    for child in expanded_pane.iterchildren():
+                        if isinstance(child.tag, str):
+                            section.append(child)
+                except Exception as e:
+                    logger.warning(f"Error expanding nested tabs for pane {pane_id}: {e}")
+                    for child in pane.iterchildren():
+                        if isinstance(child.tag, str):
+                            section.append(child)
+            else:
+                for child in pane.iterchildren():
+                    if isinstance(child.tag, str):
+                        section.append(child)
+
+            sections.append(section)
+            processed_count += 1
+
+        except Exception as e:
+            logger.warning(f"Error processing tab button: {e}")
             continue
-        pane = container.xpath(f'.//*[@id="{pane_id}"]')
-        if not pane:
-            continue
-        pane = pane[0]
-        section = html.Element('section')
-        h3 = html.Element('h3')
-        h3.text = label
-        section.append(h3)
-        nested_tablist = pane.xpath('.//ul[@role="tablist"]')
-        if nested_tablist:
-            expanded_pane = expand_tabs_to_sections(pane)
-            for child in expanded_pane.iterchildren():
-                section.append(child)
-        else:
-            for child in pane.iterchildren():
-                section.append(child)
-        sections.append(section)
+
+    if processed_count == 0:
+        logger.debug("No tabs were successfully processed")
+        return container
+
     new_container = html.Element('div')
+    new_container.set('data-expanded-tabs', 'true')
     for section in sections:
         new_container.append(section)
+
     return new_container
 
 def element_to_markdown(el) -> str:
