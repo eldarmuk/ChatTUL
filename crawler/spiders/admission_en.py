@@ -90,6 +90,42 @@ def tabs_to_markdown(container) -> str:
                 out.append(element_to_markdown(child))
     return "\n".join(out) + "\n\n"
 
+def expand_tabs_to_sections(container):
+    tablist = container.xpath('.//ul[@role="tablist"]')
+    if not tablist:
+        tablist = container.xpath('.//nav[.//button[@role="tab"] or .//a[@role="tab"]]')
+    if not tablist:
+        return container
+    tablist = tablist[0]
+    tab_buttons = tablist.xpath('.//button[@aria-controls] | .//a[@aria-controls]')
+    sections = []
+    for button in tab_buttons:
+        label = _text(button)
+        pane_id = button.get('aria-controls')
+        if not pane_id:
+            continue
+        pane = container.xpath(f'.//*[@id="{pane_id}"]')
+        if not pane:
+            continue
+        pane = pane[0]
+        section = html.Element('section')
+        h3 = html.Element('h3')
+        h3.text = label
+        section.append(h3)
+        nested_tablist = pane.xpath('.//ul[@role="tablist"]')
+        if nested_tablist:
+            expanded_pane = expand_tabs_to_sections(pane)
+            for child in expanded_pane.iterchildren():
+                section.append(child)
+        else:
+            for child in pane.iterchildren():
+                section.append(child)
+        sections.append(section)
+    new_container = html.Element('div')
+    for section in sections:
+        new_container.append(section)
+    return new_container
+
 def element_to_markdown(el) -> str:
     # links
     if el.tag == "a":
@@ -104,8 +140,17 @@ def element_to_markdown(el) -> str:
         return f"![{alt}]({src})" if src else alt
     
     # tab container
-    if el.tag == "div" and (el.xpath(".//nav") or el.xpath(".//ul[@role='tablist']")) and el.xpath(".//div[contains(@class,'tab-content')]"):
-        return tabs_to_markdown(el)
+    if el.tag == "div":
+        has_tablist = bool(el.xpath('.//nav | .//ul[@role="tablist"]'))
+        has_content = bool(el.xpath('.//div[contains(@class,"tab-content")]'))
+        
+        if has_tablist and has_content:
+            expanded = expand_tabs_to_sections(el)
+            parts = []
+            for child in expanded.iterchildren():
+                if isinstance(child.tag, str):
+                    parts.append(element_to_markdown(child))
+            return "".join(parts)
 
     # container blocks: recurse into children (section/div/article)
     if el.tag in ("section", "div", "article"):
