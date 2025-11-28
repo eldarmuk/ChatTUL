@@ -1,10 +1,13 @@
 import urllib
 import re
 from copy import deepcopy
+from io import StringIO
+import traceback
 
 import scrapy
 from scrapy.http import Response
 from lxml import html
+import pandas as pd
 
 from ..items import AdmissionEnItem
 
@@ -13,64 +16,43 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def _text(node):
+def _text(node: html.HtmlElement | None) -> str:
     if node is None:
         return ""
     text = "".join(node.itertext()) if hasattr(node, "itertext") else str(node)
     return re.sub(r"\s+", " ", text).strip()
 
 
-def _escape_pipe(text):
+def _escape_pipe(text) -> str:
     if text is not None:
         return text.replace("|", "\\|")
     return ""
 
 
-def table_to_markdown(table_el) -> str:
-    rows = []
-    thead = table_el.xpath(".//thead")
-    if thead:
-        for tr in thead[0].xpath(".//tr"):
-            cells = [_escape_pipe(_text(c)) for c in tr.xpath("./th|./td")]
-            if any(c != "" for c in cells):
-                rows.append(cells)
-    for tr in table_el.xpath(".//tr"):
-        if thead and any(tr.getparent() is t.getparent() for t in thead):
-            continue
-        cells = [_escape_pipe(_text(c)) for c in tr.xpath("./th|./td")]
-        if any(c != "" for c in cells):
-            rows.append(cells)
+def table_to_markdown(table_el: html.HtmlElement) -> str:
+    # get <td>s which have images with alt attribute containing "Flaga"
+    # replace them with their alt text while removing "Flaga "
+    for td in table_el.xpath('.//td[./img[contains(@alt, "Flaga")]]'):
+        imgs = td.findall("img")
+        td.clear()
 
-    if not rows:
-        return ""
+        alts = [img.attrib["alt"].replace("Flaga ", "") for img in imgs]
+        td.text = ", ".join(alts)
 
-    cols = max(len(r) for r in rows)
-    for r in rows:
-        while len(r) < cols:
-            r.append("")
-
-    use_header = bool(table_el.xpath(".//th")) or len(rows) > 1
-    header = rows[0] if use_header else [""] * cols
-    body = rows[1:] if use_header else rows
-
-    col_widths = [0] * cols
-    for r in [header] + body:
-        for i, cell in enumerate(r):
-            col_widths[i] = max(col_widths[i], len(cell))
-
-    def mkrow(r):
-        return (
-            "| " + " | ".join((r[i].ljust(col_widths[i]) for i in range(cols))) + " |"
-        )
-
-    lines = []
-    lines.append(mkrow(header))
-    lines.append(
-        "| " + " | ".join(("-" * max(3, col_widths[i]) for i in range(cols))) + " |"
+    # PERF: Deep copy takes place here
+    tables = pd.read_html(
+        StringIO(html.tostring(table_el).decode("utf-8")),
+        flavor="lxml",
+        encoding="utf-8",
     )
-    for r in body:
-        lines.append(mkrow(r))
-    return "\n".join(lines) + "\n\n"
+    assert len(tables) == 1, "expected a single table, found multiple"
+    table = tables[0]
+
+    use_header = isinstance(table.columns, pd.Index)
+    if not use_header:
+        table.columns = table.iloc[0]
+
+    return table.to_markdown(tablefmt="github", index=False)
 
 
 def expand_tabs_to_sections(container, _visited_panes=None):
@@ -220,7 +202,7 @@ def _element_to_markdown_inline(el) -> str:
     return "".join(result)
 
 
-def element_to_markdown(el) -> str:
+def element_to_markdown(el: html.HtmlElement) -> str:
     # Images
     if el.tag == "img":
         alt = el.get("alt") or ""
@@ -252,6 +234,7 @@ def element_to_markdown(el) -> str:
                         "Tab expansion did not occur, processing as regular div"
                     )
             except Exception as e:
+                traceback.print_exc()
                 logger.warning(
                     f"Error expanding tabs, falling back to regular processing: {e}"
                 )
@@ -330,7 +313,7 @@ def element_to_markdown(el) -> str:
 
 def html_main_to_markdown(main_html: str) -> str:
     try:
-        frag = html.fromstring(main_html)
+        frag: html.Element = html.fromstring(main_html)
     except Exception as e:
         logger.error(f"Failed to parse HTML: {e}")
         return ""
