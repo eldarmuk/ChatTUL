@@ -1,54 +1,13 @@
 import urllib
+import logging
 
 import scrapy
 from scrapy.http import Response
 
-from dataclasses import dataclass
-from parsel.selector import SelectorList
 from ..items import AdmissionEnItem
 
 
-# UNUSED
-@dataclass
-class FnSTab:
-    path: list[str]
-    content: str
-
-
-# UNUSED
-def parse_FnS_tablist(response: Response, tablist: SelectorList) -> list[FnSTab]:
-    tablist_buttons = tablist.xpath(".//button")
-    tab_ids = tablist_buttons.xpath("./@aria-controls").getall()
-    tab_titles = tablist_buttons.xpath("./text()").getall()
-
-    tabs: list[FnSTab] = []
-
-    for tab_id, tab_title in zip(tab_ids, tab_titles):
-        tab_xpath = response.xpath(f'//*[@id="{tab_id}"]')
-
-        if len(tab_xpath) == 0:
-            continue
-
-        subtablist_xpath = tab_xpath.xpath('.//ul[@role="tablist"]')
-        if len(subtablist_xpath) == 0:
-            tabs.append(FnSTab([tab_title], tab_xpath.get()))
-            continue
-
-        tabs += [
-            FnSTab([tab_title] + new.path, new.content)
-            for new in parse_FnS_tablist(response, subtablist_xpath)
-        ]
-
-    return tabs
-
-
-# UNUSED
-def parse_fees_and_scholarships(response: Response) -> list[FnSTab]:
-    top_tablist = response.xpath(
-        '//ul[@role="tablist" and not(ancestor::div[contains(@class, "tab-content")])]'
-    )
-
-    return parse_FnS_tablist(response, top_tablist)
+logger = logging.getLogger(__name__)
 
 
 class AdmissionEnSpider(scrapy.Spider):
@@ -62,15 +21,19 @@ class AdmissionEnSpider(scrapy.Spider):
         # page content is placed in <main id="content">
         main_xpath = response.xpath('//main[@id="content"]')
         if len(main_xpath) == 0:
-            self.logger.warn("missing <main id='content'>, skipping..")
+            logger.warning("missing <main id='content'>, skipping..")
             return None
 
         # extract the title of the page
         title = response.xpath("//head//title/text()").get()
+        main_html = main_xpath.get()
 
         # pass it to the pipeline
         yield AdmissionEnItem(
-            response.url, title if title is not None else response.url, main_xpath.get()
+            url=response.url,
+            title=title if title is not None else response.url,
+            content=main_html,
+            # TODO: Add more fields, e.g., lang, content_markdown, timestamp to integrate into ChromaDB
         )
 
         # get all links
@@ -88,6 +51,7 @@ class AdmissionEnSpider(scrapy.Spider):
                 continue
             path = url.path.split("/")[1:]
 
+            # TODO: Create middleware for this
             # make sure we stay on the english page
             # rekrutacja.p.lodz.pl = polish
             # apply.p.lodz.pl/en = english
