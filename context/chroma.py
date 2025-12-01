@@ -1,5 +1,8 @@
-from chromadb import PersistentClient, ClientAPI
+import chromadb
+from chromadb import PersistentClient, ClientAPI, Embeddings, Documents
+
 from functools import lru_cache
+from sentence_transformers import SentenceTransformer
 
 from .model import SourceDocument
 from . import markdown
@@ -13,9 +16,26 @@ def get_client() -> ClientAPI:
     return PersistentClient(path="./.chroma")
 
 
+class EmbeddingFunction(chromadb.EmbeddingFunction):
+    @staticmethod
+    @lru_cache(maxsize=1)
+    def get_model():
+        return SentenceTransformer(
+            "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        )
+
+    def __call__(self, input: Documents) -> Embeddings:
+        model = EmbeddingFunction.get_model()
+        return model.encode(input)
+
+
 def init_collections(client: ClientAPI):
     client.create_collection(SOURCE_DOCUMENTS_COLLECTION, get_or_create=True)
-    client.create_collection(DOCUMENT_FRAGMENTS_COLLECTION, get_or_create=True)
+    client.create_collection(
+        DOCUMENT_FRAGMENTS_COLLECTION,
+        get_or_create=True,
+        embedding_function=EmbeddingFunction(),
+    )
 
 
 def insert_document(
