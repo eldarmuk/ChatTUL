@@ -105,6 +105,18 @@ def get_ast(document_content: str) -> list[Token]:
     return ast
 
 
+def extract_text(token: Token) -> list[str]:
+    if token["type"] == "text":
+        return [token["raw"]]
+    if "children" not in token:
+        return []
+
+    res = []
+    for t in token["children"]:
+        res += extract_text(t)
+    return res
+
+
 def split_by_sections(document_content: str) -> list[MarkdownSection]:
     ast: list[Token] = get_ast(document_content)
 
@@ -115,7 +127,7 @@ def split_by_sections(document_content: str) -> list[MarkdownSection]:
     def push_section(heading: Token | None = None):
         sections.append(
             MarkdownSection(
-                [h["children"][0]["raw"] for h in headings],
+                [" ".join(extract_text(h)) for h in headings],
                 format.renderer.render_tokens(content, mistune.BlockState()),
             )
         )
