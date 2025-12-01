@@ -1,7 +1,9 @@
-from fastapi import FastAPI, HTTPException, Query
 from contextlib import asynccontextmanager
 from base64 import urlsafe_b64decode, b64decode, b64encode, binascii
 from datetime import datetime
+
+from fastapi import FastAPI, HTTPException, Query
+from pydantic import BaseModel
 
 from . import chroma
 from .model import SourceDocument, QueryResult
@@ -24,14 +26,23 @@ def get_root():
     return {"uptime": (datetime.utcnow() - uptime_start).seconds}
 
 
-@app.put("/index/{base64_url}")
-def put_source_document(base64_url: str, item: SourceDocument):
-    # TODO: use explicit pydantic model
-    if item.url is not None:
-        raise HTTPException(status_code=400, detail="Unexpected `url` field")
+class PutSourceDocument(BaseModel):
+    content: str
+    timestamp: int
 
+    def into_sourcedocument(self, url: str) -> SourceDocument:
+        return SourceDocument(
+            url=self.url,
+            timestamp=self.timestamp,
+            lang=self.lang,
+            content=self.content,
+        )
+
+
+@app.put("/index/{base64_url}")
+async def put_source_document(base64_url: str, item: PutSourceDocument):
     try:
-        item.url = urlsafe_b64decode(base64_url).decode("utf-8")
+        url = urlsafe_b64decode(base64_url).decode("utf-8")
     except binascii.Error | UnicodeDecodeError:
         raise HTTPException(status_code=400, detail="Bad url path parameter")
 
@@ -43,7 +54,7 @@ def put_source_document(base64_url: str, item: SourceDocument):
         )
 
     db_client = chroma.get_client()
-    chroma.insert_document(db_client, item, overwrite=True)
+    chroma.insert_document(db_client, item.into_sourcedocument(url), overwrite=True)
 
 
 @app.get("/index/{base64_url}")
@@ -86,6 +97,15 @@ def get_relevant_fragments(q: str, k: int = Query(10, gt=0)) -> list[QueryResult
     q_result = document_fragments.query(
         query_texts=[q], n_results=k, include=["metadatas", "documents", "distances"]
     )
+
+    # NOTE: the following fields were supposed to be retuned
+    # by ChromaDB, the assertions should never trigger
+    #
+    # The assertions are information for the type checker
+    assert q_result["documents"] is not None
+    assert q_result["metadatas"] is not None
+    assert q_result["distances"] is not None
+
     results: list[QueryResult] = []
 
     for i in range(len(q_result["documents"][0])):
@@ -94,6 +114,10 @@ def get_relevant_fragments(q: str, k: int = Query(10, gt=0)) -> list[QueryResult
         distance = q_result["distances"][0][i]
 
         results.append(
-            QueryResult(url=metadata["url"], content=document, distance=distance)
+            QueryResult(
+                url=metadata["url"],
+                content=document,
+                distance=distance,
+            )
         )
     return results
