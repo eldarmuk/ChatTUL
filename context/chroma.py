@@ -37,7 +37,9 @@ def insert_document(
             }
         ],
     )
-    chunk_document(client, document)
+
+    if len(document.content.rstrip()) != 0:
+        chunk_document(client, document)
 
     return True
 
