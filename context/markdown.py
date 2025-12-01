@@ -94,7 +94,7 @@ class MarkdownSection:
 
 
 def get_ast(document_content: str) -> list[Token]:
-    ast, _ = _get_ast.parse()
+    ast, _ = _get_ast.parse(document_content)
 
     # NOTE: if this is tripped, it indicades a programmer error
     #
