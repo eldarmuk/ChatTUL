@@ -1,7 +1,57 @@
-from typing import Literal, Any, TypeAlias
+from typing import Literal, TypedDict, NotRequired, Any
 
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
+
+import tabulate
+
+
+class Token(TypedDict):
+    """
+    Token/semantic element of Markdown.
+
+    Types have been inferred by reading `mistune` code
+    """
+
+    type: str
+    children: NotRequired[list["Token"]]
+    raw: NotRequired[str]
+    attrs: NotRequired[dict[str, Any]]
+    style: NotRequired[str]
+
+
+class MarkdownChunkRenderer(MarkdownRenderer):
+    def table(self, token: Token, state: mistune.BlockState):
+        table: list[list[str]] = []
+
+        # table cannot exist without rows (which are children of 'table' token)
+        assert "children" in token
+        rows: list[Token] = token["children"]
+        table_head: Token = next(filter(lambda t: t["type"] == "table_head", rows))
+        table_body: Token = next(filter(lambda t: t["type"] == "table_body", rows))
+
+        table.append(
+            [
+                self.render_children(table_cell, state)
+                for table_cell in table_head["children"]
+            ]
+        )
+        for table_row in table_body["children"]:
+            table.append(
+                [
+                    self.render_children(table_cell, state)
+                    for table_cell in table_row["children"]
+                ]
+            )
+
+        return tabulate.tabulate(
+            table,
+            tablefmt="github",
+            headers="firstrow",
+        )
+
+    def table_cell(self, token: Token, state: mistune.BlockState):
+        return self.render_children(token, state)
 
 
 def create_markdown_processor(
@@ -15,10 +65,8 @@ def create_markdown_processor(
     return mistune.create_markdown(renderer=renderer, plugins=["table"])
 
 
-format = create_markdown_processor(renderer=MarkdownRenderer())
+format = create_markdown_processor(renderer=MarkdownChunkRenderer())
 _get_ast = create_markdown_processor()
-
-Token: TypeAlias = dict[str, Any]
 
 
 class MarkdownSection:
