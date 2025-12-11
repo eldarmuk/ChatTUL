@@ -46,7 +46,14 @@ Content specific to the document
     assert len(fragments) == 2
     assert fragments[0].headings == []
     assert fragments[1].headings == ["Document title"]
-    assert fragments[1].content.startswith("Content specific to the document")
+    assert equal_markdown(
+        str(fragments[1]),
+        """
+# Document title
+
+Content specific to the document
+""",
+    )
 
 
 def test_fragment_to_str():

@@ -19,6 +19,10 @@ uptime_start = datetime.utcnow()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # preload models
+    chroma.get_tokenizer()
+    chroma.EmbeddingFunction.get_model()
+
     chroma.init_collections(chroma.get_client())
     yield
 

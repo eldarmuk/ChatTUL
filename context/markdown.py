@@ -1,9 +1,12 @@
-from typing import Literal, TypedDict, NotRequired, Any
+from typing import Literal, TypedDict, NotRequired, Any, TYPE_CHECKING, cast
+from collections.abc import Callable
 
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
 
 import tabulate
+
+from langchain_text_splitters import MarkdownTextSplitter
 
 
 class Token(TypedDict):
@@ -21,31 +24,46 @@ class Token(TypedDict):
 
 
 class MarkdownChunkRenderer(MarkdownRenderer):
-    def table(self, token: Token, state: mistune.BlockState):
+    def table_token_to_matrix(
+        self, token: Token, state: mistune.BlockState
+    ) -> list[list[str]]:
         table: list[list[str]] = []
 
         # table cannot exist without rows (which are children of 'table' token)
         assert "children" in token
         rows: list[Token] = token["children"]
+
+        # don't know if order is guaranteed
         table_head: Token = next(filter(lambda t: t["type"] == "table_head", rows))
         table_body: Token = next(filter(lambda t: t["type"] == "table_body", rows))
 
+        if TYPE_CHECKING:
+            # table_head nor table_body can exist without children cells
+            assert "children" in table_head
+            assert "children" in table_body
+
         table.append(
             [
-                self.render_children(table_cell, state)
+                self.render_children(cast(dict[str, Any], table_cell), state)
                 for table_cell in table_head["children"]
             ]
         )
         for table_row in table_body["children"]:
+            if TYPE_CHECKING:
+                assert "children" in table_row
+
             table.append(
                 [
-                    self.render_children(table_cell, state)
+                    self.render_children(cast(dict[str, Any], table_cell), state)
                     for table_cell in table_row["children"]
                 ]
             )
 
+        return table
+
+    def table(self, token: Token, state: mistune.BlockState):
         return tabulate.tabulate(
-            table,
+            self.table_token_to_matrix(token, state),
             tablefmt="github",
             headers="firstrow",
         )
@@ -84,17 +102,32 @@ class MarkdownSection:
         self.headings = headings
         self.content = content
 
-    def __str__(self):
+    def __str__(self) -> str:
+        renderer = MarkdownChunkRenderer()
         stringified = ""
         for lvl, h in enumerate(self.headings):
             stringified += "#" * (lvl + 1) + " " + h + "\n\n"
 
-        stringified += self.content
+        stringified += renderer.render_tokens(self.content, mistune.BlockState())
         return stringified
 
+    def split_into_chunks(
+        self,
+        chunk_size: int,
+        chunk_overlap: int,
+        length_function: Callable[[str], int],
+    ) -> list[str]:
+        splitter = MarkdownTextSplitter(
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            length_function=length_function,
+        )
 
-def get_ast(document_content: str) -> list[Token]:
-    ast, _ = _get_ast.parse(document_content)
+        return splitter.split_text(str(self))
+
+
+def get_ast(markdown_content: str) -> list[Token]:
+    ast, _ = _get_ast.parse(markdown_content)
 
     # NOTE: if this is tripped, it indicades a programmer error
     #
@@ -128,17 +161,17 @@ def split_by_sections(document_content: str) -> list[MarkdownSection]:
         sections.append(
             MarkdownSection(
                 [" ".join(extract_text(h)) for h in headings],
-                format.renderer.render_tokens(content, mistune.BlockState()),
+                content[:],
             )
         )
         content.clear()
 
-        if heading is not None:
-            while (
-                len(headings) != 0
-                and headings[-1]["attrs"]["level"] >= heading["attrs"]["level"]
-            ):
-                headings.pop()
+        while (
+            heading is not None
+            and len(headings) != 0
+            and headings[-1]["attrs"]["level"] >= heading["attrs"]["level"]
+        ):
+            headings.pop()
 
     for token in ast:
         token_type = token.get("type")

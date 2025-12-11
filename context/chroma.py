@@ -1,11 +1,14 @@
 import chromadb
-from chromadb import PersistentClient, ClientAPI, Embeddings, Documents
+from chromadb import PersistentClient, Embeddings, Documents
+from chromadb.api import ClientAPI
 
 from functools import lru_cache
 from sentence_transformers import SentenceTransformer
+from transformers import BertTokenizer, AutoTokenizer
 
 from .model import SourceDocument
 from . import markdown
+# from .markdown import MarkdownSection
 
 SOURCE_DOCUMENTS_COLLECTION = "source_documents"
 DOCUMENT_FRAGMENTS_COLLECTION = "document_fragments"
@@ -14,6 +17,13 @@ DOCUMENT_FRAGMENTS_COLLECTION = "document_fragments"
 @lru_cache(maxsize=1)
 def get_client() -> ClientAPI:
     return PersistentClient(path="./.chroma")
+
+
+@lru_cache(maxsize=1)
+def get_tokenizer() -> BertTokenizer:
+    return AutoTokenizer.from_pretrained(
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    )
 
 
 class EmbeddingFunction(chromadb.EmbeddingFunction):
@@ -64,6 +74,11 @@ def insert_document(
     return True
 
 
+def measure_token_length(text: str) -> int:
+    tokenizer = get_tokenizer()
+    return len(tokenizer.encode(text))
+
+
 def chunk_document(client: ClientAPI, document: SourceDocument):
     document_fragments = client.get_collection(DOCUMENT_FRAGMENTS_COLLECTION)
     document_fragments.delete(ids=[document.url])
@@ -74,9 +89,23 @@ def chunk_document(client: ClientAPI, document: SourceDocument):
     }
 
     sections = markdown.split_by_sections(document.content)
-    document_fragments.add(
-        # TODO: figure out better method of ids
-        ids=[f"{idx}:{document.url}" for idx in range(len(sections))],
-        documents=[str(section) for section in sections],
-        metadatas=[meta] * len(sections),
-    )
+    chunks = [
+        chunk
+        for section in sections
+        for chunk in section.split_into_chunks(
+            chunk_size=80, chunk_overlap=50, length_function=measure_token_length
+        )
+    ]
+
+    BATCH_SIZE = 128
+
+    for idx in range(0, len(chunks), BATCH_SIZE):
+        batch = chunks[idx : idx + BATCH_SIZE]
+        right_idx = min(idx + BATCH_SIZE, idx + len(batch))
+
+        document_fragments.add(
+            # TODO: figure out better method of ids
+            ids=[f"{id}:{document.url}" for id in range(idx, right_idx)],
+            documents=batch,
+            metadatas=[meta] * len(batch),
+        )
