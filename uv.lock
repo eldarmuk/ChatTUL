@@ -373,6 +373,7 @@ dependencies = [
     { name = "chromadb" },
     { name = "fastapi", extra = ["standard"] },
     { name = "langchain" },
+    { name = "langchain-text-splitters" },
     { name = "llama-cpp-python" },
     { name = "mistune" },
     { name = "pydantic" },
@@ -397,6 +398,7 @@ requires-dist = [
     { name = "chromadb", specifier = ">=1.1.0" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.121.0" },
     { name = "langchain", specifier = ">=0.3.27" },
+    { name = "langchain-text-splitters", specifier = ">=1.0.0" },
     { name = "llama-cpp-python", specifier = ">=0.3.16" },
     { name = "mistune", specifier = ">=3.1.4" },
     { name = "pydantic", specifier = ">=2.11.9" },
@@ -1283,6 +1285,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/1e/17/67c1cc2ace919e2b02dd9d783154d7fb3f1495a4ef835d9cd163b7855ac2/langchain_core-1.1.0.tar.gz", hash = "sha256:2b76a82d427922c8bc51c08404af4fc2a29e9f161dfe2297cb05091e810201e7", size = 781995, upload-time = "2025-11-21T21:01:26.958Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/71/1e/e129fc471a2d2a7b3804480a937b5ab9319cab9f4142624fcb115f925501/langchain_core-1.1.0-py3-none-any.whl", hash = "sha256:2c9f27dadc6d21ed4aa46506a37a56e6a7e2d2f9141922dc5c251ba921822ee6", size = 473752, upload-time = "2025-11-21T21:01:25.841Z" },
+]
+
+[[package]]
+name = "langchain-text-splitters"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "langchain-core" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fa/2e/c833dcc379c1c086453708ef5eef7d4d1f808559ca4458bd6569d5d83ad7/langchain_text_splitters-1.0.0.tar.gz", hash = "sha256:d8580a20ad7ed10b432feb273e5758b2cc0902d094919629cec0e1ad691a6744", size = 264257, upload-time = "2025-10-17T14:33:41.743Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/97/d362353ab04f865af6f81d4d46e7aa428734aa032de0017934b771fc34b7/langchain_text_splitters-1.0.0-py3-none-any.whl", hash = "sha256:f00c8219d3468f2c5bd951b708b6a7dd9bc3c62d0cfb83124c377f7170f33b2e", size = 33851, upload-time = "2025-10-17T14:33:40.46Z" },
 ]
 
 [[package]]
