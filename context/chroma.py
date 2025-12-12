@@ -93,7 +93,7 @@ def chunk_document(client: ClientAPI, document: SourceDocument):
         chunk
         for section in sections
         for chunk in section.split_into_chunks(
-            chunk_size=80, chunk_overlap=50, length_function=measure_token_length
+            chunk_size=256, chunk_overlap=128, length_function=measure_token_length
         )
     ]
 
