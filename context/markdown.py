@@ -4,8 +4,6 @@ from collections.abc import Callable
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
 
-import tabulate
-
 from langchain_text_splitters import MarkdownTextSplitter
 
 
@@ -62,11 +60,17 @@ class MarkdownChunkRenderer(MarkdownRenderer):
         return table
 
     def table(self, token: Token, state: mistune.BlockState):
-        return tabulate.tabulate(
-            self.table_token_to_matrix(token, state),
-            tablefmt="github",
-            headers="firstrow",
-        )
+        table = self.table_token_to_matrix(token, state)
+
+        # The following is a valid Markdown table
+        # |header1|header2|
+        # |-|-|
+        # |cell1|cell2|
+        #
+        header = "|" + "|".join(table[0]) + "|\n|" + "-|" * len(table[0])
+        body = "".join(["|" + "|".join(row) + "|\n" for row in table[1:]])
+
+        return header + "\n" + body
 
     def table_cell(self, token: Token, state: mistune.BlockState):
         return self.render_children(token, state)
